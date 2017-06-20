@@ -1,140 +1,133 @@
+<!DOCTYPE HTML>
 <html>
-<head>
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?" />
-</head>
-<title>Sequoia Tree</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<!-- Picture & Style -->
+<head>
+  <title>Sequoia Tree</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favicon.ico?">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+</head>
+
 <style>
-body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
-.w3-row-padding img {margin-bottom: 12px}
-.bgimg {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image: url('./profile/profile.jpeg');
-    min-height: 100%;
+* {
+  font-family: 'Raleway', sans-serif;
 }
-.rotate-img {
-    -webkit-transform: rotate(90deg) scale(2.2); /* Chrome 4+, Op 15+, Saf 3.1, iOS Saf 3.2+ */
-       -moz-transform: rotate(90deg) scale(2.2); /* Fx 3.5-15 */
-        -ms-transform: rotate(90deg) scale(2.2); /* IE 9 */
-         -o-transform: rotate(90deg) scale(2.2); /* Op 10.5-12 */
-            transform: rotate(90deg) scale(2.2); /* Fx 16+, IE 10+ */
-    margin: 10% 0 0 20%;
+.title {
+  display: inline;
+  font-size: 60pt;
+  color: black;
+}
+subtitle {
+  font-size: 17pt;
+  color: black;
+}
+.header {
+  display: inline;
+  font-size: 30pt;
+}
+p {
+  font-size: 15pt;
+  text-align: justify;
+}
+a, a:hover {
+  color: black;
+}
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.center {
+  text-align: center;
+}
+.button {
+  color: black;
+  font-size: 17pt;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin: 1rem auto;
+  border: none;
+  background-color: #E6E6E6;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+}
+.button:hover {
+  background-color: #BFBFBF;
 }
 </style>
-<!-- End Picture & Style -->
 
-<body>
+<body class="container">
 
-<!-- Menu -->
-<nav class="w3-sidebar w3-hide-medium w3-hide-small" style="width:40%">
-  <div class="bgimg"></div>
-</nav>
-<nav class="w3-sidebar w3-black w3-animate-right w3-xxlarge" style="display:none;padding-top:150px;right:0;z-index:2" id="mySidebar">
-  <a href="javascript:void(0)" onclick="closeNav()" class="w3-button w3-black w3-xxxlarge w3-display-topright" style="padding:0 12px;">
-    <i class="fa fa-remove"></i>
-  </a>
-  <div class="w3-bar-block w3-center">
-    <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">About</a>
-    <a href="#textbook" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">Textbook</a>
-    <a href="#textadventure" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">Text Adventure</a>
-    <a href="#contact" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">Contact</a>
-  </div>
-</nav>
-<!-- End Menu -->
-
-<!-- Page Content -->
-<div class="w3-main w3-padding-large" style="margin-left:40%">
-
-  <!-- Menu Icon -->
-  <span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto;right:0;" onclick="openNav()"><i class="fa fa-bars"></i></span>
-
-  <!-- Home -->
-  <header class="w3-container w3-center" style="padding:80px" id="home">
-    <h1 class="w3-jumbo"><b>Sequoia</b></h1>
-    <p>STUDENT RESEARCHER & INSTRUCTOR</p>
-    <p>UC BERKELEY</p>
+  <div class="center">
+    <br><br>
+    <p class="title"><b>Sequoia</b></p>
+    <br>
+    <subtitle>STUDENT RESEARCHER & INSTRUCTOR</subtitle>
+    <br>
+    <subtitle>UC BERKELEY</subtitle>
     <form method="get" action="profile/Curriculum Vitae.pdf">
-    <button class="w3-button w3-light-grey w3-padding-large w3-margin-top">
-      <i class="fa fa-download"></i> Curriculum Vitae
-    </button>
+      <button class="button">Curriculum Vitae</button>
     </form>
-  </header>
-  <!-- End Home -->
+  </div>
 
-  <!-- About -->
-  <div class="w3-padding-16 w3-content w3-justify w3-text-grey" id="about">
-    <h2>About</h2>
-    <hr class="w3-opacity">
-    <p>Hi, I’m Sequoia, an enthusiastic 17-year-old with interests in dinosaurs, aliens, and robots. I’m also a Regents Scholar at UC Berkeley, where I learn and teach computer science + math. When I’m not studying, teaching, or developing courseware, I do machine learning research at the UC Berkeley AUTOLab, where I’m working on a disaster-preparedness system for people living in the Philippines. I put my spare time towards developing interdisciplinary data science modules with the Berkeley Institute of Data Science, and playing / coding text adventures.</p>
+  <div>
+    <p class="header"><b>About</b></p>
+    <hr>
+    <p>Hi, I’m Sequoia, an enthusiastic 17-year-old with interests in dinosaurs,
+      aliens, and robots. I’m also a Regents Scholar at UC Berkeley, where I
+      learn and teach computer science + math. When I’m not studying, teaching,
+      or developing courseware, I do machine learning research at the UC
+      Berkeley AUTOLab, where I’m working on a disaster-preparedness system for
+      people living in the Philippines. I put my spare time towards developing
+      interdisciplinary data science modules with the Berkeley Institute of Data
+      Science, and playing / coding text adventures.
+    </p>
     <p> 1000+ Hours Community Service </p>
     <p> 100+ Hours Teaching </p>
     <p> Approx. 1 Ogre Slain </p>
   </div>
-  <!-- End About -->
 
-  <!-- Textbook -->
-  <div class="w3-padding-16 w3-content w3-text-grey" id="textbook">
-    <h2>Textbook</h2>
-    <hr class="w3-opacity">
-
-  <p><a href="textbook/00 Some Background.pdf">Some Background</a></p>
-  <p><a href="textbook/01 Variables.pdf">Variables</a> &emsp;
-     <a href="textbook/01* practice.pdf">practice</a> &emsp;
-     <a href="textbook/01* solutions.pdf">solutions</a></p>
-  <p><a href="textbook/02 Functions.pdf">Functions</a> &emsp;
-     <a href="textbook/02* practice.pdf">practice</a> &emsp;
-     <a href="textbook/02* solutions.pdf">solutions</a></p>
-  <p><a href="textbook/03 Booleans.pdf">Booleans</a> &emsp;
-     <a href="textbook/03* practice.pdf">practice</a> &emsp;
-     <a href="textbook/03* solutions.pdf">solutions</a></p>
-
+  <div>
+    <p class="header"><b>Textbook</b></p>
+    <hr>
+    <p>
+      <a href="textbook/00 Some Background.pdf">Some Background</a>
+    </p>
+    <p>
+      <a href="textbook/01 Variables.pdf">Variables</a><br>
+      <a href="textbook/01* practice.pdf">practice</a><br>
+      <a href="textbook/01* solutions.pdf">solutions</a>
+    </p>
+    <p>
+      <a href="textbook/02 Functions.pdf">Functions</a><br>
+      <a href="textbook/02* practice.pdf">practice</a><br>
+      <a href="textbook/02* solutions.pdf">solutions</a>
+    </p>
+    <p>
+      <a href="textbook/03 Booleans.pdf">Booleans</a><br>
+      <a href="textbook/03* practice.pdf">practice</a><br>
+      <a href="textbook/03* solutions.pdf">solutions</a>
+    </p>
   </div>
-  <!-- End Textbook -->
 
-  <!-- Text Adventure -->
-  <div class="w3-padding-16 w3-content w3-text-grey" id="textadventure">
-    <h2>Text Adventure</h2>
-    <hr class="w3-opacity">
-
-    <p>Venture across the Foo-Land on an epic mission to uncover the long lost art of computer science. Danger lurks at every turn — from the otherworldly puzzles in the Java Jungle, to the labyrinthine and treacherous HaskHell. Do you have what it takes to uncover the secrets within?</p>
+  <div>
+    <p class="header"><b>Text Adventure</b></p>
+    <hr>
+    <p>Venture across the Foo-Land on an epic mission to uncover the long lost art of computer science. Danger lurks at every turn — from the otherworldly puzzles in the Java Jungle, to the labyrinthine and treacherous HaskHell. Do you have what it takes to uncover the secrets within?
+    </p>
     <p><a href="">link coming soon</a></p>
   </div>
-  <!-- End Text Adventure -->
 
-  <!-- Contact -->
-  <div class="w3-padding-16 w3-content w3-text-grey" id="contact">
-    <h2>Contact</h2>
-    <hr class="w3-opacity">
-
-    <div class="w3-section">
-      <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> (314) 159 2653 5897 9323 8462 6433 8327 9502 8841 9716 9399 3751</p>
-      <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> sequoia [at] berkeley.edu</p>
-    </div>
+  <div>
+    <p class="header"><b>Contact</b></p>
+    <hr>
+    <p>sequoia [at] berkeley.edu</p>
   </div>
-  <!-- End Contact -->
 
-</div>
-<!-- END PAGE CONTENT -->
-
-<script>
-// Open and close sidebar
-function openNav() {
-    document.getElementById("mySidebar").style.width = "60%";
-    document.getElementById("mySidebar").style.display = "block";
-}
-
-function closeNav() {
-    document.getElementById("mySidebar").style.display = "none";
-}
-</script>
+  <br><br>
 
 </body>
+
 </html>
