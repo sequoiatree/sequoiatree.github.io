@@ -50,7 +50,19 @@ def read_md(file):
     return content
 
 def parse_markdown(text):
-    return markdown(text, extensions=MARKDOWN_EXTENSIONS, output_format='html5')
+    return process_html(markdown(text, extensions=MARKDOWN_EXTENSIONS, output_format='html5'))
+
+def process_html(text):
+    text = allow_subscripts_globally(text)
+    return text
+
+def allow_subscripts_globally(text):
+    text = sub(
+        '~(\S+)~',
+        lambda match: Markup(f'<sub>{match.group(1)}</sub>'),
+        text
+    )
+    return text
 
 def get_age():
     today, birth = date.today(), date(2000, 2, 17)

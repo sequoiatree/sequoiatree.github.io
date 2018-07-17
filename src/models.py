@@ -52,7 +52,7 @@ class TextbookResource(FileSystemObject):
             in_content = self.process_input(read_md(join(self.path, in_file)))
             out_content = template.replace(
                 '{{ TEXTBOOK CONTENT }}',
-                self.process_output(parse_markdown(in_content))
+                parse_markdown(in_content)
             )
             write(out_file, out_content)
 
@@ -104,18 +104,6 @@ class TextbookResource(FileSystemObject):
         text = sub(
             'IMG-([A-Z]+) ([0-9a-z-]+)',
             lambda match: f"{{{{ macros.image('{match.group(2)}', '{match.group(1).lower()}') }}}}",
-            text
-        )
-        return text
-
-    def process_output(self, text):
-        text = self.allow_subscripted_lambdas(text)
-        return text
-
-    def allow_subscripted_lambdas(self, text):
-        text = sub(
-            'lambda~(\d+)~',
-            lambda match: Markup(f'lambda<sub>{match.group(1)}</sub>'),
             text
         )
         return text
