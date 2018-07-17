@@ -85,7 +85,3 @@ If you want to see how your changes affect the website, navigate to the `src` di
 ## Deploying edits
 
 Github Pages can only host static content. To make sure your changes are actually reflected on [sequoia-tree.github.io](sequoia-tree.github.io), you need to freeze the dynamic Flask app. From within `src`, run `python3 freeze.py`. This will build the entire website's static content in the root directory. Then you can commit and push your changes to Github. Note that if you have added any files to the root directory not specified in the `SRC_FILES` set defined in `src/freeze.py`, then **those files will be deleted**.
-
-## License
-
-All content on this repository is protected under a [Creative Commons BY-NC 4.0 license](https://creativecommons.org/licenses/by-nc/4.0/).
