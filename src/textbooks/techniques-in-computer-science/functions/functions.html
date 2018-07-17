@@ -1,0 +1,251 @@
+{% extends 'textbook.html' %}
+
+{% block content %}
+
+<h1 id="defining-functions">Defining functions</h1>
+<p>Functions are a way to wrap up a bunch of code into one word. They make it possible to reuse the same code over and over again, without having to rewrite it. Pretty useful, especially for operations you want to do often. Functions also make it easier to think about your code, because once you know your function works, you never again have to worry about <em>how</em> it works. This enables you to break up problems into smaller, easier problems.</p>
+<h2 id="syntax-for-defining-functions">Syntax for defining functions</h2>
+<p>So how do we define a new function? Use the <code>def</code> keyword, short for "define". Then we'll have to specify a few things:</p>
+<ul>
+<li>The name of the function. This comes right after <code>def</code>.</li>
+<li>The inputs to the function. These come inside parentheses, right after the name of the function. For now we'll just talk about functions that don't have any inputs, so they do the same thing every time you use them.</li>
+<li>How the function works. This can get really complicated, so it would be unwise to try and cram it all onto the same line that has the <code>def</code> keyword, the function's name, and the inputs to the function. Instead we go to a new line and indent a little bit. There we write all the code that should happen when we use the function.</li>
+<li>The output of the function. This comes at the end. We specify the output using the keyword <code>return</code>, because it's what the function returns to us when we use it.</li>
+</ul>
+<p>Let's see an example:</p>
+<pre class="highlight"><code>def fifth_fibonacci():
+    fib_0 = 0
+    fib_1 = 1
+    fib_2 = fib_1 + fib_0
+    fib_3 = fib_2 + fib_1
+    fib_4 = fib_3 + fib_2
+    return fib_4</code></pre>
+
+<p>On the first line we see the <code>def</code> keyword followed by the function's name, which is <code>fifth_fibonacci</code>. This is a fitting name because this function computes the fifth number in the Fibonacci sequence, which we learned about at the end of the previous chapter. Then we have a pair of empty parentheses. If this function took an input then we would put the input inside the parentheses, but it doesn't have an input so the parentheses are empty. On the next few lines we see how the function works. It computes the fifth Fibonacci number, using basically the same calculation we did at the end of the previous chapter. Finally we see the <code>return</code> keyword, which specifies the output of the function. In particular this function's output is <code>fib_4</code>, which has been assigned to the value of the fifth number in the Fibonacci sequence.</p>
+<p>Here's an important point. I'll mention it again later because it's so gosh darn essential, but pay attention anyways. After running the code above, we have <em>not</em> computed the fifth Fibonacci number. We have made a function, called <code>fifth_fibonacci</code>. If we use this function, then it will compute the fifth Fibonacci number. But if we never use this function, then the code inside it will never get executed and we will never compute the fifth Fibonacci number.</p>
+<p>Also keep in mind that every function has an output. If you don't specify an output with the keyword <code>return</code>, then Python will make your function output <code>None</code> by default. For instance, these next three functions are all completely the same and they all output <code>None</code>:</p>
+<pre class="highlight"><code>def example_1():
+    variable = 10
+    return None
+
+def example_2():
+    variable = 10
+    return
+
+def example_3():
+    variable = 10</code></pre>
+
+<p>Python also stops reading as soon as it sees the keyword <code>return</code>. The next two functions are also completely identical, as far as Python is concerned:</p>
+<pre class="highlight"><code>def example_1():
+    return 10
+    return 20
+
+def example_2():
+    return 10</code></pre>
+
+<p>That's because it doesn't really make sense to keep reading <code>example_1</code>, after you already know it's output is the number 10.</p>
+<h2 id="pointers">Pointers</h2>
+<p>Recall from the previous chapter, I said variables can only be assigned to one of a few different primitive types: integers, floats, strings, booleans, or <code>None</code>. Well there's a problem with that. A function is not any of those primitive types! So how's it even possible for a variable to be assigned to a function? Short answer: It isn't. That's literally impossible. But we can do something very close.</p>
+<p>Instead of binding the variable to a function, you can bind it to an arrow (a.k.a. pointer) that <em>points</em> at a function. This is a subtle difference but it will become very important later on. Take a look at this pyagram, for the <code>fifth_fibonacci</code> function we defined in the previous section. For comparison I've also included a variable called <code>meaning_of_life</code>, bound to 42.</p>
+<p>{{ resource.assets['pointer'] }}</p>
+<p>First look at the variable called <code>meaning_of_life</code>. It's bound to 42, so the number 42 appears in the little box next to it. Now compare this against the variable named <code>fifth_fibonacci</code>. Notice how the little box does <em>not</em> contain a function! It contains the beginning of an arrow. So just like <code>meaning_of_life</code> is bound to 42, we can see <code>fifth_fibonacci</code> is bound to the beginning of an arrow. That arrow can point wherever it wants. In this example it points at a function, but it could just as feasibly point at a list, or a dog, or whatever else you like. Whenever you want to bind a variable to something that isn't a primitive type, you can just bind the variable to an arrow that points at the thing you want.</p>
+<p>Once this makes sense, look at how we represent the function in the pyagram above. First we write "function", to specify that it is a function. Then we write the name of the function, along with the parentheses. If <code>fifth_fibonacci</code> had any inputs, then those would go inside the parentheses. We also write "[p = global]", which tells us the global frame is the <em>parent</em> of the function named <code>fifth_fibonacci</code>. Every function has a parent frame, and the parent frame is always the frame where the function was defined. In other words, it's the frame you were in when you saw the <code>def</code> statement. For the next few chapters, every function we work with will be defined in the global frame, so all of them will have the global frame for their parent.</p>
+<p>In summary, you can't bind a variable to a function. Instead you bind it to an arrow, also called a pointer, that points at the function. We'll use this same trick later on, to refer to lists and other things that aren't primitives. It may seem kind of nit-picky and irrelevant now, but this is going to be a big topic later on. Please check that you really understand this section, before you keep reading.</p>
+<h2 id="working-with-pointers">Working with pointers</h2>
+<p>Really, working with pointers is no different from working with any of the primitive types we learned about in the previous chapter. You just have to keep in mind that the variable is not bound to the function. It's bound to a pointer at the function. Let's see some examples.</p>
+<p>Consider the code below, and the corresponding pyagram:</p>
+<pre class="highlight"><code>x = 5
+y = x</code></pre>
+
+<p>{{ resource.assets['copy-primitive'] }}</p>
+<p>First we bind <code>x</code> to 5. Then we bind <code>y</code> to the value of <code>x</code>, which is 5. So we copy 5 from <code>x</code> into <code>y</code>, and both variables end up with the value 5. This should just be review, if you read the previous chapter.</p>
+<p>Now consider this next example, and the pyagram that goes along with it:</p>
+<pre class="highlight"><code>def f():
+    return 5
+
+g = f</code></pre>
+
+<p>{{ resource.assets['copy-pointer'] }}</p>
+<p>First we bind <code>f</code> to a pointer at a function. Then we bind <code>g</code> to the value of <code>f</code>, which is a pointer. So we copy the pointer from <code>f</code> into <code>g</code>, and both variables end up bound to a pointer. Notice we did <em>not</em> copy the function! We only copied the pointer to the function. There's still only one function, but there are now two pointers to it.</p>
+<p>Be careful though! It can get tricky. Take a look at this example:</p>
+<pre class="highlight"><code>def f():
+    return 5
+
+g = f
+
+def f():
+    return 10</code></pre>
+
+<p>{{ resource.assets['crossing-pointers'] }}</p>
+<p>First we define <code>f</code>, and it gets bound to a pointer at a function whose output is 5. Then we see <code>g = f</code> and <code>g</code> becomes a pointer at the same function. Last, we reassign <code>f</code> to pointer at a function whose output is 10. <code>g</code> still points at the original function, but <code>f</code> points to the new one.</p>
+<p>If you then evaluated the variable <code>g</code> in the Python interpreter, you'd see something like this:</p>
+<pre class="highlight"><code>&gt;&gt;&gt; g
+&lt;function f at 0x101e736a8&gt;</code></pre>
+
+<p>This is just Python's way of telling you the variable <code>g</code> evaluates to a pointer at a function named <code>f</code>. The big scary hexadecimal number is telling you where to find that pointer in your computer, but you don't have to worry about that until you take a computer architecture course.</p>
+<p>Here's another thing you should be aware of. A function can exist, even if there's no pointer to it. For instance:</p>
+<pre class="highlight"><code>def f():
+    return 5
+
+f = 5</code></pre>
+
+<p>{{ resource.assets['floating-function'] }}</p>
+<p>The <code>def</code> statement did two things. It created a function, and it bound the variable <code>f</code> to a pointer at that function. Then we decided to reassign <code>f</code> to the number 5, so the previous value of <code>f</code> — the pointer — disappeared. We never got rid of the function we created. We can't use it anymore because there are no other variables pointing to it, but it's still there.</p>
+<h1 id="calling-functions">Calling functions</h1>
+<p>Now that we have talked about how to define functions, let's talk about actually using them. We refer to this as calling the function.</p>
+<h2 id="syntax-for-calling-functions">Syntax for calling functions</h2>
+<p>Consider our example <code>fifth_fibonacci</code> from earlier:</p>
+<pre class="highlight"><code>def fifth_fibonacci():
+    fib_0 = 0
+    fib_1 = 1
+    fib_2 = fib_1 + fib_0
+    fib_3 = fib_2 + fib_1
+    fib_4 = fib_3 + fib_2
+    return fib_4</code></pre>
+
+<p><code>fifth_fibonacci</code> is just a function whose output is the fifth Fibonacci number. Writing <code>fifth_fibonacci</code> doesn't actually execute any of the code above. In order to do that, you need to write <code>fifth_fibonacci()</code> with the parentheses at the end. This tells you to go actually go through the code above and compute the fifth Fibonacci number. The difference is that <code>fifth_fibonacci</code> is a function, whereas <code>fifth_fibonacci()</code> is a call to that function. The function call returns a value, which you can use or assign to a variable. For instance, this code will evaluate the function call <code>fifth_fibonacci()</code> and bind the resulting integer to a variable called <code>fifth_fibonacci_number</code>:</p>
+<pre class="highlight"><code>fifth_fibonacci_number = fifth_fibonacci()</code></pre>
+
+<p>Now let's examine a slightly more nuanced example. Read this code, and keep in mind that dividing by 0 will cause an error to occur in your program:</p>
+<pre class="highlight"><code>def divide_by_zero():
+    return 1 / 0
+
+function = divide_by_zero
+function_call = divide_by_zero()</code></pre>
+
+<p>Remember, the code inside <code>divide_by_zero</code> doesn't happen until we call it. So we actually don't get an error until the very last line in the code above. The <code>def</code> is okay, because that just makes a function and binds the variable <code>divide_by_zero</code> to a pointer at that function. We haven't yet used the function, which means we haven't yet tried to divide by zero. It's also okay to say <code>function = divide_by_zero</code>, because that's just binding the variable <code>function</code> to a pointer. We only encounter an issue when we see <code>function_call = divide_by_zero()</code>, because calling the function causes us to go and execute the code inside it. At last, we attempt to divide by zero and this causes an error to occur in our program.</p>
+<p>It's very important to recognize the difference between a function and a function call. When you're just talking about a function, you don't execute the code inside it. That only happens when you're calling the function. It can be easy to confuse the two, especially if you're just starting out, so be extra vigilant about this.</p>
+<h2 id="functions-with-parameters">Functions with parameters</h2>
+<p>So far we've only seen functions that return the same thing every time you call them. Most of the time, though, you'll write functions that return something different depending on a few input variables called parameters. When you want your function to take input parameters, you write them inside the parentheses after the function's name. Then, within the function, you can refer to these parameters just like you would refer to any normal variable. For example, here's a function that takes one parameter called <code>number</code> and outputs its square:</p>
+<pre class="highlight"><code>def square(number):
+    return number ** 2</code></pre>
+
+<p>Whenever you call a function that requires parameters, you need to provide a concrete value for each parameter. These values are called arguments.</p>
+<pre class="highlight"><code>&gt;&gt;&gt; square(number)
+Error: 'number' not defined
+&gt;&gt;&gt; square(5)
+25</code></pre>
+
+<p>Technically the parameter is the variable itself, whereas the argument is the value given to the variable. So in the above example, <code>number</code> is a parameter and 5 is the corresponding argument. But terminology is pretty pointless so there's no need to be pedantic about this, and don't worry about memorizing it. You might also hear some folks refer to the signature of a function. That's the name of the function, including all its parameters — for instance <code>square(number)</code>.</p>
+<p>Here's another example of calling a function that has parameters, this time taking the average of 3 numbers:</p>
+<pre class="highlight"><code>&gt;&gt;&gt; def average(x, y, z):
+...     return (x + y + z) / 3
+...
+&gt;&gt;&gt; z = 8
+&gt;&gt;&gt; average(4, z, z - 2)
+6.0</code></pre>
+
+<h2 id="the-order-of-evaluation">The order of evaluation</h2>
+<p>Before we go any further, we should take the time to understand how function calls actually work. Now is a good time to review the pyagrams we learned about in the previous chapter, because we're about to see them get a little bit more complicated.</p>
+<p>Imagine I asked you to compute <span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span>. You would probably have a few questions. First of all, what does <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> do? And second, what's <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>? It's kind of impossible to tell me what <span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span> is, when you don't know either of these things. It's similar when Python sees a function call, like <code>average(4, z, z - 2)</code>. First of all Python needs to know what <code>average</code> does, and second it needs to process <code>4</code>, <code>z</code>, and <code>z - 2</code>. It's only possible for Python to compute <code>average(4, z, z - 2)</code> after it knows all those things. So when you see a function call, like <code>average(4, z, z - 2)</code>, two things happen:</p>
+<ol>
+<li>Python evaluates everything in your expression. It evaluates <code>average</code> to find out what it does. Then it evaluates <code>4</code>, <code>z</code>, and <code>z - 2</code> because it's going to need to know what they are too.</li>
+<li>Now that it knows all the constituent parts of your function call, Python has to actually perform the computation. Line by line, it executes the code inside <code>average</code> until it reaches the <code>return</code> statement.</li>
+</ol>
+<p>Let's see how to do that whole procedure in a pyagram. We'll use this code as an example:</p>
+<pre class="highlight"><code>def average(x, y, z):
+    total = x + y + z
+    return total / 3
+
+z = 8
+avg = average(4, z, z - 2)</code></pre>
+
+<p>{{ macros.slider('average', sequence(resource, 'average')) }}</p>
+<p>This is hella important, so double-check that you thoroughly understand everything above. For future reference, here's the procedure. You should apply it whenever you come across a function call.</p>
+<ol>
+<li>Make a flag underneath the current frame. Write the entire function call on the flag banner.</li>
+<li>Evaluate the function and all its inputs.<ul>
+<li>First look up the function's name in the frame above the flag. If you don't find it there, search in the parent frame. Then the parent frame's parent frame, and so on, until you find it. If you don't even find it after searching the global frame, then Python will throw an error. Whatever you find it bound to, copy that value down into the banner, just beneath the function's name.</li>
+<li>Then evaluate all the arguments to the function call, and write their respective values beneath them in the flag banner. If any arguments involve variables, then look up those variables using the same procedure as in the bullet point above. If any arguments involve function calls, then pause, start a new flag inside this one, and apply this entire procedure to evaluate that function call before you proceed.</li>
+</ul>
+</li>
+<li>Perform the computation.<ul>
+<li>Make a new frame inside the flag and give it a frame number. Then write the name and parent frame of the function being called. To get this information, you should simply have to follow the arrow that you copied down to the flag banner under the function's name.</li>
+<li>Inside the frame, bind all the parameters to their respective arguments. For this step, you should only have to refer to the values you wrote in the flag banner.</li>
+<li>Then walk through the code that gets executed, line by line. If you come across another function call, then apply this entire procedure to evaluate it.</li>
+<li>Once you reach the <code>return</code> statement, make a corresponding <code>return</code> box at the end of the frame. In that box, write the output from the function call. This marks the end of both the frame and the flag.</li>
+<li>Now that you know the output of the function call, return to where you were before and continue from there. This will be the frame above the flag that you just finished.</li>
+</ul>
+</li>
+</ol>
+<p>Use this procedure as a guide while you're just learning these concepts, but don't become reliant on it.</p>
+<p>Also notice in this procedure that we evaluate all the arguments before looking at the code within the function. This is still the case, even if the function never uses its parameters! So, if the provided arguments cause an error then the function never gets executed at all.</p>
+<pre class="highlight"><code>&gt;&gt;&gt; def five(x, y):
+...     return 5
+...
+&gt;&gt;&gt; five(3, 1 / 0)
+Error</code></pre>
+
+<p>Again, this whole section is super duper important so make sure you really get it. We'll see some more complicated examples in the next section.</p>
+<h2 id="practice-difference-from-the-average">Practice: difference from the average</h2>
+<p>This stuff can get pretty tricky, so let's practice by drawing a few pyagrams. In particular, we'll look at three equivalent ways of calculating the difference between a number <code>n</code> and the average of three numbers <code>x</code>, <code>y</code>, and <code>z</code>. Even though all three methods produce the same result, they work differently and so they correspond to different pyagrams.</p>
+<p>Here's our first method for calculating the difference between <code>n</code> and the average of <code>x</code>, <code>y</code>, and <code>z</code>. At the end, the result is bound to the variable <code>diff_from_avg</code>.</p>
+<pre class="highlight"><code>def difference(n, avg):
+    return n - avg
+
+avg = average(1, 2, 3)
+diff_from_avg = difference(10, avg)</code></pre>
+
+<p>{{ macros.slider('diff-from-avg-1', sequence(resource, 'diff-from-avg-1')) }}</p>
+<p>Here's another method for computing the difference between <code>n</code> and the average of <code>x</code>, <code>y</code>, and <code>z</code>. Instead of two distinct function calls, it uses a nested function call.</p>
+<pre class="highlight"><code>def difference(n, avg):
+    return n - avg
+
+diff_from_avg = difference(10, average(1, 2, 3))</code></pre>
+
+<p>{{ macros.slider('diff-from-avg-2', sequence(resource, 'diff-from-avg-2')) }}</p>
+<p>Here's our third and last method of computing the difference between <code>n</code> and the average of <code>x</code>, <code>y</code>, and <code>z</code>. It has a function call inside <code>get_difference_from_avg</code>.</p>
+<pre class="highlight"><code>def get_diff_from_avg(n, x, y, z):
+    avg = average(x, y, z)
+    return n - avg
+
+diff_from_avg = get_diff_from_avg(10, 1, 2, 3)</code></pre>
+
+<p>{{ macros.slider('diff-from-avg-3', sequence(resource, 'diff-from-avg-3')) }}</p>
+<p>Make sure you're comfortable with these examples, before you keep reading.</p>
+<h2 id="the-scope-of-a-function">The scope of a function</h2>
+<p>Let's open the Python interpreter and try out a short function that we'll name <code>increment</code>. If it works, it will assign a variable <code>y</code> to a value one more than <code>x</code>, whenever we call it.</p>
+<pre class="highlight"><code>&gt;&gt;&gt; x = 5
+&gt;&gt;&gt; def increment():
+...     y = x + 1
+&gt;&gt;&gt; increment()
+&gt;&gt;&gt; y
+Error: 'y' is not defined</code></pre>
+
+<p>Looks like it doesn't work. To find out why, we should draw a pyagram. Refer back to the past few sections if necessary.</p>
+<p>{{ macros.slider('increment', sequence(resource, 'increment')) }}</p>
+<p>Notice that <code>y</code> exists in frame 1, but not in the global frame. It makes sense, then, why Python gets confused when we ask for it in the global frame. This illustrates that even though it's possible for a frame to refer to its parent frame, the reverse is not true. In fact, here's the rule:</p>
+<ul>
+<li>When you're looking up a variable: First look up the variable in the current frame. If you don't find it there, search in the parent frame. Then the parent frame's parent frame, and so on, until you find it. If you don't even find it after searching the global frame, then Python will throw an error.</li>
+<li>When you're assiging a variable: You can only assign the variable in your current frame. You can't change or assign any variables outside your current frame.</li>
+</ul>
+<h1 id="impure-functions">Impure functions</h1>
+<p>We saw earlier that every function call has an output — a <code>return</code> value. Well some functions, called impure functions, also have side-effects. Side-effects are events that occur, not values to be evaluated. Whenever you call an impure function, it will perform its side-effect and then evaluate to its <code>return</code> value. For example, imagine a function called <code>launch_rocket</code> as described below:</p>
+<ul>
+<li>Side-effect: A rocket gets launched into space.</li>
+<li><code>return</code> value: The string <code>'Launch successful.'</code>.</li>
+</ul>
+<p>This is an example of an impure function because it has a side-effect. Namely, a rocket will launch into space whenever you call it. Then, after this is done, the function will output the string <code>'Launch successful.'</code>.</p>
+<h2 id="the-print-function">The <code>print</code> function</h2>
+<p>There's one particularly important impure function that the creators of Python have already implemented for you. It's the <code>print</code> function, and here's how it works:</p>
+<ul>
+<li>Side-effect: All its arguments are displayed on the screen.</li>
+<li><code>return</code> value: <code>None</code>.</li>
+</ul>
+<p>For instance, consider the code below. The initial call <code>print(4)</code> displays the number 4 on the screen. This function call also returns <code>None</code>, so <code>x</code> gets bound to <code>None</code>. Recall from the previous chapter, this means nothing gets displayed when we evaluate <code>x</code> in the Python interpreter. Then we have <code>print(4, 5, 6)</code> which displays all three of its arguments on the screen. Like the first expression, it evaluates to <code>None</code>. The returned <code>None</code> doesn't show up for the same reason that <code>x</code> didn't get displayed on the screen.</p>
+<pre class="highlight"><code>&gt;&gt;&gt; x = print(4)
+4
+&gt;&gt;&gt; x
+&gt;&gt;&gt; print(4, 5, 6)
+4 5 6</code></pre>
+
+<p>You could also do something wacky like this next piece of code. First of all, recall from earlier that we're going to evaluate all the arguments before actually performing the function call. (If you don't remember why, go back to the previous section and review the procedure for making pyagrams. Notice how we evaluate all the arguments in the flag banner, before we open the frame for the function call.) That means we'll evaluate 9 and the inner <code>print</code> statement before doing the outer <code>print</code> statement. The inner call to <code>print</code> causes the string <code>'To infinity and beyond!'</code> to get displayed on the screen. (It appears without quotes, because <code>print</code> always displays strings like that to make them easier to read.) Then it returns <code>None</code>, which means the outer call is basically saying <code>print(9, None)</code>. That's why <code>9 None</code> gets displayed on the screen. The outer <code>print</code> statement also returns <code>None</code>, but as in the previous example with <code>print(4, 5, 6)</code>, this doesn't get displayed.</p>
+<pre class="highlight"><code>&gt;&gt;&gt; print(9, print('To infinity and beyond!'))
+To infinity and beyond!
+9 None</code></pre>
+
+{% if not is_practice and resource.practice %}
+{{ macros.button('Practice', url_for(resource.practice.renderer)) }}
+{% endif %}
+
+{% endblock %}

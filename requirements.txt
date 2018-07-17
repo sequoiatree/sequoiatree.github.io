@@ -1,0 +1,5 @@
+Flask==0.10.1
+Frozen-Flask==0.15
+Jinja2==2.7.2
+Markdown==2.6.11
+Pymdown-Extensions==4.11

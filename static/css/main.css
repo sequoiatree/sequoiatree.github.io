@@ -1,0 +1,34 @@
+* {
+  font-family: 'Raleway', sans-serif;
+}
+
+p, a, a:hover, li {
+  text-align: justify;
+  font-size: 15pt;
+  color: black;
+}
+
+strong {
+  font-weight: 700;
+}
+
+img {
+  width: 100%;
+}
+
+::selection {
+  background: #3CC216;
+}
+
+::-moz-selection {
+  background: #3CC216;
+}
+
+.page {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.center {
+  text-align: center;
+}

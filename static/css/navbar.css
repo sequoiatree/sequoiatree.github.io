@@ -1,0 +1,58 @@
+.navbar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  background-color: #1E8511;
+  z-index: 2;
+}
+
+.navbar a {
+  float: left;
+  padding: 15px 16px;
+  text-decoration: none;
+  font-size: 13pt;
+  color: #ecf0f1;
+}
+
+.navbar .icon {
+  display: none;
+  font-size: 11pt;
+}
+
+.navbar a:hover {
+  color: #ffffff;
+}
+
+@media screen and (max-width: 314px) {
+  .navbar a:not(:first-child), .dropdown .dropbtn {
+    display: none;
+  }
+  .navbar a.icon {
+    display: block;
+    float: right;
+  }
+  .navbar.responsive a {
+    display: block;
+    float: none;
+    text-align: left;
+  }
+  .navbar.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .navbar.responsive .dropdown {
+    float: none;
+  }
+  .navbar.responsive .dropdown .dropbtn {
+    display: block;
+    text-align: left;
+  }
+  .navbar.responsive .dropdown-content {
+    position: relative;
+    left: 0;
+    width: 100vw;
+    max-height: 50vh;
+  }
+}

@@ -1,0 +1,532 @@
+
+
+
+<!DOCTYPE HTML>
+
+<html>
+
+  <head>
+    <title>Variables</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/static/favicon.ico">
+    
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,500">
+
+
+    
+
+  
+
+  <link rel="stylesheet" href="/static/css/main.css">
+
+
+
+  
+
+  <link rel="stylesheet" href="/static/css/button.css">
+
+
+
+  
+
+  <link rel="stylesheet" href="/static/css/collapsible.css">
+
+
+
+
+    
+
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work+Sans:400,700">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Mono">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+
+
+
+
+  
+
+  <link rel="stylesheet" href="/static/css/textbook.css">
+
+
+
+  
+
+  <link rel="stylesheet" href="/static/css/navbar.css">
+
+
+
+  
+
+  <link rel="stylesheet" href="/static/css/dropdown.css">
+
+
+
+  
+
+  <link rel="stylesheet" href="/static/css/slider.css">
+
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+
+
+
+  
+
+  <script src="/static/js/textbook.js"></script>
+
+
+
+  
+
+  <script src="/static/js/display.js"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+  MathJax.Hub.Register.StartupHook("MathMenu Ready",function () {
+    MathJax.Menu.BGSTYLE["z-index"] = 1;
+  });
+</script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+  </head>
+
+  
+<div id="navbar" class="navbar">
+  <div class="page">
+    <a href="/#Textbooks" class="active">
+      <i class="fas fa-tree"></i>
+    </a>
+    <div class="dropdown">
+      <button class="dropbtn" onclick="toggleDisplay('chapter-dropdown', 'none', 'block')">
+        More Chapters
+      </button>
+      <div id="chapter-dropdown" class="dropdown-content" style="display: none;">
+        
+          <a href="/techniques-in-computer-science/welcome-to-computer-science.html">Welcome to Computer Science</a>
+        
+          <a href="/techniques-in-computer-science/setup.html">Setup</a>
+        
+          <a href="/techniques-in-computer-science/variables.html">Variables</a>
+        
+          <a href="/techniques-in-computer-science/functions.html">Functions</a>
+        
+          <a href="/techniques-in-computer-science/booleans.html">Booleans</a>
+        
+          <a href="/techniques-in-computer-science/iteration.html">Iteration</a>
+        
+          <a href="/techniques-in-computer-science/higher-order-functions.html">Higher-Order Functions</a>
+        
+          <a href="/techniques-in-computer-science/lambda-functions.html">Lambda Functions</a>
+        
+      </div>
+    </div>
+    
+    <a href="javascript:void(0);" class="icon"
+       onclick="toggleClass('navbar', 'navbar', 'responsive');">
+      &#9776;
+    </a>
+  </div>
+</div>
+
+
+  <body>
+    <div class="page content">
+      
+
+<h1 id="primitive-types">Primitive types</h1>
+<p>You can make a program for almost anything. There are programs that read books, rank movies, look for interesting numbers, or even play games. In order for programming to be so versatile, it needs to understand a few things — numbers and words, for instance. We call those things primitive types.</p>
+<h2 id="pythons-primitive-types">Python's primitive types</h2>
+<p>Here's the full list of the primitive types in Python.</p>
+<ul>
+<li><code>int</code>: Integers are whole numbers. You can do math stuff with them. We'll talk about more details later.
+  <pre class="highlight"><code>&gt;&gt;&gt; 1 + 2 * 3
+7</code></pre></li>
+<li><code>float</code>: Floats are just numbers that have decimal points. Notice in the example below that dividing two integers produces a float. We'll revisit this point later.
+  <pre class="highlight"><code>&gt;&gt;&gt; 8 / 2
+4.0
+&gt;&gt;&gt; 3.14
+3.14</code></pre></li>
+<li><code>str</code>: Strings represent words or sentences. They're called strings because they make up a sequence, or string, of characters. There is no difference between using single quotes or double quotes, as long as you're consistent. Looking at the last example below, note it's possible to include any character, even quote marks, within a string.
+  <pre class="highlight"><code>&gt;&gt;&gt; 'robots'
+'robots'
+&gt;&gt;&gt; &quot;tyrannosaurs&quot;
+'tyrannosaurs'
+&gt;&gt;&gt; &quot;problem'
+Error
+&gt;&gt;&gt; &quot;'quote'&quot;
+&quot;'quote'&quot;</code></pre></li>
+<li><code>bool</code>: Booleans represent whether something is <code>True</code> or <code>False</code>. Those are the only two booleans in Python. We'll talk about them in a separate chapter.
+  <pre class="highlight"><code>&gt;&gt;&gt; True
+True
+&gt;&gt;&gt; 1 &lt; 0
+False</code></pre></li>
+<li><code>None</code>: This is a special value in Python that literally represents nothing. Take a look at the first example below. Notice how when you evaluate <code>None</code>, the result doesn't get displayed on the screen. This is unlike all the examples above, where evaluating <code>8 / 2</code> displayed the result <code>4.0</code>, evaluating <code>1 &lt; 0</code> returned <code>False</code>, and so on. If you try to do things with <code>None</code>, you'll usually encounter an error.
+  <pre class="highlight"><code>&gt;&gt;&gt; None
+&gt;&gt;&gt; 0 &gt; None
+Error</code></pre></li>
+</ul>
+<p>Make sure you understand these primitives before moving on to the next section.</p>
+<h2 id="converting-between-types">Converting between types</h2>
+<p>You can also convert between primitive types. You probably won't do this very often, but sometimes it can be helpful. For example, you might have a float and want an integer, or have a string and want a boolean. Here's how to change between them.</p>
+<ul>
+<li><code>int</code>: You can convert to an integer using the function <code>int</code>. Note that converting a float to an integer always rounds down. Also, <code>int(True)</code> gives you 1 while <code>int(False)</code> gives you 0.
+  <pre class="highlight"><code>&gt;&gt;&gt; int(4.9)
+4
+&gt;&gt;&gt; int('1')
+1</code></pre></li>
+<li><code>float</code>: You can convert to a float using the function <code>float</code>. This works pretty much the same as <code>int</code>, except you get a decimal number.
+  <pre class="highlight"><code>&gt;&gt;&gt; float(4)
+4.0</code></pre></li>
+<li><code>str</code>: You can convert to a string using the function <code>str</code>.
+  <pre class="highlight"><code>&gt;&gt;&gt; str(10)
+'10'
+&gt;&gt;&gt; str(True)
+'True'
+&gt;&gt;&gt; str(None)
+'None'</code></pre></li>
+<li><code>bool</code>: You can convert to a boolean using the function <code>bool</code>. Everything in Python evaluates to <code>True</code>, except for <code>0</code>, <code>0.0</code>, <code>False</code>, <code>None</code>, and the empty string (<code>''</code> or <code>""</code>). Empty lists, tuples, dictionaries, and sets also evaluate to <code>False</code>, but we won't learn about those for a while.
+  <pre class="highlight"><code>&gt;&gt;&gt; bool(4)
+True
+&gt;&gt;&gt; bool(None)
+False</code></pre></li>
+</ul>
+<p>I've only gone over the not-too-obvious conversions above. The rest are pretty intuitive, but don't worry because I'll make sure to go over all the weird edge cases in the practice. For now, just check that the conversions above make sense to you. Also, in case you're wondering, there's no way to convert to <code>None</code> because that wouldn't be very useful. (If you ever wanted to get <code>None</code>, you could just write <code>None</code>.)</p>
+<h1 id="variable-assignment">Variable Assignment</h1>
+<p>Now that we have a handle on the different types available to us, let's talk about how we can use them.</p>
+<h2 id="fundamentals-of-variable-assignment">Fundamentals of variable assignment</h2>
+<p>Lots of the time there's a particular value we want to keep track of, by giving it a name. That's where variables come in. You've probably encountered variables in math class, named obscure things like <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>, <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>, or <span><span class="MathJax_Preview">z</span><script type="math/tex">z</script></span>. In computer science we prefer more meaningful names, like this:</p>
+<pre class="highlight"><code>&gt;&gt;&gt; magic_level = 10</code></pre>
+
+<p>Now, the variable <code>magic_level</code> is assigned to the value 10. I can ask Python to evaluate an expression involving <code>magic_level</code>, and it will use 10 where it should.</p>
+<pre class="highlight"><code>&gt;&gt;&gt; magic_level
+10
+&gt;&gt;&gt; 2 * magic_level + 7
+27</code></pre>
+
+<p>We could even assign another variable, using the one we just defined.</p>
+<pre class="highlight"><code>&gt;&gt;&gt; twice_magic_level = 2 * magic_level
+&gt;&gt;&gt; magic_level
+10
+&gt;&gt;&gt; twice_magic_level
+20</code></pre>
+
+<p>What happens if <code>magic_level</code> increases to 11? We might expect <code>twice_magic_level</code> to increase to 22, but that's not actually the case.</p>
+<pre class="highlight"><code>&gt;&gt;&gt; magic_level = 11
+&gt;&gt;&gt; twice_magic_level
+20</code></pre>
+
+<p>Why? <strong>This is very important.</strong> Once <code>twice_magic_level</code> has been assigned to 20, it stays that way until we explicitly change it by writing something like <code>twice_magic_level = 22</code>. We could also say <code>twice_magic_level = 2 * magic_level</code>, and this would have the same effect since we just reassigned <code>magic_level</code> to be 11.</p>
+<p>Variables are pretty useful, so make use of them. They can make your code more efficient, and easier to read. <strong>If you ever want Python to remember a value, you should make a variable for it.</strong></p>
+<h2 id="how-variable-assignment-works">How variable assignment works</h2>
+<p>In the examples we've seen so far, the thing on the left side of the equals sign has always been a variable name. This is for good reason.</p>
+<p>You actually can't write <code>11 = magic_level</code>. This is because <code>=</code> doesn't represent a statement about the relationship between two values, like it does in math. Instead, <code>=</code> is our way of telling Python to change the left side to be whatever's on the right side. So if <code>magic_level</code> was 10, then saying <code>11 = magic_level</code> is like telling Python to change 11 to be equal to 10. That doesn't make sense.</p>
+<p>You also couldn't write <code>twice_magic_level / 2 = magic_level</code>. That's because <code>twice_magic_level / 2</code> is a mathematical expression, not a variable. It involves a variable, but Python isn't smart enough to do the algebra and rearrange this into a legal expression like <code>twice_magic_level = 2 * magic_level</code>.</p>
+<p>To summarize, you need the left side of the equals sign to be a variable name. It can't be a value, like 11. It can't be an expression that involves a variable name, like <code>twice_magic_level / 2</code>. The left side of the equals sign has to be a variable name, and that's it.</p>
+<p>In order to avoid these mistakes, let's talk about how it works when Python assigns variables. Whenever you encounter an equals sign, this is what you have to do:</p>
+<ol>
+<li>Do <em>not</em> look at the left side of the equals sign. It doesn't matter yet.</li>
+<li>Evaluate the right side of the equals sign. Write the result somewhere with enough space.</li>
+<li>Now look at the left side of the equals sign, and assign that variable to the value you just wrote down.</li>
+</ol>
+<p>So for example, when you see <code>magic_level = 10</code>:</p>
+<ol>
+<li>Cover the left side. For now, we just care about the <code>= 10</code> part.</li>
+<li>Evaluate the right side. <code>10</code> evaluates to the integer 10.</li>
+<li>Now look at the left side. We see the name <code>magic_level</code>, so we assign <code>magic_level</code> to 10.</li>
+</ol>
+<p>Python always follows this 3-step procedure, whenever you want to give a new value to a variable. Don't forget it. We'll see some pretty complicated stuff in later chapters, so it will serve you well to remember this little procedure. Even when you're writing code, just keep in mind that the thing on the right gets evaluated before we bind it to the thing on the left.</p>
+<h2 id="updating-variables">Updating variables</h2>
+<p>In our earlier example we wanted to increase <code>magic_level</code> from 10 to 11. This was pretty straightforward, because we just had to write <code>magic_level = 11</code>. But what if we didn't know the current value of <code>magic_level</code>, and we wanted to increase it anyways? Referring back to the 3-step procedure we just covered, would need something like this to change <code>magic_level</code>:</p>
+<pre class="highlight"><code>magic_level = _______________</code></pre>
+
+<p>We just have to fill in the blank with an expression that evaluates to 1 more than the current value of <code>magic_level</code>. So, what evaluates to 1 more than the current value of <code>magic_level</code>? Let's try <code>magic_level + 1</code>.</p>
+<pre class="highlight"><code>magic_level = magic_level + 1</code></pre>
+
+<p>It looks a bit weird. In math class you would never see something like this. But in computer science, it's okay. Why? Recall from earlier, <code>=</code> is different in math than it is in computer science. The expression above is <em>not</em> a statement claiming that <code>magic_level</code> is the same as <code>magic_level + 1</code>. It's a command, telling Python to change <code>magic_level</code> so that it equals the current value of <code>magic_level + 1</code>. To see how it works, we'll apply the 3-step procedure that we just learned:</p>
+<ol>
+<li>Cover the left side. For now, we just care about the <code>= magic_level + 1</code> part.</li>
+<li>Evaluate the right side. <code>magic_level + 1</code> evaluates to 11, if the current value of <code>magic_level</code> is 10.</li>
+<li>Now we look at the left side. We see the name <code>magic_level</code>, so we assign <code>magic_level</code> to 11. We successfully increased it!</li>
+</ol>
+<p>Make sure you understand why this works, before you keep reading.</p>
+<h2 id="shorthand-for-updating-variables">Shorthand for updating variables</h2>
+<p>It's actually <em>really</em> common to do stuff like <code>magic_level = magic_level + 1</code>. In fact, it's so common that there's a special shorthand for it in Python: <code>magic_level += 1</code>. You can do this with any of the four arithmetic operators. Here are some examples:</p>
+<pre class="highlight"><code>&gt;&gt;&gt; x = 8
+&gt;&gt;&gt; x += 2
+&gt;&gt;&gt; x
+10</code></pre>
+
+<pre class="highlight"><code>&gt;&gt;&gt; x = 8
+&gt;&gt;&gt; x -= 2
+&gt;&gt;&gt; x
+6</code></pre>
+
+<pre class="highlight"><code>&gt;&gt;&gt; x = 8
+&gt;&gt;&gt; x *= 2
+&gt;&gt;&gt; x
+16</code></pre>
+
+<pre class="highlight"><code>&gt;&gt;&gt; x = 8
+&gt;&gt;&gt; x /= 2
+&gt;&gt;&gt; x
+4.0</code></pre>
+
+<h2 id="multiple-assignment">Multiple assignment</h2>
+<p>It's even possible to assign multiple variables on one line. These next two expressions are exactly the same:</p>
+<pre class="highlight"><code>&gt;&gt;&gt; x = 10
+&gt;&gt;&gt; y = 'dragon'
+&gt;&gt;&gt; z = True</code></pre>
+
+<pre class="highlight"><code>&gt;&gt;&gt; x, y, z = 10, 'dragon', True</code></pre>
+
+<p>But assigning multiple variables on one line is not always the same as assigning each variable on a separate line. For instance, consider this code:</p>
+<pre class="highlight"><code>&gt;&gt;&gt; x = 5
+&gt;&gt;&gt; x = x + 5
+&gt;&gt;&gt; y = x + 10</code></pre>
+
+<p>In the end, <code>x</code> is 10 and <code>y</code> is 20. It's different if we combine the second and third line:</p>
+<pre class="highlight"><code>&gt;&gt;&gt; x = 5
+&gt;&gt;&gt; x, y = x + 5, x + 10</code></pre>
+
+<p>Now <code>x</code> ends up 10 and <code>y</code> ends up 15. To understand why, we'll have to walk through it more carefully. The first line is pretty simple, we just bind <code>x</code> to 5. The next line is less simple, so let's use the 3-step procedure for variable assignment that we learned earlier.</p>
+<ol>
+<li>Cover the left side. For now, we just care about the <code>= x + 5, x + 10</code> part.</li>
+<li>Evaluate the right side. <code>x</code> is 5, so <code>x + 5</code> evaluates to 10 and <code>x + 10</code> evaluates to 15.</li>
+<li>Now we look at the left side. We see the names <code>x</code> and <code>y</code>, so we assign <code>x</code> to 10 and we assign <code>y</code> to 15.</li>
+</ol>
+<p>Pay close attention the second step. We use the old value of <code>x</code> to calculate both <code>x + 5</code> and <code>x + 10</code>. That's because everything on the right gets evaluated before we update <code>x</code> or <code>y</code>. Whenever you come across a complicated expression, you should refer back to the 3-step procedure for variable assignment.</p>
+<p>This syntax is also particularly convenient for swapping the values of two variables. Pretend we want to swap the values of the variables <code>width</code> and <code>height</code>. Here's how we might attempt it, without using multiple assignment:</p>
+<pre class="highlight"><code>&gt;&gt;&gt; height = width
+&gt;&gt;&gt; width = height</code></pre>
+
+<p>But this won't work, since both variables end up with the original value of <code>width</code>. Instead, we would need to bring in a third, temporary variable:</p>
+<pre class="highlight"><code>&gt;&gt;&gt; old_height = height
+&gt;&gt;&gt; height = width
+&gt;&gt;&gt; width = old_height</code></pre>
+
+<p>It's a lot simpler using multiple assignment, since both values on the right get evaluated before updating them on the left:</p>
+<pre class="highlight"><code>&gt;&gt;&gt; height, width = width, height</code></pre>
+
+<p>Review everything above, and check that it all makes sense up to this point, before you go to the next section.</p>
+<h1 id="tracking-state">Tracking state</h1>
+<p>Up until now, we've been keeping track of all our variables mentally. But as we write more and more complicated programs, it's going to get much harder to do that. Like, literally impossible. It's time to meet your most useful tool for learning computer science. (Yes, even more useful than computers. Actually.) A pyagram, short for "Python diagram", is a way of tracing how your code runs. You use pyagrams to work your way through confusing bugs, or edge cases you don't understand. How do they work? Basically, we pretend we're the computer, and we go through a piece of code one line at a time to see what it does.</p>
+<p>Here's an empty pyagram. The box is called a frame, which just means it's a place where code gets executed. The word "global" tells you this particular frame is the global frame. It's always the first thing you draw in a pyagram, and for this chapter we'll constrain ourselves to the global frame only.</p>
+<p><div class="svg-wrapper" style="width:251px;height:101px;"><svg viewbox="0 0 251 101" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" version="1.1" content="&lt;mxfile userAgent=&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/8.8.0 Chrome/61.0.3163.100 Electron/2.0.2 Safari/537.36&quot; version=&quot;8.9.5&quot; editor=&quot;www.draw.io&quot; type=&quot;device&quot;&gt;&lt;diagram id=&quot;3bce2233-656f-9f72-eaa7-8c38449dd40d&quot; name=&quot;Page-1&quot;&gt;rVTBctsgEP0aHTMjidRxjrHjtJeefPCZiDVijFgV4cjO12dBYEuJ0jQz1cGGt7vs8t6TMrZuTj8tb+vfKEBnZS5OGXvMyvL+R06/HjgPwOKeDYC0SgxQcQW26hUiGOvkUQnoJokOUTvVTsEKjYHKTTBuLfbTtD3qadeWS/gAbCuuP6I7JVw9oMt0LY//AiXr1LnIY+SZVwdp8Whiv6xk+/AM4Yans2J+V3OB/Qhim4ytLaIbVs1pDdpTm2gb6p4+iV7mtmDcvxQsh4IXro+QJg5zuXPiItwGfH6esVVfKwfbllc+2pP4hNWu0bQraNk5iwdYo0YbqlkeHors0bgodHFLe66VNLTRsKdJV3EOsA5On96luDBExgNswNkzpcSCu8hp9FyiuL8KWCaZ6rF4CeTRNPJy8pU4WkTu5nlkMzwutL+YUC8TPhd/jl7cFd3T3UQSHijDhokuYVrJ+B+O6VpuEiY1PnOdIjTaODiCQ+uEvlPVt/+bdAYNeNWU1u+gJFxFsgDhKy+aonfnIQYaJYRvM+uVqZu8KZ54o7TXbIf2QENuuelm/PIfDFJ+aZDbGX+U37cHba+vcIiNPpNs8wY=&lt;/diagram&gt;&lt;/mxfile&gt;"><defs/><g transform="translate(0.5,0.5)"><rect x="50" y="0" width="200" height="100" fill="#ffffff" stroke="#000000" pointer-events="none"/><g transform="translate(-0.5,2.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="41" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 43px; white-space: nowrap; word-wrap: normal; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>global</span></div></div></div></foreignObject><text x="21" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g></g></svg></div></p>
+<p>Whenever you make a pyagram, you'll have a piece of code that you're analyzing. Let's use this code as an example:</p>
+<pre class="highlight"><code>&gt;&gt;&gt; whale = 50 + 50
+&gt;&gt;&gt; dolphin = 50
+&gt;&gt;&gt; whale * dolphin
+5000
+&gt;&gt;&gt; fish = int(whale / dolphin)
+&gt;&gt;&gt; fish *= 'splash '</code></pre>
+
+<p>Here's how that get's expressed in our pyagram:</p>
+<p>
+  <div id="slider-box-ocean" class="slider-box">
+    
+      <div class="slide slide-toggle slide-ocean">
+        <div class="svg-wrapper" style="width:251px;height:101px;"><svg viewbox="0 0 251 101" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" version="1.1" content="&lt;mxfile userAgent=&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/8.8.0 Chrome/61.0.3163.100 Electron/2.0.2 Safari/537.36&quot; version=&quot;8.9.5&quot; editor=&quot;www.draw.io&quot; type=&quot;device&quot;&gt;&lt;diagram id=&quot;3bce2233-656f-9f72-eaa7-8c38449dd40d&quot; name=&quot;Page-1&quot;&gt;rVTBctsgEP0aHTMjidRxjrHjtJeefPCZiDVijFgV4cjO12dBYEuJ0jQz1cGGt7vs8t6TMrZuTj8tb+vfKEBnZS5OGXvMyvL+R06/HjgPwOKeDYC0SgxQcQW26hUiGOvkUQnoJokOUTvVTsEKjYHKTTBuLfbTtD3qadeWS/gAbCuuP6I7JVw9oMt0LY//AiXr1LnIY+SZVwdp8Whiv6xk+/AM4Yans2J+V3OB/Qhim4ytLaIbVs1pDdpTm2gb6p4+iV7mtmDcvxQsh4IXro+QJg5zuXPiItwGfH6esVVfKwfbllc+2pP4hNWu0bQraNk5iwdYo0YbqlkeHors0bgodHFLe66VNLTRsKdJV3EOsA5On96luDBExgNswNkzpcSCu8hp9FyiuL8KWCaZ6rF4CeTRNPJy8pU4WkTu5nlkMzwutL+YUC8TPhd/jl7cFd3T3UQSHijDhokuYVrJ+B+O6VpuEiY1PnOdIjTaODiCQ+uEvlPVt/+bdAYNeNWU1u+gJFxFsgDhKy+aonfnIQYaJYRvM+uVqZu8KZ54o7TXbIf2QENuuelm/PIfDFJ+aZDbGX+U37cHba+vcIiNPpNs8wY=&lt;/diagram&gt;&lt;/mxfile&gt;"><defs/><g transform="translate(0.5,0.5)"><rect x="50" y="0" width="200" height="100" fill="#ffffff" stroke="#000000" pointer-events="none"/><g transform="translate(-0.5,2.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="41" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 43px; white-space: nowrap; word-wrap: normal; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>global</span></div></div></div></foreignObject><text x="21" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g></g></svg></div>
+      </div>
+    
+      <div class="slide slide-toggle slide-ocean">
+        <div class="svg-wrapper" style="width:251px;height:101px;"><svg viewbox="0 0 251 101" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" version="1.1" content="&lt;mxfile userAgent=&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/8.8.0 Chrome/61.0.3163.100 Electron/2.0.2 Safari/537.36&quot; version=&quot;8.9.5&quot; editor=&quot;www.draw.io&quot; type=&quot;device&quot;&gt;&lt;diagram id=&quot;3bce2233-656f-9f72-eaa7-8c38449dd40d&quot; name=&quot;Page-1&quot;&gt;1VbJcqMwEP0ajlMFyPYkx9hZ5jInH3JWoC1UFhIRcrDz9WltGBKc5ODxVDjY0utu9fIeKhKyqvcPmjbVX1WCSPK03CfkNsnz63mKvxY4eGBxTTzANC89lB2BNX+FAIY4tuMltCNHo5QwvBmDhZISCjPCqNaqG7ttlBhnbSiDD8C6oOIj+shLU3n0KrZl8T/AWRUzZ2mwPNFiy7TayZAvycnGPd5c03hW8G8rWqpuAJG7hKy0Usav6v0KhB1tHJuPuz9h7evWIM13Aq58wAsVO4gVu7rMIc7CdQPWP03Isqu4gXVDC2vtkHzEKlML3GW4bI1WW1gpobSLJql70LJR0gSisxnuqeBM4kbABitdhjpAG9if7CXrJ4TCA1WD0Qd0CQG/w0yD5uKIuyOBeaSpGpIXQRpEw/qTj4PDRZjd9BzJxBwXwjZW8pfRPBfPO0vuEvs0v8IQbtBDu4p6M65Y+HfHtA2VEWNCPVERLVja0DiAXeqIvmPVpv+MOqkkWNa4EO+gSFyBtADiS0sax3fnJhhqXpY2zaRWxmqyorinNReWs0elt1jkmsp2Qi9nEEj+pUBmE/rIzyCP2SXl0VX2HvvP6vD1/iBx9NdAUAe5nDrml1SH6/NfamN06Z8WSLj3f44+5l/qI8vOIxDcHr8AnG3wlUXu3gA=&lt;/diagram&gt;&lt;/mxfile&gt;"><defs/><g transform="translate(0.5,0.5)"><rect x="50" y="0" width="200" height="100" fill="#ffffff" stroke="#000000" pointer-events="none"/><g transform="translate(-0.5,2.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="41" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 43px; white-space: nowrap; word-wrap: normal; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>global</span></div></div></div></foreignObject><text x="21" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><g transform="translate(76.5,12.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="41" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 42px; white-space: nowrap; word-wrap: normal; text-align: right;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>whale</span></div></div></div></foreignObject><text x="21" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><rect x="130" y="10" width="110" height="20" fill="none" stroke="#000000" pointer-events="none"/><g transform="translate(132.5,12.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="23" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 24px; white-space: nowrap; word-wrap: normal;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>100</span></div></div></div></foreignObject><text x="12" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g></g></svg></div>
+      </div>
+    
+      <div class="slide slide-toggle slide-ocean">
+        <div class="svg-wrapper" style="width:251px;height:101px;"><svg viewbox="0 0 251 101" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" version="1.1" content="&lt;mxfile userAgent=&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/8.8.0 Chrome/61.0.3163.100 Electron/2.0.2 Safari/537.36&quot; version=&quot;8.9.5&quot; editor=&quot;www.draw.io&quot; type=&quot;device&quot;&gt;&lt;diagram id=&quot;3bce2233-656f-9f72-eaa7-8c38449dd40d&quot; name=&quot;Page-1&quot;&gt;7ZfBbuMgEIafxseVjEmy7bHJtt3LnnLomZqJjYLBxaRO9ul3wJDYrdOutKlXlZpDAv+AGeb/MpITuqr294bV5S/NQSZZyvcJ/ZFk2fU8xW8nHDphcU07oTCCdxI5CWvxG4IY9hU7waEZLLRaSyvqoZhrpSC3A40Zo9vhso2Ww1NrVsArYZ0z+Vp9ENyWnXoVr+X0nyCKMp5M0hB5ZPm2MHqnwnlJRjf+04UrFp8V1jcl47rtSfQ2oSujte1G1X4F0pU2lq3bd3cmeszbgLJ/s+Gq2/DM5A5ixj4ve4i18LcBtz5N6LIthYV1zXIXbdF81EpbSZwRHDbW6C2stNTG76ap/2Bko5UNRpMZzpkUhcKJhA1mugx5gLGwP3sXcqwQgge6AmsOuCRs+B5qGpiLJW5PBmbRprJvXhRZgKY4PvlUOByE2o3XkY7UcSHdxbh4HtRz8bRz5i7xnvZbKMINrjA+o2MYR0X49Y9paqaiVkj9yGSMYGr9YE/2R0f1havu+LesU1qBc01I+UKKxuVoC6C+dKYJ/O/chEAlOHfHjLIypMlBcccqIZ1nD9psMck1U80ILxcAJHsXkNkIH9kF8JhNiUdbuj72n+no8v1EcBzbQKCDTkfHfEo6/D0/ko1B0z8PSOj7n4eP+bt8EPJBgBAyJSFcy7oU6quD/GMHWUzXQUg2JSDzrw5yiQ4ywselOghOT+8QPtZ7T6O3fwA=&lt;/diagram&gt;&lt;/mxfile&gt;"><defs/><g transform="translate(0.5,0.5)"><rect x="50" y="0" width="200" height="100" fill="#ffffff" stroke="#000000" pointer-events="none"/><g transform="translate(-0.5,2.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="41" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 43px; white-space: nowrap; word-wrap: normal; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>global</span></div></div></div></foreignObject><text x="21" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><g transform="translate(76.5,12.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="41" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 42px; white-space: nowrap; word-wrap: normal; text-align: right;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>whale</span></div></div></div></foreignObject><text x="21" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><rect x="130" y="10" width="110" height="20" fill="none" stroke="#000000" pointer-events="none"/><g transform="translate(132.5,12.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="23" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 24px; white-space: nowrap; word-wrap: normal;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>100</span></div></div></div></foreignObject><text x="12" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><g transform="translate(66.5,42.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="51" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 53px; white-space: nowrap; word-wrap: normal; text-align: right;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>dolphin</span></div></div></div></foreignObject><text x="26" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><rect x="130" y="40" width="110" height="20" fill="none" stroke="#000000" pointer-events="none"/><g transform="translate(132.5,42.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="17" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 18px; white-space: nowrap; word-wrap: normal;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>50</span></div></div></div></foreignObject><text x="9" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g></g></svg></div>
+      </div>
+    
+      <div class="slide slide-toggle slide-ocean">
+        <div class="svg-wrapper" style="width:251px;height:101px;"><svg viewbox="0 0 251 101" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" version="1.1" content="&lt;mxfile userAgent=&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/8.8.0 Chrome/61.0.3163.100 Electron/2.0.2 Safari/537.36&quot; version=&quot;8.9.5&quot; editor=&quot;www.draw.io&quot; type=&quot;device&quot;&gt;&lt;diagram id=&quot;3bce2233-656f-9f72-eaa7-8c38449dd40d&quot; name=&quot;Page-1&quot;&gt;7ZfBbuMgEIafxseVjEmy7bHJtt3LnnLomZqJjYLBxaRO9ul3wJDYrdOutKlXlZpDAv+AGeb/MpITuqr294bV5S/NQSZZyvcJ/ZFk2fU8xW8nHDphcU07oTCCdxI5CWvxG4IY9hU7waEZLLRaSyvqoZhrpSC3A40Zo9vhso2Ww1NrVsArYZ0z+Vp9ENyWnXoVr+X0nyCKMp5M0hB5ZPm2MHqnwnlJRjf+04UrFp8V1jcl47rtSfQ2oSujte1G1X4F0pU2lq3bd3cmeszbgLJ/s+Gq2/DM5A5ixj4ve4i18LcBtz5N6LIthYV1zXIXbdF81EpbSZwRHDbW6C2stNTG76ap/2Bko5UNRpMZzpkUhcKJhA1mugx5gLGwP3sXcqwQgge6AmsOuCRs+B5qGpiLJW5PBmbRprJvXhRZgKY4PvlUOByE2o3XkY7UcSHdxbh4HtRz8bRz5i7xnvZbKMINrjA+o2MYR0X49Y9paqaiVkj9yGSMYGr9YE/2R0f1havu+LesU1qBc01I+UKKxuVoC6C+dKYJ/O/chEAlOHfHjLIypMlBcccqIZ1nD9psMck1U80ILxcAJHsXkNkIH9kF8JhNiUdbuj72n+no8v1EcBzbQKCDTkfHfEo6/D0/ko1B0z8PSOj7n4eP+bt8EPJBgBAyJSFcy7oU6quD/GMHWUzXQUg2JSDzrw5yiQ4ywselOghOT+8QPtZ7T6O3fwA=&lt;/diagram&gt;&lt;/mxfile&gt;"><defs/><g transform="translate(0.5,0.5)"><rect x="50" y="0" width="200" height="100" fill="#ffffff" stroke="#000000" pointer-events="none"/><g transform="translate(-0.5,2.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="41" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 43px; white-space: nowrap; word-wrap: normal; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>global</span></div></div></div></foreignObject><text x="21" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><g transform="translate(76.5,12.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="41" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 42px; white-space: nowrap; word-wrap: normal; text-align: right;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>whale</span></div></div></div></foreignObject><text x="21" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><rect x="130" y="10" width="110" height="20" fill="none" stroke="#000000" pointer-events="none"/><g transform="translate(132.5,12.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="23" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 24px; white-space: nowrap; word-wrap: normal;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>100</span></div></div></div></foreignObject><text x="12" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><g transform="translate(66.5,42.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="51" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 53px; white-space: nowrap; word-wrap: normal; text-align: right;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>dolphin</span></div></div></div></foreignObject><text x="26" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><rect x="130" y="40" width="110" height="20" fill="none" stroke="#000000" pointer-events="none"/><g transform="translate(132.5,42.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="17" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 18px; white-space: nowrap; word-wrap: normal;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>50</span></div></div></div></foreignObject><text x="9" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g></g></svg></div>
+      </div>
+    
+      <div class="slide slide-toggle slide-ocean">
+        <div class="svg-wrapper" style="width:251px;height:101px;"><svg viewbox="0 0 251 101" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" version="1.1" content="&lt;mxfile userAgent=&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/8.8.0 Chrome/61.0.3163.100 Electron/2.0.2 Safari/537.36&quot; version=&quot;8.9.5&quot; editor=&quot;www.draw.io&quot; type=&quot;device&quot;&gt;&lt;diagram id=&quot;3bce2233-656f-9f72-eaa7-8c38449dd40d&quot; name=&quot;Page-1&quot;&gt;7ZhBc6MgFMc/jcedUUlsc2yy7e5lTzn0TBWFCYJFUpP99PtAMNqadmdq7HQmOSTwfyCP9375HwzQpjz8Uriif2RGeBCH2SFAP4M4Xi1D+DbCsRWSFWqFQrGslaKTsGV/iRPdvmLPMlIPFmopuWbVUEylECTVAw0rJZvhslzy4akVLsgbYZti/lZ9ZJmmrXrrr2X034QV1J8chS7yhNNdoeReuPOCGOX204ZL7J/l1tcUZ7LpSeg+QBslpW5H5WFDuCmtL1u77+FMtMtbEaH/Z8Ntu+EF8z3xGdu89NHXwt6GmPVhgNYNZZpsK5yaaAPNB43qksMsgmGtldyRjeRS2d0otB+I5FJo1+hoAXPMWSFgwkkOma5dHkRpcjh7l6irEIBHZEm0OsISt+HG1dQx50vcnBoY+zbRfvO8iB00RffkU+Fg4Go3Xkc0UseEm4tl7GVQz+R5b5q7hnvqH64Id7BC2Yy6MIwK92sfU1dYeK3g8glzH4HU+sGebI/26quumuPfa52QgpiuMc5fSb5xKbSFgL42TWPw37lzgZJlmTlmlJUhTQaKB1wybnr2KNUOktxiUY/wMgEg8YeALEb4iCfAYzEnHg01PvbFdLT5fiM4OhtwdKD56FjOSYe95yXZGJj+eUCc738fPpYf8hFFFwIkiuYkJJO8okxcHeSTDpLM5yBRPCcgy6uDTOEgI3xczkGSOQHJWU2v9vFJ+1jNaB83c9IRX91jAvcYwWMq94Dp6Q2EjfXe8qD7fw==&lt;/diagram&gt;&lt;/mxfile&gt;"><defs/><g transform="translate(0.5,0.5)"><rect x="50" y="0" width="200" height="100" fill="#ffffff" stroke="#000000" pointer-events="none"/><g transform="translate(-0.5,2.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="41" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 43px; white-space: nowrap; word-wrap: normal; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>global</span></div></div></div></foreignObject><text x="21" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><g transform="translate(76.5,12.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="41" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 42px; white-space: nowrap; word-wrap: normal; text-align: right;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>whale</span></div></div></div></foreignObject><text x="21" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><rect x="130" y="10" width="110" height="20" fill="none" stroke="#000000" pointer-events="none"/><g transform="translate(132.5,12.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="23" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 24px; white-space: nowrap; word-wrap: normal;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>100</span></div></div></div></foreignObject><text x="12" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><g transform="translate(66.5,42.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="51" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 53px; white-space: nowrap; word-wrap: normal; text-align: right;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>dolphin</span></div></div></div></foreignObject><text x="26" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><rect x="130" y="40" width="110" height="20" fill="none" stroke="#000000" pointer-events="none"/><g transform="translate(132.5,42.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="17" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 18px; white-space: nowrap; word-wrap: normal;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>50</span></div></div></div></foreignObject><text x="9" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><g transform="translate(92.5,72.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="25" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 26px; white-space: nowrap; word-wrap: normal; text-align: right;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>fish</span></div></div></div></foreignObject><text x="13" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><rect x="130" y="70" width="110" height="20" fill="none" stroke="#000000" pointer-events="none"/><g transform="translate(132.5,72.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="8" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 9px; white-space: nowrap; word-wrap: normal;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>2</span></div></div></div></foreignObject><text x="4" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g></g></svg></div>
+      </div>
+    
+      <div class="slide slide-toggle slide-ocean">
+        <div class="svg-wrapper" style="width:251px;height:101px;"><svg viewbox="0 0 251 101" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" version="1.1" content="&lt;mxfile userAgent=&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/8.8.0 Chrome/61.0.3163.100 Electron/2.0.2 Safari/537.36&quot; version=&quot;8.9.5&quot; editor=&quot;www.draw.io&quot; type=&quot;device&quot;&gt;&lt;diagram id=&quot;3bce2233-656f-9f72-eaa7-8c38449dd40d&quot; name=&quot;Page-1&quot;&gt;7ZjBcpswEIafhsmpM4BsEh9jN2kvPfmQswICaSwkKuRg9+m7EhKGBCedCaaTGftgS/9KaLX7+T8QoE15+KFwRX/JjPAgDrNDgL4HcbxahvBthGMrJCvUCoViWStFJ2HL/hAnun3FnmWkHizUUnLNqqGYSiFIqgcaVko2w2W55MNTK1yQN8I2xfyt+sQyTVv1zl/L6D8JK6g/OQpd5Bmnu0LJvXDnBTHK7acNl9g/y62vKc5k05PQQ4A2SkrdjsrDhnBTWl+2dt/jmWiXtyJC/8uGu3bDC+Z74jO2eemjr4W9DTHrwwCtG8o02VY4NdEGmg8a1SWHWQTDWiu5IxvJpbK7UWg/EMml0K7R0QLmmLNCwISTHDJduzyI0uRw9i5RVyEAj8iSaHWEJW7DraupY86XuDk1MPZtov3meRE7aIruyafCwcDVbryOaKSOCTcXy9jLoJ7J771p7hruqb+5ItzDCmUz6sIwKtyvfUxdYeG1gstnzH0EUusHe7I92quvumqOf691QgpiusY4fyX5xqXQFgL62jSNwX/n3gVKlmXmmFFWhjQZKB5xybjp2ZNUO0hyi0U9wssEgMQfArIY4SOeAI/FnHg01PjYf6ajzfcLwdHZgKMDzUfHck467D0vycbA9M8D4nz/6/Cx/JCPKLoQIFE0JyGZ5BVl4uogn3SQZD4HieI5AVleHWQKBxnh43IOkswJSM5qerWPT9rHakb7uJ2Tjpu64tgAEnaDm6uhTGAoI8RMZSgwPb2UsLHeix/08Bc=&lt;/diagram&gt;&lt;/mxfile&gt;"><defs/><g transform="translate(0.5,0.5)"><rect x="50" y="0" width="200" height="100" fill="#ffffff" stroke="#000000" pointer-events="none"/><g transform="translate(-0.5,2.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="41" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 43px; white-space: nowrap; word-wrap: normal; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>global</span></div></div></div></foreignObject><text x="21" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><g transform="translate(76.5,12.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="41" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 42px; white-space: nowrap; word-wrap: normal; text-align: right;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>whale</span></div></div></div></foreignObject><text x="21" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><rect x="130" y="10" width="110" height="20" fill="none" stroke="#000000" pointer-events="none"/><g transform="translate(132.5,12.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="23" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 24px; white-space: nowrap; word-wrap: normal;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>100</span></div></div></div></foreignObject><text x="12" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><g transform="translate(66.5,42.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="51" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 53px; white-space: nowrap; word-wrap: normal; text-align: right;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>dolphin</span></div></div></div></foreignObject><text x="26" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><rect x="130" y="40" width="110" height="20" fill="none" stroke="#000000" pointer-events="none"/><g transform="translate(132.5,42.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="17" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 18px; white-space: nowrap; word-wrap: normal;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>50</span></div></div></div></foreignObject><text x="9" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><g transform="translate(92.5,72.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="25" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 26px; white-space: nowrap; word-wrap: normal; text-align: right;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>fish</span></div></div></div></foreignObject><text x="13" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><rect x="130" y="70" width="110" height="20" fill="none" stroke="#000000" pointer-events="none"/><g transform="translate(132.5,72.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="105" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 106px; white-space: nowrap; word-wrap: normal;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>'splash splash '</span></div></div></div></foreignObject><text x="53" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g></g></svg></div>
+      </div>
+    
+    <div class="center">
+      <div class="slider-bar">
+        <input id="slider-ocean" class="slider" type="range" min="0"
+               max="5" value="0">
+      </div>
+      <button class="button" style="padding: 0.5rem; margin: 0;"
+              onclick="incrementSlider('ocean', -1)">
+        &#10094;
+      </button>
+      <button class="button" style="padding: 0.5rem; margin: 0;"
+              onclick="incrementSlider('ocean', 1)">
+        &#10095;
+      </button>
+    </div>
+    
+      <div class="caption caption-toggle caption-ocean">
+        <p>As always, we start out with the global frame. It is empty.</p>
+      </div>
+    
+      <div class="caption caption-toggle caption-ocean">
+        <p>In the first line we assign the variable <code>whale</code> to the integer 100.</p>
+      </div>
+    
+      <div class="caption caption-toggle caption-ocean">
+        <p>Then we assign <code>dolphin</code> to 50.</p>
+      </div>
+    
+      <div class="caption caption-toggle caption-ocean">
+        <p>The next line is <code>whale * dolphin</code>, which equals 5000. You might notice this value doesn't get assigned to a variable. Python still calculates the number 5000 and displays it on the screen, but since we don't tell it to keep track of 5000 with a variable, Python will forget about it immediately. Our pyagram looks the same as before.</p>
+      </div>
+    
+      <div class="caption caption-toggle caption-ocean">
+        <p>Now let's move on to the fourth line. It's a bit too complicated to do mentally, so let's use the 3-step procedure for variable assignment that we learned earlier.</p>
+<ol>
+<li>Cover the left side. For now, we just care about the <code>= int(whale / dolphin)</code> part.</li>
+<li>Evaluate the right side. <code>int(whale / dolphin)</code> evaluates to the integer 2, since <code>whale / dolphin</code> evaluates to the float 2.0.</li>
+<li>Now we look at the left side. We see the name <code>fish</code>, so we assign <code>fish</code> to 2.</li>
+</ol>
+      </div>
+    
+      <div class="caption caption-toggle caption-ocean">
+        <p>We just have one more line to go: <code>fish *= 'splash '</code>. It's shorthand for saying <code>fish = fish * 'splash '</code>. Since <code>fish</code> is currently 2, it should get reassigned to the string <code>'splash splash '</code>. If that's confusing, we could also try applying the 3-step procedure from before.</p>
+<ol>
+<li>Cover the left side. For now, we just care about the <code>= fish * 'splash '</code> part.</li>
+<li>Evaluate the right side. <code>fish * 'splash '</code> evaluates to <code>'splash splash '</code>, since <code>fish</code> is 2.</li>
+<li>Now we look at the left side. We see the name <code>fish</code>, so we assign <code>fish</code> to <code>'splash splash '</code>.</li>
+</ol>
+<p>Now we have finished the pyagram.</p>
+      </div>
+    
+  </div>
+</p>
+<p>We'll be using pyagrams a lot in this class, especially as we get into more complicated material, so make sure you're comfortable with them now.</p>
+<h1 id="more-about-operators">More about operators</h1>
+<p>Now we have a good understanding of variable assignment, and how to keep track of our variables using pyagrams. Let's talk about some of the operators available to us, in more detail. Before we get started, though, here are 2 rules about the math operators in Python:</p>
+<ul>
+<li>If you're doing math and any of the numbers is a float, then your output will also be a float. This is because we never want to lose accuracy by getting rid of the decimal place.</li>
+<li>If you're doing math and you see <code>True</code> or <code>False</code>, pretend <code>True</code> is 1 and <code>False</code> is 0. This is because computers work using binary, a language of all ones and zeros. The boolean values <code>True</code> and <code>False</code> are encoded with these numbers.</li>
+</ul>
+<p>Now let's talk about Python's math operators.</p>
+<ol>
+<li>Add: <code>+</code>
+    We've already seen that addition works with numbers. Guess what? You can also add strings. This works like you would expect. It doesn't matter whether you use single quotes or double quotes.
+    <pre class="highlight"><code>&gt;&gt;&gt; 1 + 2.0
+3.0
+&gt;&gt;&gt; &quot;taco&quot; + 'cat'
+'tacocat'</code></pre></li>
+<li>Times: <code>*</code>
+    Multiplication also works between an integer and a string, like so:
+    <pre class="highlight"><code>&gt;&gt;&gt; 3 * 'vroom!'
+'vroom!vroom!vroom!'
+&gt;&gt;&gt; 3.0 * 'vroom!'
+Error</code></pre></li>
+<li>
+<p>Divide: <code>/</code>
+    Division always gives you a float, even if both the numbers you're dividing are integers. If you ever try to divide by 0, you will get an error.</p>
+</li>
+<li>
+<p>Exponent: <code>**</code>
+    You may occasionally want a number to the power of another number. Here are some interchangeable expressions:</p>
+<ul>
+<li>English: 2 to the power of 5.</li>
+<li>Python (the hard way): <code>2 * 2 * 2 * 2 * 2</code></li>
+<li>Python (the easy way): <code>2 ** 5</code></li>
+</ul>
+</li>
+<li>
+<p>Mod or remainder: <code>%</code>
+    Mod is just another word for remainder. For example, 9 mod 4 is 1, since 9 divided by 4 is 2, with the remainder 1. Mod doesn't care about the 2, the remainder of 1.
+    <pre class="highlight"><code>&gt;&gt;&gt; 9 % 4
+1</code></pre></p>
+</li>
+<li>Floor divide: <code>//</code>
+    Floor divide is kind of like the opposite of mod. Instead of giving you the remainder, it gives you everything except the remainder. You can also think of it like normal division, but rounded down.
+    <pre class="highlight"><code>&gt;&gt;&gt; 9 // 4
+2
+&gt;&gt;&gt; 9 / 4
+2.25</code></pre></li>
+</ol>
+<h1 id="practice-the-fibonacci-sequence">Practice: the Fibonacci sequence</h1>
+<p>Using what we've learned today, we can already do snazzy calculations. The Fibonacci sequence is a good example. It starts with the numbers 0 and 1, and every subsequent number is defined by the following recurrence relation, where <span><span class="MathJax_Preview">F_n</span><script type="math/tex">F_n</script></span> denotes the <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>th number in the sequence:</p>
+<div>
+<div class="MathJax_Preview">F_n = F_{n-1} + F_{n-2}</div>
+<script type="math/tex; mode=display">F_n = F_{n-1} + F_{n-2}</script>
+</div>
+<p>That means every Fibonacci number is the sum of the previous two. The Fibonacci sequence also grows pretty quickly. Just the 15th number in the sequence is already in the hundreds, so it's not the kind of thing you want to calculate by hand. Let's see if we can use our cool new programming skills to find it.</p>
+<p>We'll start by defining <code>fib_0</code> and <code>fib_1</code> properly. Then we'll be able to build up from there.</p>
+<pre class="highlight"><code>&gt;&gt;&gt; fib_0 = 0
+&gt;&gt;&gt; fib_1 = 1</code></pre>
+
+<p>Now we can proceed to calculate the remaining Fibonacci numbers, according to the formula above. We'll stop at <code>fib_14</code>, since we started counting at <code>fib_0</code>.</p>
+<pre class="highlight"><code>&gt;&gt;&gt; fib_2 = fib_1 + fib_0
+&gt;&gt;&gt; fib_3 = fib_2 + fib_1
+&gt;&gt;&gt; fib_4 = fib_3 + fib_2
+&gt;&gt;&gt; fib_5 = fib_4 + fib_3
+&gt;&gt;&gt; fib_6 = fib_5 + fib_4
+&gt;&gt;&gt; fib_7 = fib_6 + fib_5
+&gt;&gt;&gt; fib_8 = fib_7 + fib_6
+&gt;&gt;&gt; fib_9 = fib_8 + fib_7
+&gt;&gt;&gt; fib_10 = fib_9 + fib_8
+&gt;&gt;&gt; fib_11 = fib_10 + fib_9
+&gt;&gt;&gt; fib_12 = fib_11 + fib_10
+&gt;&gt;&gt; fib_13 = fib_12 + fib_11
+&gt;&gt;&gt; fib_14 = fib_13 + fib_13
+&gt;&gt;&gt; fib_14
+377</code></pre>
+
+<p>For extra practice, think about how we might make a pyagram for the code above.</p>
+<p>We'll see very soon how to make this calculation easier and more efficient.</p>
+
+
+
+
+      <br><br>
+    </div>
+    
+
+
+  
+
+  <script src="/static/js/slider.js"></script>
+
+
+
+
+
+    
+
+  
+
+  <script src="/static/js/collapsible.js"></script>
+
+
+
+
+  </body>
+
+</html>

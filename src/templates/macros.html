@@ -1,0 +1,62 @@
+{% macro button(text, action, center=True) %}
+  {% if center %}
+    <div class="center">
+  {% endif %}
+  <form method="get" action="{{ action }}">
+    <button class="button">{{ text }}</button>
+  </form>
+  {% if center %}
+    </div>
+  {% endif %}
+{% endmacro %}
+
+{% macro start_collapsible(text) %}
+  <button class="collapsible">{{ text }}</button>
+  <div class="collapsible-content">
+{% endmacro %}
+
+{% macro end_collapsible() %}
+  <br/>
+  </div>
+{% endmacro %}
+
+{% macro collapsible(content, text='Solution') %}
+  {{ start_collapsible(text) }}
+    <br/>
+    {{ content }}
+    <br/>
+  {{ end_collapsible() }}
+{% endmacro %}
+
+{% macro image(name, extension) %}
+  <img src="{{ url_for('static', filename='img/{}.{}'.format(name, extension)) }}">
+{% endmacro %}
+
+{% macro slider(id, data) %}
+  <div id="slider-box-{{ id }}" class="slider-box">
+    {% for pair in data %}
+      <div class="slide slide-toggle slide-{{ id }}">
+        {{ pair[0] }}
+      </div>
+    {% endfor %}
+    <div class="center">
+      <div class="slider-bar">
+        <input id="slider-{{ id }}" class="slider" type="range" min="0"
+               max="{{ data|length - 1 }}" value="0">
+      </div>
+      <button class="button" style="padding: 0.5rem; margin: 0;"
+              onclick="incrementSlider('{{ id }}', -1)">
+        &#10094;
+      </button>
+      <button class="button" style="padding: 0.5rem; margin: 0;"
+              onclick="incrementSlider('{{ id }}', 1)">
+        &#10095;
+      </button>
+    </div>
+    {% for pair in data %}
+      <div class="caption caption-toggle caption-{{ id }}">
+        {{ pair[1] }}
+      </div>
+    {% endfor %}
+  </div>
+{% endmacro %}
