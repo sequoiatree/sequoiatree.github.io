@@ -1,0 +1,237 @@
+\documentclass[letterpaper, 11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[pdftex]{hyperref}
+\usepackage{fancyhdr}
+
+% FORMAT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.375in}
+\addtolength{\evensidemargin}{-0.375in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\titleformat{\section}{
+\vspace{-10pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule\vspace{-5pt}]
+
+\newcommand{\cvItem}[4]{
+\vspace{-1pt}
+\item
+\begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & #2\\
+    \textit{\small#3} & \textit{\small #4}\\
+\end{tabular*}
+\vspace{-5pt}
+}
+
+\newcommand{\cvSmallItem}[2]{
+\item
+\small{\textbf{#1:} #2\vspace{-2pt}}
+\vspace{-4pt}
+}
+
+\newcommand{\cvSubitem}[1]{
+\item\small{#1 \vspace{-2pt}}
+}
+
+\renewcommand{\labelitemii}{$\circ$}
+\newcommand{\cvItemStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\cvItemEnd}{\end{itemize}}
+\newcommand{\cvSubitemStart}{\begin{itemize}}
+\newcommand{\cvSubitemEnd}{\end{itemize}\vspace{-5pt}}
+
+% CV %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% TITLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+\textbf{\LARGE Sequoia Eyzaguirre}\\
+sequoia@berkeley.edu $\vert$ sequoia-tree.github.io
+\end{center}
+
+% EDUCATION %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Education}
+
+\cvItemStart
+\cvItem
+{University of California, Berkeley}
+{Berkeley, CA}
+{B.A. of Computer Science, Regents' \& Chancellor's Scholar}
+{August 2016 -- May 2019}
+\cvItemEnd
+
+% RESEARCH %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Research}
+
+\cvItemStart
+\cvItem
+{CITRIS \& the Banatao Institute}
+{Berkeley, CA}
+{Malasakit 1.0}
+{April 2017 -- December 2017}
+\cvSubitemStart
+\cvSubitem{
+Malasakit 1.0: A Participatory Online Platform for Crowdsourcing Disaster Risk Reduction Strategies in the Philippines. Brandie M. Nonnecke, Shrestha Mohanty, Andrew Lee, Jonathan Lee, Sequoia Eyzaguirre, Justin Mi, Sanjay Krishnan, Rachel Edita Roxas, Nathaniel Oco, Camille Crittenden, and Ken Goldberg. IEEE Global Humanitarian Technology Conference (GHTC). San Jose, CA. October 2017.
+}
+\cvSubitem{
+Used to assess government performance in California and Mexico, crowdsource insights on family planning in Uganda, improve typhoon preparedness in the Philippines, and collect feedback from students on MOOCs.
+}
+\cvSubitem{
+Won the 2017 -- 2018 Chancellor's Award for Research in the Public Interest, and it was the runner-up for the Pacific Telecommunications Council's Best Quality of Life Improvement Award.
+}
+\cvSubitemEnd
+\cvItem
+{UC Berkeley AUTOLab}
+{Berkeley, CA}
+{FORDS: A First-Order Driving Simulator}
+{April 2017 -- December 2017}
+\cvSubitemStart
+\cvSubitem{
+An Open A.I. module developed for Samsung, to generate synthetic data to train self-driving agents.
+}
+\cvSubitem{
+Laid the groundwork for FLUIDS, a publication at the IEEE Conference on Automation Science and Engineering.
+}
+\cvSubitemEnd
+\cvItem
+{UC Berkeley AUTOLab}
+{Berkeley, CA}
+{Avatar Mind's iPal Robot}
+{August 2016 -- May 2017}
+\cvSubitemStart
+\cvSubitem{
+Implemented and benchmarked fine control of Avatar Mind's iPal robot.
+}
+\cvSubitem{
+Implemented robust computer vision on 2-dimensional input from a \$10 webcam, combined with a reverse-Semaphore mapping to enable reading and replication of human Semaphore dialogue.
+}
+\cvSubitemEnd
+\cvItemEnd
+
+% TEACHING & COURSE DEVELOPMENT %%%%%%%%
+
+\section{Teaching \& Course Development}
+
+\cvItemStart
+\cvItem
+{CS 61A: The Structure and Interpretation of Computer Programs}
+{Berkeley, CA}
+{Head T.A. of Teaching, Head T.A. of Software, Guest Lecturer, T.A., Tutor}
+{June 2017 -- December 2018}
+\cvSubitemStart
+\cvSubitem{
+Wrote a popular student-accessible textbook with practice, covering course concepts and supplementary material.
+}
+\cvSubitem{
+Invented a method of diagramming code execution, now a standard tool taught to approx. 3500 students per year.
+}
+\cvSubitem{
+Integrated MOSS with existing course infrastructure to detect plagiarism in programming assignments.
+}
+\cvSubitem{
+Taught the highest-rated discussion \& lab sections in the Spring 2018 semester.
+}
+\cvSubitem{
+Spearheaded a concept-oriented office hours program.
+}
+\cvSubitemEnd
+\cvItem
+{CS 370: Introduction to Teaching Computer Science}
+{Berkeley, CA}
+{Instructor of Record, Head T.A.}
+{August 2017 -- December 2018}
+\cvSubitemStart
+\cvSubitem{
+Engaged with faculty to propose CS 370 satisfy the pedagogy requirement now compulsory among all T.A.'s at the UC Berkeley EE \& CS Department. Faculty approved the proposal unanimously.
+}
+\cvSubitem{
+Scaled CS 370 to 4 times the size within a year, enabling students in the class to offer 5,750+ hours of tutoring to their peers in the UC Berkeley EE \& CS Department every semester.
+}
+\cvSubitem{
+Increased enrollment to 17\% underrepresented minorities (compared to 2\% in the department), and from 17\% to 50\% female. The hope is that a more representative teaching community will foster diversity in the department.
+}
+\cvSubitem{
+Redesigned the entire CS 370 curriculum to focus on practical teaching advice, as well as modern research on pedagogy and psychosocial effects on learning.
+}
+\cvSubitem{
+At 18 years old taught CS 370 as the youngest ever instructor of record at the UC Berkeley EE \& CS Department.
+}
+\cvSubitem{
+Single-handedly ran CS 370 for a year. Scheduled thousands of tutoring hours and trained approx. 250 course staff.
+}
+\cvSubitemEnd
+\pagebreak
+\cvItem
+{CS 186: Introduction to Database Systems}
+{Berkeley, CA}
+{Content Developer}
+{August 2018 -- December 2018}
+\cvSubitemStart
+\cvSubitem{
+Currently writing a textbook with practice, covering course concepts and supplementary material.
+}
+\cvSubitemEnd
+\cvItem
+{CS 9-Series: Self-Paced Computer Science Classes}
+{Berkeley, CA}
+{Content Developer}
+{January 2018 -- December 2018}
+\cvSubitemStart
+\cvSubitem{
+Currently writing a textbook with practice, covering course concepts and supplementary material.
+}
+\cvSubitem{
+Currently redesigning the entire curriculum, all course policies, methods of assessment, and assignments.
+}
+\cvSubitemEnd
+\cvItem
+{Berkeley Institute of Data Science \& the Data Science Education Program}
+{Berkeley, CA}
+{Guest Lecturer, Content Developer}
+{May 2017 -- May 2018}
+\cvSubitemStart
+\cvSubitem{
+Redesigned the curriculum for Engineering 7, UC Berkele's introductory programming course for engineers. The new curriculum, integrated with Jupyter and its own autograder, was well-received by faculty.
+}
+\cvSubitem{
+Guest lectured, developed documentation, and designed assignments for LS 88 on web scraping and visualization.
+}
+\cvSubitem{
+Designed notes and assignments for Data Art W23AC to engage psychology students in data science.
+}
+\cvSubitemEnd
+\cvSmallItem{Diversity Initiatives}{
+CS Scholars and CS Kickstart which support underrepresented and female EE \& CS freshmen.
+}
+\cvSmallItem{Accolades}{
+Recipient of the 2018 Outstanding Graduate Student Instructor Award, and the youngest ever instructor of record at the UC Berkeley EE \& CS Department.
+}
+\cvItemEnd
+
+\end{document}

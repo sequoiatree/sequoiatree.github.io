@@ -1,0 +1,11 @@
+{% extends 'textbook.html' %}
+
+{% block content %}
+
+{{ TEXTBOOK CONTENT }}
+
+{% if not is_practice and resource.practice %}
+{{ macros.button('Practice', url_for(resource.practice.renderer)) }}
+{% endif %}
+
+{% endblock %}

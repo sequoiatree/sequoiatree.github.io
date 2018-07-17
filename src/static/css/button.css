@@ -1,0 +1,19 @@
+.button {
+  color: black;
+  font-size: 17pt;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin: 1rem auto;
+  border: none;
+  outline: none;
+  background-color: #ecf0f1;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #d9e1e3;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}

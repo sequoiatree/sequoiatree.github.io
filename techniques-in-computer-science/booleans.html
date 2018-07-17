@@ -1,0 +1,469 @@
+
+
+
+<!DOCTYPE HTML>
+
+<html>
+
+  <head>
+    <title>Booleans</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/static/favicon.ico">
+    
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,500">
+
+
+    
+
+  
+
+  <link rel="stylesheet" href="/static/css/main.css">
+
+
+
+  
+
+  <link rel="stylesheet" href="/static/css/button.css">
+
+
+
+  
+
+  <link rel="stylesheet" href="/static/css/collapsible.css">
+
+
+
+
+    
+
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work+Sans:400,700">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Mono">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+
+
+
+
+  
+
+  <link rel="stylesheet" href="/static/css/textbook.css">
+
+
+
+  
+
+  <link rel="stylesheet" href="/static/css/navbar.css">
+
+
+
+  
+
+  <link rel="stylesheet" href="/static/css/dropdown.css">
+
+
+
+  
+
+  <link rel="stylesheet" href="/static/css/slider.css">
+
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+
+
+
+  
+
+  <script src="/static/js/textbook.js"></script>
+
+
+
+  
+
+  <script src="/static/js/display.js"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+  MathJax.Hub.Register.StartupHook("MathMenu Ready",function () {
+    MathJax.Menu.BGSTYLE["z-index"] = 1;
+  });
+</script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+  </head>
+
+  
+<div id="navbar" class="navbar">
+  <div class="page">
+    <a href="/#Textbooks" class="active">
+      <i class="fas fa-tree"></i>
+    </a>
+    <div class="dropdown">
+      <button class="dropbtn" onclick="toggleDisplay('chapter-dropdown', 'none', 'block')">
+        More Chapters
+      </button>
+      <div id="chapter-dropdown" class="dropdown-content" style="display: none;">
+        
+          <a href="/techniques-in-computer-science/welcome-to-computer-science.html">Welcome to Computer Science</a>
+        
+          <a href="/techniques-in-computer-science/setup.html">Setup</a>
+        
+          <a href="/techniques-in-computer-science/variables.html">Variables</a>
+        
+          <a href="/techniques-in-computer-science/functions.html">Functions</a>
+        
+          <a href="/techniques-in-computer-science/booleans.html">Booleans</a>
+        
+          <a href="/techniques-in-computer-science/iteration.html">Iteration</a>
+        
+          <a href="/techniques-in-computer-science/higher-order-functions.html">Higher-Order Functions</a>
+        
+          <a href="/techniques-in-computer-science/lambda-functions.html">Lambda Functions</a>
+        
+      </div>
+    </div>
+    
+    <a href="javascript:void(0);" class="icon"
+       onclick="toggleClass('navbar', 'navbar', 'responsive');">
+      &#9776;
+    </a>
+  </div>
+</div>
+
+
+  <body>
+    <div class="page content">
+      
+
+<p>Recall <code>True</code> and <code>False</code> are the two booleans in Python. It turns out they're pretty handy. For instance, what if we want to do something, but only if a particular condition is <code>True</code>? What if we want to repeat something until that condition is <code>False</code>? These sorts of problems come up all the time — whether you're programming a calculator, a video game, a Terminator robot, or anything in between.</p>
+<h1 id="comparisons">Comparisons</h1>
+<p>Now is a good time to learn about comparisons, which let us know which of two things is bigger or smaller. There are a few different comparisons Python supports:</p>
+<ul>
+<li><code>x &gt; y</code> if and only if <code>x</code> is bigger than <code>y</code>.</li>
+<li><code>x &lt; y</code> if and only if <code>x</code> is smaller than <code>y</code>.</li>
+<li><code>x &gt;= y</code> if and only if <code>x</code> is bigger than <code>y</code>, or <code>x</code> is equal to <code>y</code>.</li>
+<li><code>x &lt;= y</code> if and only if <code>x</code> is smaller than <code>y</code>, or <code>x</code> is equal to <code>y</code>.</li>
+<li><code>x == y</code> if and only if <code>x</code> is equal to <code>y</code>.</li>
+<li><code>x != y</code> if and only if <code>x</code> is not equal to <code>y</code>.</li>
+</ul>
+<p>Notice we used two equals signs instead of one, to test whether <code>x</code> equals <code>y</code>. That's because one equals sign is used for assigning variables, not testing equality, so <code>x == y</code> is very different from <code>x = y</code>.</p>
+<pre class="highlight"><code>&gt;&gt;&gt; x = 3
+&gt;&gt;&gt; x
+3
+&gt;&gt;&gt; x == 3
+True
+&gt;&gt;&gt; x == 3.14
+False</code></pre>
+
+<p>You can also make several comparisons at once, as in the examples below. Every individual comparison must be <code>True</code> in order for the whole expression to evaluate to <code>True</code>. For instance, <code>x &lt; y &lt; z</code> requires <code>x &lt; y</code> and <code>y &lt; z</code> to both be <code>True</code>.</p>
+<pre class="highlight"><code>&gt;&gt;&gt; 1 == 1 &lt; 2 == 2
+True
+&gt;&gt;&gt; 3.14 &lt;= 30 % 9 &gt;= 2.718
+False</code></pre>
+
+<p>But comparisons aren't just for numbers. You can also compare strings to other strings, according to alphabetical order. Strings of numbers are less than strings of capital letters, which are less than strings of lowercase letters.</p>
+<pre class="highlight"><code>&gt;&gt;&gt; '0' &lt; '9' &lt; 'A' &lt; 'Z' &lt; 'a' &lt; 'z'
+True</code></pre>
+
+<p>The <code>==</code> and <code>!=</code> operators work for pointers at functions, too. Two pointers are equal if they point to the exact same thing, otherwise they are not equal. In the example below, <code>f == g</code> is <code>True</code> because <code>f</code> and <code>g</code> point to the exact same function. Meanwhile <code>f == h</code> is <code>False</code> because <code>f</code> and <code>h</code> point to two different functions. It doesn't matter that those two functions do the same thing.</p>
+<pre class="highlight"><code>&gt;&gt;&gt; def f():
+...     return 5
+...
+&gt;&gt;&gt; g = f
+&gt;&gt;&gt; def h():
+...     return 5
+...
+&gt;&gt;&gt; f == g
+True
+&gt;&gt;&gt; f == h
+False</code></pre>
+
+<p><div class="svg-wrapper" style="width:234px;height:101px;"><svg viewbox="0 0 234 101" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" version="1.1" content="&lt;mxfile userAgent=&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/8.8.0 Chrome/61.0.3163.100 Electron/2.0.2 Safari/537.36&quot; version=&quot;8.9.5&quot; editor=&quot;www.draw.io&quot; type=&quot;device&quot;&gt;&lt;diagram id=&quot;3bce2233-656f-9f72-eaa7-8c38449dd40d&quot; name=&quot;Page-1&quot;&gt;7Vlbk5owFP41zLQP7QAR1Ed1L33pTGd82OcsBMgYEhvirb++CQS5BF13Vbbb1QclX24n5/tOciIWmKXbRw6XyU8WImK5dri1wJ3luoOhI78VsCsAfwwKIOY4LCCnAub4D9KgrdEVDlHWaCgYIwIvm2DAKEWBKDDdF3LONs1mESPNWZcwRgYwDyAx0ScciqRAR55d4T8QjhM9s+PYuuYZBouYsxXV81kuiPJPUZ3CcizdPktgyDY1CNxbYMYZE8VTup0holxbuq3o93Cgdm83R1Sc0mFUdFhDskKlxbldYlf6Il8NUu1tC0w3CRZovoSBqt1I8iWWiJTIkiMfM8HZAs0YYTzvDez8I2siRoUm2hnIMiQ4prJAUCQtnZqG67WsERdoW4P0Qh4RS5HgO9lE1w61T7XmShdvKgJ9DSV17krqoNZMvB+48pt80K7rdiPocKNP1LpCvG640/+9UtxO5ZrEN+2DiWzBc4v21fIp1r/5MNkS0hKLCXuGpKyRptUra3A+dYm2SFXTH2OOMooUaZiQFlTyVhgMpoofLCNnovEUh6GapVMpTS0pSTzAFBPF2BPjC2njHNKsQy0XkIfzojy8Dnm4F1CHM762PJ75hflvRO5hEejg/UAaaIoAmCJwrySCsdfnHhHdtofzTo8+lTG8bQ//hgba24Pfnwj2U9dUEK1oIDCjKoP98lV+W950qX5Ura3TAO/uEHuvDdle2apJ6xLE+a3D3f3uGdSNgEkd8M6nbtB1vLcoQTScqHuJLAUEZhkOmj64hM5R2LjUmM56IdUpMY4IFHjdvAp1OUjP8IthaUnFRSvRGrSiI2MrHiDdqX41aY/jHx9HQB4jYYyTs7Vf9Imx53QweL38/TOezUYsd0j41LPZM2P7etuy+w7B3Yrkk1z1PsE9/ADB3evlPLkF93nBPe4z5xpcWxqfKPM+SwTtzLtXFZg381rmnfz3mfd5xLU28lGfmbdj+7fT+cjpbPy3/dbj2RjozeezLFZvN4rm1RskcP8X&lt;/diagram&gt;&lt;/mxfile&gt;"><defs/><g transform="translate(0.5,0.5)"><rect x="60" y="0" width="60" height="100" fill="#ffffff" stroke="#000000" pointer-events="none"/><g transform="translate(5.5,2.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="42" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 43px; white-space: nowrap; word-wrap: normal; text-align: right;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>global</span></div></div></div></foreignObject><text x="21" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><rect x="90" y="10" width="20" height="20" fill="none" stroke="#000000" pointer-events="none"/><g transform="translate(92.5,12.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="1" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 1px; white-space: nowrap; word-wrap: normal;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><br /></div></div></div></foreignObject><text x="0" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">&lt;div style="text-align: right"&gt;&lt;br&gt;&lt;/div&gt;</text></switch></g><g transform="translate(71.5,12.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="6" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 7px; white-space: nowrap; word-wrap: normal; text-align: right;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>f</span></div></div></div></foreignObject><text x="3" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><rect x="90" y="40" width="20" height="20" fill="none" stroke="#000000" pointer-events="none"/><g transform="translate(92.5,42.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="1" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 1px; white-space: nowrap; word-wrap: normal;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><br /></div></div></div></foreignObject><text x="0" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">&lt;div style="text-align: right"&gt;&lt;br&gt;&lt;/div&gt;</text></switch></g><g transform="translate(151.5,4.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="81" height="30" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 81px; white-space: normal; word-wrap: normal;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">function f() [p = global]</div></div></foreignObject><text x="41" y="22" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">function f() [p = global]</text></switch></g><path d="M 100 20 L 143.63 20" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 148.88 20 L 141.88 23.5 L 143.63 20 L 141.88 16.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g transform="translate(69.5,37.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="8" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 9px; white-space: nowrap; word-wrap: normal; text-align: right;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>g</span></div></div></div></foreignObject><text x="4" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><path d="M 100 50 L 144.54 23.28" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 149.04 20.58 L 144.84 27.18 L 144.54 23.28 L 141.24 21.18 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g transform="translate(68.5,72.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="9" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 10px; white-space: nowrap; word-wrap: normal; text-align: right;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><span>h</span></div></div></div></foreignObject><text x="5" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">[Not supported by viewer]</text></switch></g><rect x="90" y="70" width="20" height="20" fill="none" stroke="#000000" pointer-events="none"/><g transform="translate(92.5,72.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="1" height="14" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 1px; white-space: nowrap; word-wrap: normal;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;"><div style="text-align: right"><br /></div></div></div></foreignObject><text x="0" y="14" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">&lt;div style="text-align: right"&gt;&lt;br&gt;&lt;/div&gt;</text></switch></g><g transform="translate(151.5,64.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="81" height="30" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 14px; font-family: &quot;Work Sans&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 81px; white-space: normal; word-wrap: normal;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">function h() [p = global]</div></div></foreignObject><text x="41" y="22" fill="#000000" text-anchor="middle" font-size="14px" font-family="Work Sans">function h() [p = global]</text></switch></g><path d="M 100 80 L 143.63 80" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 148.88 80 L 141.88 83.5 L 143.63 80 L 141.88 76.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/></g></svg></div></p>
+<h1 id="conditions">Conditions</h1>
+<p>This is where things get exciting. We're about to see how to write code that makes decisions.</p>
+<h2 id="the-if-and-else-statements">The <code>if</code> and <code>else</code> statements</h2>
+<p>Using the <code>if</code> keyword, you can write code that does different things based on whether a condition is <code>True</code> or not. In particular, if the condition is <code>True</code>, then everything inside the <code>if</code> statement will happen. Otherwise it won't. Then, once everything within the <code>if</code> statement has happened, you move back outside and continue with the rest of the function.</p>
+<pre class="highlight"><code>&gt;&gt;&gt; def example(n):
+...     if n == 0:
+...         print('zero') # This happens when n is 0.
+...     return n          # This always happens.
+...
+&gt;&gt;&gt; example(0)
+zero
+0
+&gt;&gt;&gt; example(1)
+1</code></pre>
+
+<p>It may seem strange, but this could lead to some situations when you have multiple <code>return</code> statements in one function. That's fine — remember, we automatically stop as soon as we hit either one. In the next example we use the first one if <code>n</code> is even, otherwise we use the second one.</p>
+<pre class="highlight"><code>&gt;&gt;&gt; def is_even(n):
+...    if n % 2 == 0:
+...        return True
+...    return False
+...
+&gt;&gt;&gt; is_even(2)
+True
+&gt;&gt;&gt; is_even(-5)
+False</code></pre>
+
+<p>You can also use the keyword <code>else</code>, which has to come right after an <code>if</code> statement. When you choose to have an <code>else</code> statement, your function will always execute either the <code>if</code> statement of the <code>else</code> statement but never both.</p>
+<pre class="highlight"><code>&gt;&gt;&gt; def example(n):
+...     if n == 0:
+...         print('zero')    # This happens when n is 0.
+...     else:
+...         print('nonzero') # This happens when n isn't 0.
+...     return n             # This always happens.
+...
+&gt;&gt;&gt; example(0)
+zero
+0
+&gt;&gt;&gt; example(1)
+nonzero
+1</code></pre>
+
+<p>Here's an example of how to write an <code>if</code> / <code>else</code> statement on one line. It's called a ternary if.</p>
+<pre class="highlight"><code>&gt;&gt;&gt; forecast = 50
+&gt;&gt;&gt; 'snow' if forecast &lt; 30 else 'rain'
+'rain'</code></pre>
+
+<p>Try not to do this too often, though. It can get really hard to read.</p>
+<h2 id="the-elif-statement">The <code>elif</code> statement</h2>
+<p>This is cool so far, but it gets even cooler. When you have a lot of different conditions, and you only want to use one of them, you can use <code>elif</code> statements, short for "else if". You can have a bunch of <code>elif</code> statements in a row, if you want.</p>
+<pre class="highlight"><code>&gt;&gt;&gt; def sign(n):
+...     if n &lt; 0:
+...         return '-'
+...     elif n &gt; 0:
+...         return '+'
+...     else:
+...         return 0
+...
+&gt;&gt;&gt; sign(-1.1)
+'-'
+&gt;&gt;&gt; sign(0) + 5
+5</code></pre>
+
+<p>Below you'll find an equivalent way of expressing the function above, using only <code>if</code> and <code>else</code> statements. As you can see, it's a lot harder to read. </p>
+<pre class="highlight"><code>&gt;&gt;&gt; def sign(n):
+...     if n &lt; 0:
+...         return '-'
+...     else:
+...         if n &gt; 0:
+...             return '+'
+...         else:
+...             return 0
+...
+&gt;&gt;&gt; sign(-1.1)
+'-'
+&gt;&gt;&gt; sign(0) + 5
+5</code></pre>
+
+<p>Be careful; <code>elif</code> is sometimes tricky. It is <em>not</em> the same as <code>if</code>! Why? In a bunch of <code>if</code> statements, you might end up executing more than one. In an <code>elif</code> chain, on the other hand, you only execute the first statement whose condition is <code>True</code>. For example, compare the two definitions of the <code>size</code> function below.</p>
+<pre class="highlight"><code>&gt;&gt;&gt; def size(n):
+...     if n &gt; 1000:
+...         print('big')
+...     if n &gt; 0:
+...         print('meh')
+...
+&gt;&gt;&gt; size(2000)
+big
+meh</code></pre>
+
+<pre class="highlight"><code>&gt;&gt;&gt; def size(n):
+...     if n &gt; 1000:
+...         print('big')
+...     elif n &gt; 0:
+...         print('meh')
+...
+&gt;&gt;&gt; size(2000)
+big</code></pre>
+
+<h2 id="lazy-evaluation">Lazy evaluation</h2>
+<p>One last thing to know about conditions is that they are lazy. In other words, they only evaluate something if they absolutely have to. This goes for one-line <code>if</code> / <code>else</code> statements too. When we run <code>lucky(4)</code> in the code below, both conditions evaluate to <code>False</code>. That means there's no need to evaluate the part that says <code>return 1 / 0</code> or the part that says <code>return 'zebra' + 10</code>, so we don't actually get an error. Instead we just keep going until we find a condition that works.</p>
+<pre class="highlight"><code>&gt;&gt;&gt; def lucky(n):
+...     if n == 7:
+...         return 1 / 0
+...     elif n == 13:
+...         return 'zebra' + 10
+...     else:
+...         return True
+...
+&gt;&gt;&gt; lucky(4)
+True</code></pre>
+
+<h1 id="boolean-operators">Boolean operators</h1>
+<p>There are three boolean operators: <code>not</code>, <code>and</code>, and <code>or</code>. Let's see how they work.</p>
+<ol>
+<li><code>not</code> negates a boolean expression.
+    <pre class="highlight"><code>&gt;&gt;&gt; not True
+False
+&gt;&gt;&gt; not False
+True</code></pre></li>
+<li><code>and</code> requires that both boolean expressions are <code>True</code>.
+    <pre class="highlight"><code>&gt;&gt;&gt; True and True
+True
+&gt;&gt;&gt; True and False
+False</code></pre></li>
+<li><code>or</code> requires that either of two boolean expressions is <code>True</code>.
+    <pre class="highlight"><code>&gt;&gt;&gt; True or False
+True
+&gt;&gt;&gt; False or False
+False</code></pre></li>
+</ol>
+<h2 id="the-order-of-evaluation">The order of evaluation</h2>
+<p>In grade school you probably learned that when you see an arithmetic expression like <span><span class="MathJax_Preview">1 + 2 \times 3</span><script type="math/tex">1 + 2 \times 3</script></span>, it makes a big difference whether you do <span><span class="MathJax_Preview">(1 + 2) \times 3</span><script type="math/tex">(1 + 2) \times 3</script></span> or <span><span class="MathJax_Preview">1 + (2 \times 3)</span><script type="math/tex">1 + (2 \times 3)</script></span>. This is a problem, because some people might read it as <span><span class="MathJax_Preview">(1 + 2) \times 3</span><script type="math/tex">(1 + 2) \times 3</script></span> and get 9, whereas others might read it as <span><span class="MathJax_Preview">1 + (2 \times 3)</span><script type="math/tex">1 + (2 \times 3)</script></span> and get 7. In order to avoid confusion, there's a well-established convention that you should do multiplication first, and addition second. So the correct way to read <span><span class="MathJax_Preview">1 + 2 \times 3</span><script type="math/tex">1 + 2 \times 3</script></span> is like <span><span class="MathJax_Preview">1 + (2 \times 3)</span><script type="math/tex">1 + (2 \times 3)</script></span>.</p>
+<p>We face a similar problem with the boolean operators. For instance, does <code>not True and False</code> mean <code>(not True) and False</code> or does it mean <code>not (True and False)</code>? Let's try it out in the Python interpreter and find out:</p>
+<pre class="highlight"><code>&gt;&gt;&gt; not True and False
+False
+&gt;&gt;&gt; (not True) and False
+False
+&gt;&gt;&gt; not (True and False)
+True</code></pre>
+
+<p>It looks like <code>not True and False</code> agrees with the output for <code>(not True) and False</code> but disagrees with the output for <code>not (True and False)</code>. That means <code>(not True) and False</code> is the right way to read it, which tells us <code>not</code> should come before <code>and</code>.</p>
+<p>What about <code>or</code>? Let's try it out with <code>False and False or True</code>, which could mean <code>(False and False) or True</code> or <code>False and (False or True)</code>. Here's how we might test it out in the Python interpreter:</p>
+<pre class="highlight"><code>&gt;&gt;&gt; False and False or True
+True
+&gt;&gt;&gt; (False and False) or True
+True
+&gt;&gt;&gt; False and (False or True)
+False</code></pre>
+
+<p>Since <code>False and False or True</code> matches with the output for <code>(False and False) or True</code>, we can see that <code>and</code> should come before <code>or</code>.</p>
+<p>In summary, here's the proper order of boolean operations:</p>
+<ol>
+<li><code>not</code></li>
+<li><code>and</code></li>
+<li><code>or</code></li>
+</ol>
+<h2 id="truthy-and-falsey-values">Truthy and falsey values</h2>
+<p>So far we've only seen boolean expressions that evaluate to either <code>True</code> or <code>False</code>. But what if we have a boolean expression that evaluates to something else? Like, what if we see <code>if 3.14: ...</code>? That might be an issue, since 3.14 is not a boolean. Python solves this problem by automatically converting it to a boolean with the <code>bool</code> function that we saw when we learned about the primitive types.</p>
+<p>Here's an example. It will help to recall <code>bool(3.14)</code> and <code>bool('cowboys')</code> are both <code>True</code>, <code>bool('')</code> is <code>False</code>, and <code>bool(print('dinosaurs'))</code> is <code>False</code> because <code>print('dinosaurs')</code> evaluates to <code>None</code>.</p>
+<pre class="highlight"><code>&gt;&gt;&gt; if 3.14:
+...     print('vs pirates')
+...
+vs pirates
+&gt;&gt;&gt; if 'cowboys':
+...     print('vs aliens)
+...
+vs aliens
+&gt;&gt;&gt; if '':
+...     print('vs a vacuum')
+...
+&gt;&gt;&gt; if print('dinosaurs'):
+...     print('vs ducks')
+...
+dinosaurs</code></pre>
+
+<p>Things like 3.14 and <code>'cowboys'</code> are called truthy because you get <code>True</code> when you call <code>bool</code> on them. Similarly, things like <code>''</code> and <code>None</code> are called falsey because you get <code>False</code> when you call <code>bool</code> on them. They behave just like <code>True</code> and <code>False</code> whenever you're dealing with boolean expressions or <code>if</code> / <code>elif</code> / <code>else</code> conditions. But keep in mind, truthy values do <em>not</em> equal <code>True</code> and falsey values do <em>not</em> equal <code>False</code>.</p>
+<pre class="highlight"><code>&gt;&gt;&gt; 3.14 == True
+False
+&gt;&gt;&gt; None == False
+False</code></pre>
+
+<p>The numbers 1 and 0 are exceptions. That's because everything inside your computer is represented by 1's and 0's, so fundamentally <code>True</code> is just another name for 1 and <code>False</code> is just another name for 0.</p>
+<pre class="highlight"><code>&gt;&gt;&gt; 1 == True
+True
+&gt;&gt;&gt; 0 == False
+True</code></pre>
+
+<h2 id="short-circuiting">Short-circuiting</h2>
+<p>Consider a boolean expression like <code>True or False</code>. It evaluates to <code>True</code>, but we didn't have to read the entire thing to figure that out. What if we stopped right after the <code>or</code>, so all we saw was <code>True or ____</code>? Whether we fill in the blank with <code>True</code> or <code>False</code>, this expression has to be <code>True</code>. (Try it out! <code>True or True</code> and <code>True or False</code> both evaluate to <code>True</code>.) So, if we already know the answer is going to be <code>True</code>, is there any reason to finish reading the whole expression? No, not really. In fact, Python stops reading as soon as it knows the answer. In this example, that's right before it would've read <code>False</code>. This is called short-circuiting.</p>
+<p>Now is a good time to mention boolean expressions don't always evaluate to <code>True</code> or <code>False</code>. They evaluate to the last value Python reads before it knows the answer, which will always be a corresponding truthy or falsey value. For instance consider the expression <code>4 or False</code>. Since 4 is a truthy value, it's basically the same as our previous example <code>True or False</code>. Python doesn't have to finish reading it to know the expression is truthy. But in this case, it returns 4 instead of <code>True</code> because that's the last value Python had to read.</p>
+<p>Let's take a closer look at short-circuiting with the <code>and</code> and <code>or</code> operators:</p>
+<ul>
+<li><code>and</code> checks that every value is truthy, so if it comes across a falsey value it can stop right there. In the example below we reach the falsey value 0.0, where we stop and return 0.0. It doesn't matter that later values would cause an error.
+  <pre class="highlight"><code>&gt;&gt;&gt; -1 and 'cake' and 0.0 and 'is a' and 1 / 0 and lie
+0.0</code></pre>
+  Now let's see an example where every value is truthy, so we just return <code>'glados'</code> since that's the last value Python looks at.
+  <pre class="highlight"><code>&gt;&gt;&gt; 'portal' and 42 != 54 and 7 &lt; 8 &lt; 9 and 'glados'
+'glados'</code></pre></li>
+<li><code>or</code> checks that at least one value is truthy, so if it comes across a truthy value it can stop right there. In the example below we reach the truthy value <code>'town'</code>, where we stop and return <code>'town'</code>. It doesn't matter that later values would cause an error.
+  <pre class="highlight"><code>&gt;&gt;&gt; None or 18 % 9 or print('flavor') or 'town' or 'one' * 0 or 1 / 0
+'town'</code></pre>
+  Now let's see an example where every value is falsey, so we just return 0 since that's the last value Python looks at.
+  <pre class="highlight"><code>&gt;&gt;&gt; 'one' * 0 or int(0.9) or '' or 2018 % 5 - 3 or bool(int(3.14) - 3) or 0
+0</code></pre></li>
+</ul>
+<h2 id="evaluating-boolean-expressions">Evaluating boolean expressions</h2>
+<p>Now that we have a good understanding of the mechanics behind boolean expressions, we can make a procedure for how to evaluate them.</p>
+<ol>
+<li>Add parentheses to the original expression, according to the order of boolean operations: <code>not</code>, <code>and</code>, then <code>or</code>.</li>
+<li>Simplify the leftmost thing in your expression. If you can stop now, then it's your final answer. Otherwise delete it and repeat this step with your new, shorter expression.</li>
+</ol>
+<h2 id="practice-miscellaneous-boolean-expressions">Practice: miscellaneous boolean expressions</h2>
+<p>To make sure we have the hang of things, let's practice applying the procedure above. We'll start with the expression <code>'do' and 're' and 'mi' or None and not 0</code>.</p>
+<ol>
+<li>First we add parentheses for <code>not</code>, to get <code>'do' and 're' and 'mi' or None and (not 0)</code>. Then we add parentheses for <code>and</code>, to get <code>('do' and 're' and 'mi') or (None and (not 0))</code>. It's not really necessary to add parentheses for <code>or</code> since it's the lowest-priority operator.</li>
+<li>The leftmost thing in our expression is <code>'do' and 're' and 'mi'</code>. It's an <code>and</code> operator where every value is truthy, so Python reads the whole thing and evaluates it to <code>'mi'</code>. Now our expression looks like <code>'mi' or (None and (not 0))</code>. <code>'mi'</code> is truthy and we're evaluating an <code>or</code> operator, so we can stop here. Our final answer is <code>'mi'</code>.</li>
+</ol>
+<p>Let's look at a harder one, like <code>'a' and not not print('b') and 1 / 0 or 'c' + 123</code>. We'll take it one step at a time, using the same process from before.</p>
+<ol>
+<li>
+<p>First we add parentheses for <code>not</code>, to get <code>'a' and (not (not print('b'))) and 1 / 0 or 'c' + 123</code>. Then we add parentheses for <code>and</code>, to get <code>('a' and (not (not print('b'))) and 1 / 0) or 'c' + 123</code>. Again, it's not really necessary to add parentheses for <code>or</code> since it's the lowest-priority operator.</p>
+</li>
+<li>
+<p>The leftmost thing in our expression is <code>'a' and (not (not print('b'))) and 1 / 0</code>. It's a bit complicated, so we'll apply our procedure to just this sub-expression in order to evaluate it.</p>
+<ol>
+<li>For step 1 in the procedure above, we just add the parentheses. Conveniently we've already done this, so we can move on.</li>
+<li>The leftmost thing in our sub-expression is <code>'a'</code>. It's truthy and we're on an <code>and</code> operator, so we have to keep going. According to the procedure above, we'll delete it and move on to <code>(not (not print('b'))) and 1 / 0</code>.</li>
+<li>Now the leftmost thing is <code>(not (not print('b')))</code>. <code>print('b')</code> returns <code>None</code> which is falsey, so <code>(not print('b'))</code> is <code>True</code> and <code>(not (not print('b')))</code> is <code>False</code>. Now our expression is <code>False and 1 / 0</code>. We can stop here and return <code>False</code>, because at this point our expression will be <code>False</code> no matter what comes next. Notice how we didn't have to evaluate <code>1 / 0</code>, which would've given us an error.</li>
+</ol>
+<p>Now that we have evaluated <code>'a' and (not (not print('b'))) and 1 / 0</code> to <code>False</code>, we can rewrite our bigger expression like <code>False or 'c' + 123</code>.</p>
+</li>
+<li>
+<p>The leftmost thing is <code>False</code>, and since we're evaluating an <code>or</code> operator we have to keep going to see if there are any truthy values. According to the procedure above, we delete the <code>False</code> and keep going with just <code>'c' + 123</code>.</p>
+</li>
+<li>
+<p>The leftmost thing is now <code>'c' + 123</code>, which causes an error. Whoops.</p>
+</li>
+</ol>
+
+
+
+
+      <br><br>
+    </div>
+    
+
+
+  
+
+  <script src="/static/js/slider.js"></script>
+
+
+
+
+
+    
+
+  
+
+  <script src="/static/js/collapsible.js"></script>
+
+
+
+
+  </body>
+
+</html>

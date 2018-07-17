@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ resource.title }}{% endblock %}
+
+{% block head %}
+{{ include.css((
+       "https://fonts.googleapis.com/css?family=Work+Sans:400,700",
+       "https://fonts.googleapis.com/css?family=PT+Mono",
+       "https://use.fontawesome.com/releases/v5.1.0/css/all.css",
+   ))
+}}
+{{ include.static_css(('textbook', 'navbar', 'dropdown', 'slider')) }}
+{{ include.js(("https://code.jquery.com/jquery-3.3.1.slim.min.js",)) }}
+{{ include.static_js(('textbook', 'display')) }}
+{{ include.mathjax() }}
+{% endblock %}
+
+{% block prologue %}
+<div id="navbar" class="navbar">
+  <div class="page">
+    <a href="{{ url_for('render_index') }}#Textbooks" class="active">
+      <i class="fas fa-tree"></i>
+    </a>
+    <div class="dropdown">
+      <button class="dropbtn" onclick="toggleDisplay('chapter-dropdown', 'none', 'block')">
+        More Chapters
+      </button>
+      <div id="chapter-dropdown" class="dropdown-content" style="display: none;">
+        {% for chapter in resource.textbook.chapters %}
+          <a href="{{ url_for(chapter.renderer) }}">{{ chapter.title }}</a>
+        {% endfor %}
+      </div>
+    </div>
+    {% if is_practice %}
+      <a href="{{ url_for(resource.chapter.renderer) }}">Review</a>
+    {% elif resource.practice %}
+      <a href="{{ url_for(resource.practice.renderer) }}">Practice</a>
+    {% endif %}
+    <a href="javascript:void(0);" class="icon"
+       onclick="toggleClass('navbar', 'navbar', 'responsive');">
+      &#9776;
+    </a>
+  </div>
+</div>
+{% endblock %}
+
+{% block script %}
+{{ include.static_js(('slider',)) }}
+{% endblock %}
