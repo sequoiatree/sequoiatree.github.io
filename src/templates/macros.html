@@ -1,3 +1,33 @@
+{% macro start_navbar() %}
+  <div id="navbar" class="navbar">
+    <div class="page">
+      <a href="{{ url_for('render_index') }}">
+        <i class="fas fa-tree"></i>
+      </a>
+{% endmacro %}
+
+{% macro end_navbar() %}
+      <a href="javascript:void(0);" class="icon"
+         onclick="toggleClass('navbar', 'navbar', 'responsive');">
+        &#9776;
+      </a>
+    </div>
+  </div>
+{% endmacro %}
+
+{% macro start_dropdown(text, id) %}
+  <div class="dropdown">
+    <button class="dropbtn" onclick="toggleDisplay('{{ id }}', 'none', 'block')">
+      {{ text }}
+    </button>
+    <div id="{{ id }}" class="dropdown-content" style="display: none;">
+{% endmacro %}
+
+{% macro end_dropdown() %}
+    </div>
+  </div>
+{% endmacro %}
+
 {% macro button(text, action, center=True) %}
   {% if center %}
     <div class="center">
