@@ -1,11 +1,11 @@
 from datetime import date
-from markdown import markdown
 from os import mkdir
 from os.path import join
 from re import match, search, sub
 from shutil import rmtree
 
 from flask import Markup
+from markdown import markdown
 
 MARKDOWN_EXTENSIONS = (
     'extra',
