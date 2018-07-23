@@ -1,8 +1,6 @@
 from importlib import import_module
-from os import listdir, mkdir
+from os import listdir
 from os.path import join
-from re import sub
-from shutil import rmtree
 
 from flask import Markup
 
@@ -49,64 +47,9 @@ class TextbookResource(FileSystemObject):
         out_file = join(self.path, self.template)
         if in_file in dir_files and self.template not in dir_files:
             template = read('templates/textbook-content.html')
-            in_content = self.process_input(read_md(join(self.path, in_file)))
-            out_content = template.replace(
-                '{{ TEXTBOOK CONTENT }}',
-                parse_markdown(in_content)
-            )
+            in_content = read_md(join(self.path, in_file), self.assets_dir)
+            out_content = template.replace('{{ TEXTBOOK CONTENT }}', in_content)
             write(out_file, out_content)
-
-    def process_input(self, text):
-        text = self.trim_codefence_whitespace(text)
-        text = self.evaluate_pyagram_macros(text)
-        text = self.evaluate_asset_macros(text)
-        text = self.evaluate_image_macros(text)
-        return text
-
-    def trim_codefence_whitespace(self, text):
-        # Before indented code fence.
-        text = sub('\n\n +```', lambda match: match.group(0)[1:], text)
-        # After indented code fence.
-        text = sub(' +```\n\n', lambda match: match.group(0)[:-1], text)
-        return text
-
-    def evaluate_pyagram_macros(self, text):
-        pattern = 'STARTPYAGRAM ([0-9a-z-]+)\n\n([\S\s]*?)\n\nENDPYAGRAM'
-        def rule(match):
-            name = match.group(1)
-            captions = match.group(2).split('\n\n---\n\n')
-            self.load_pyagram_captions(name, captions)
-            return f"{{{{ macros.slider('{name}', sequence(resource, '{name}')) }}}}"
-        text = sub(pattern, rule, text)
-        return text
-
-    def load_pyagram_captions(self, name, captions):
-        pyagram_dir = join(self.assets_dir, name)
-        try:
-            rmtree(pyagram_dir)
-        except FileNotFoundError:
-            None
-        mkdir(pyagram_dir)
-        for i in range(len(captions)):
-            caption = captions[i]
-            write(join(pyagram_dir, f'{name}-{i}.html'), parse_markdown(caption))
-
-    def evaluate_asset_macros(self, text):
-        base = 'ASSET '
-        text = sub(
-            f'{base}([0-9a-z-]+)',
-            lambda match: f"{{{{ resource.assets['{match.group(0)[len(base):]}'] }}}}",
-            text
-        )
-        return text
-
-    def evaluate_image_macros(self, text):
-        text = sub(
-            'IMG-([A-Z]+) ([0-9a-z-]+)',
-            lambda match: f"{{{{ macros.image('{match.group(2)}', '{match.group(1).lower()}') }}}}",
-            text
-        )
-        return text
 
     @property
     def assets_dir(self):
