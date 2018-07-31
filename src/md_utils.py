@@ -6,7 +6,7 @@ from shutil import rmtree
 from flask import Markup
 from markdown import markdown
 
-from md_utils import *
+from py_utils import *
 
 MARKDOWN_EXTENSIONS = (
     'extra',
