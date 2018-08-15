@@ -10,14 +10,21 @@ def rename(name):
         return function
     return rename_decorator
 
+def make_template(route, renderer, template_function, *template_args):
+    @app.route(f'/{route}.html')
+    @rename(renderer)
+    def render():
+        return template_function(*template_args)
+
 def make_textbook_template(resource, is_practice):
-    @app.route(f'/{resource.route}.html')
-    @rename(resource.renderer)
-    def render_resource():
-        return render_template(resource.template,
-                               resource=resource,
-                               is_practice=is_practice,
-                               **resource.utils)
+    return make_template(
+        resource.route,
+        resource.renderer,
+        lambda resource: render_template(
+            resource.template, resource=resource, is_practice=is_practice, **resource.utils
+        ),
+        resource
+    )
 
 @app.route('/')
 def render_index():

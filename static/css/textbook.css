@@ -16,7 +16,7 @@
   line-height: 1.6;
 }
 
-.content p, .content a, .content a:hover, .content li, .content strong, .content em, kbd, .slide-toggle *, .caption-toggle, svg * {
+.content p, .content a, .content a:hover, .content li, .content strong, .content em, .slide-toggle *, .caption-toggle, svg * {
   font-family: 'Work Sans', sans-serif;
 }
 
@@ -25,12 +25,6 @@ pre {
   border-radius: 10px;
   background-color: #ecf0f1;
   padding: 5px 10px;
-}
-
-code {
-  font-family: 'PT Mono', monospace;
-  background-color: #ecf0f1;
-  border-radius: 3px;
 }
 
 code, kbd {
