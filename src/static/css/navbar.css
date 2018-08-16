@@ -15,10 +15,6 @@
   color: #ecf0f1;
 }
 
-.navbar a:first-child {
-  padding-left: 8px;
-}
-
 .navbar .icon {
   display: none;
   font-size: 11pt;
