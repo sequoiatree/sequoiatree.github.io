@@ -86,7 +86,7 @@ Remember, you're probably never going to see the same problem again, after you d
 
 ## Take care of yourself
 
-I've seen too many students make this mistake, so let me make it explicit right now. It is a bad idea to study all night long. In general, it is a bad idea to work all night long under circumstance. It is a bad idea to skip meals. It is a bad idea to fuel yourself on energy drinks. It is a bad idea to neglect your health or cleanliness. Why? Because eating, sleeping, and basic hygiene are necessary to function properly. If you neglect any of them, then you're not functioning properly. And when you're not functioning properly, you can't learn. I've seen firsthand what it does to students and their grades, when they don't take care of themselves. It's not good.
+I've seen too many students make this mistake, so let me make it explicit right now. It is a bad idea to study all night long. In general, it is a bad idea to work all night long under any circumstances. It is a bad idea to skip meals. It is a bad idea to fuel yourself on energy drinks. It is a bad idea to neglect your health or cleanliness. Why? Because eating, sleeping, and basic hygiene are necessary to function properly. If you neglect any of them, then you're not functioning properly. And when you're not functioning properly, you can't learn. I've seen firsthand what it does to students and their grades, when they don't take care of themselves. It's not good.
 
 Stick to a schedule. That means you go to bed and wake up at a consistent time every day. Even if you sleep for eight hours per night, it can be pretty damaging if you don't sleep for the same eight hours every night. Set a bed time, and set a consistent alarm. Stick to your schedule on the weekends too.
 
