@@ -155,7 +155,7 @@ Cho |27  |NULL
 
 -
 
-As always, we begin with the `FROM` clause. (Recall that each clause in a SQL query happens in the order it's written, except for `SELECT` which happens last.) The `FROM` clause tells us we're interested in the `Person` table. (You may notice I've nulled out a coule values, for the sake of demonstration.)
+As always, we begin with the `FROM` clause. (Recall that each clause in a SQL query happens in the order it's written, except for `SELECT` which happens last.) The `FROM` clause tells us we're interested in the `Person` table. (You may notice I've nulled out a couple values, for the sake of demonstration.)
 
 ---
 
