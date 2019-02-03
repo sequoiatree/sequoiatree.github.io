@@ -1,0 +1,8 @@
+<p>Next we move on to the <code>WHERE</code> clause. It tells us that we only want to keep the rows satisfying the predicate <code>age &lt;= 20 OR num_dogs = 3</code>. Let's consider each row one at a time:</p>
+<ul>
+<li>For Ace, <code>age &lt;= 20</code> evaluates to <code>TRUE</code> so the claim is satisfied.</li>
+<li>For Ada, <code>age &lt;= 20</code> evaluates to <code>NULL</code> but <code>num_dogs = 3</code> evaluates to <code>TRUE</code> so the claim is satisfied.</li>
+<li>For Ben, <code>age &lt;= 20</code> evaluates to <code>NULL</code> and <code>num_dogs = 3</code> evaluates to <code>NULL</code> so the claim is not satisfied.</li>
+<li>For Cho, <code>age &lt;= 20</code> evaluates to <code>FALSE</code> so the claim is not satisfied.</li>
+</ul>
+<p>Thus we keep only Ace and Ada.</p>

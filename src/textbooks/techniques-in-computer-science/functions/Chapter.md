@@ -224,7 +224,7 @@ z = 8
 avg = average(4, z, z - 2)
 ```
 
-STARTPYAGRAM average
+STARTSEQUENCE average
 
 As always, we start out with the global frame.
 
@@ -280,7 +280,7 @@ Then we have the `return` statement, which corresponds to a box labeled `return`
 
 At this point, we're done evaluating `average(4, z, z - 2)`, marking the end of both frame 1 and the flag. We can go back to the global frame, having discovered the function call evaluates to 6.0. Now we are able to finish the last line in the code above, by binding `avg` to its proper value.
 
-ENDPYAGRAM
+ENDSEQUENCE
 
 This is hella important, so double-check that you thoroughly understand everything above. For future reference, here's the procedure. You should apply it whenever you come across a function call.
 
@@ -323,7 +323,7 @@ avg = average(1, 2, 3)
 diff_from_avg = difference(10, avg)
 ```
 
-STARTPYAGRAM diff-from-avg-1
+STARTSEQUENCE diff-from-avg-1
 
 The first part is very similar to what we did in the previous section, so we'll skip to the bit right after we've assigned `avg` in the global frame to the result of the function call `average(1, 2, 3)`.
 
@@ -355,7 +355,7 @@ Finally, within frame 2, we execute the code inside `difference`. It seems to re
 
 Having determined the value of the function call, we can go back to the global frame. There we bind the result to `diff_from_avg`. This completes the pyagram.
 
-ENDPYAGRAM
+ENDSEQUENCE
 
 Here's another method for computing the difference between `n` and the average of `x`, `y`, and `z`. Instead of two distinct function calls, it uses a nested function call.
 
@@ -366,7 +366,7 @@ def difference(n, avg):
 diff_from_avg = difference(10, average(1, 2, 3))
 ```
 
-STARTPYAGRAM diff-from-avg-2
+STARTSEQUENCE diff-from-avg-2
 
 We'll start off in the global frame, with `average` already defined.
 
@@ -438,7 +438,7 @@ Bind the parameters to their respective arguments.
 
 Now at last we have discovered `difference(10, average(1, 2, 3))` is 8.0. We can go back to where we left off in the global frame, and bind `diff_from_avg` to its appropriate value.
 
-ENDPYAGRAM
+ENDSEQUENCE
 
 Here's our third and last method of computing the difference between `n` and the average of `x`, `y`, and `z`. It has a function call inside `get_difference_from_avg`.
 
@@ -450,7 +450,7 @@ def get_diff_from_avg(n, x, y, z):
 diff_from_avg = get_diff_from_avg(10, 1, 2, 3)
 ```
 
-STARTPYAGRAM diff-from-avg-3
+STARTSEQUENCE diff-from-avg-3
 
 Again we'll start off in the global frame, with `average` already defined.
 
@@ -526,7 +526,7 @@ In frame 1 we calculate the output 8.0.
 
 Then we can go back to where we left off in the global frame. Having found out `get_diff_from_avg(10, 1, 2, 3)` is 8.0, we are able to finish binding `diff_from_avg`.
 
-ENDPYAGRAM
+ENDSEQUENCE
 
 Make sure you're comfortable with these examples, before you keep reading.
 
@@ -545,7 +545,7 @@ Error: 'y' is not defined
 
 Looks like it doesn't work. To find out why, we should draw a pyagram. Refer back to the past few sections if necessary.
 
-STARTPYAGRAM increment
+STARTSEQUENCE increment
 
 We start out  with `x`  bound to 5, and `increment` bound to a pointer at a function.
 
@@ -569,7 +569,7 @@ Inside, we bind `y` to 6.
 
 Since no `return` value is specified, we return `None` since that's the default.
 
-ENDPYAGRAM
+ENDSEQUENCE
 
 Notice that `y` exists in frame 1, but not in the global frame. It makes sense, then, why Python gets confused when we ask for it in the global frame. This illustrates that even though it's possible for a frame to refer to its parent frame, the reverse is not true. In fact, here's the rule:
 

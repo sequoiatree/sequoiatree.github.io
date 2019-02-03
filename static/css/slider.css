@@ -21,6 +21,14 @@
   margin: 0;
 }
 
+.caption pre {
+  overflow-x: scroll;
+  border-radius: 10px;
+  background-color: #d9e1e3;
+  padding: 5px 10px;
+  margin: 0;
+}
+
 .caption code {
   background-color: #d9e1e3;
 }

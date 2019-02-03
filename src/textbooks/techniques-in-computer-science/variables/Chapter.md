@@ -300,7 +300,7 @@ Whenever you make a pyagram, you'll have a piece of code that you're analyzing. 
 
 Here's how that get's expressed in our pyagram:
 
-STARTPYAGRAM ocean
+STARTSEQUENCE ocean
 
 As always, we start out with the global frame. It is empty.
 
@@ -334,7 +334,7 @@ We just have one more line to go: `fish *= 'splash '`. It's shorthand for saying
 
 Now we have finished the pyagram.
 
-ENDPYAGRAM
+ENDSEQUENCE
 
 We'll be using pyagrams a lot in this class, especially as we get into more complicated material, so make sure you're comfortable with them now.
 

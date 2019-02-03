@@ -62,31 +62,59 @@
   <img src="{{ url_for('static', filename='img/{}.{}'.format(name, extension)) }}">
 {% endmacro %}
 
-{% macro slider(id, data) %}
+{% macro start_slider(id) %}
   <div id="slider-box-{{ id }}" class="slider-box">
-    {% for pair in data %}
-      <div class="slide slide-toggle slide-{{ id }}">
-        {{ pair[0] }}
-      </div>
-    {% endfor %}
-    <div class="center">
-      <div class="slider-bar">
-        <input id="slider-{{ id }}" class="slider" type="range" min="0"
-               max="{{ data|length - 1 }}" value="0">
-      </div>
-      <button class="button" style="padding: 0.5rem; margin: 0;"
-              onclick="incrementSlider('{{ id }}', -1)">
-        &#10094;
-      </button>
-      <button class="button" style="padding: 0.5rem; margin: 0;"
-              onclick="incrementSlider('{{ id }}', 1)">
-        &#10095;
-      </button>
-    </div>
-    {% for pair in data %}
-      <div class="caption caption-toggle caption-{{ id }}">
-        {{ pair[1] }}
-      </div>
-    {% endfor %}
+{% endmacro %}
+
+{% macro end_slider() %}
   </div>
+{% endmacro %}
+
+{% macro slider_interface(id, data) %}
+  <div class="center">
+    <div class="slider-bar">
+      <input id="slider-{{ id }}" class="slider" type="range" min="0"
+             max="{{ data|length - 1 }}" value="0">
+    </div>
+    <button class="button" style="padding: 0.5rem; margin: 0;"
+            onclick="incrementSlider('{{ id }}', -1)">
+      &#10094;
+    </button>
+    <button class="button" style="padding: 0.5rem; margin: 0;"
+            onclick="incrementSlider('{{ id }}', 1)">
+      &#10095;
+    </button>
+  </div>
+{% endmacro %}
+
+{% macro slider(id, data) %}
+  {{ start_slider(id) }}
+  {% for pair in data %}
+    <div class="slide slide-toggle slide-{{ id }}">
+      {{ pair[0] }}
+    </div>
+  {% endfor %}
+  {{ slider_interface(id, data) }}
+  {% for pair in data %}
+    <div class="caption caption-toggle caption-{{ id }}">
+      {{ pair[1] }}
+    </div>
+  {% endfor %}
+  {{ end_slider() }}
+{% endmacro %}
+
+{% macro md_slider(id, data) %}
+  {{ start_slider(id) }}
+  {% for pair in data %}
+    <div class="caption caption-toggle slide-{{ id }}">
+      {{ pair[0] }}
+    </div>
+  {% endfor %}
+  {{ slider_interface(id, data) }}
+  {% for pair in data %}
+    <div class="caption caption-toggle caption-{{ id }}">
+      {{ pair[1] }}
+    </div>
+  {% endfor %}
+  {{ end_slider() }}
 {% endmacro %}

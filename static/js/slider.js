@@ -1,5 +1,7 @@
 var sliderIDs = getSliderIDs();
 
+var MAX_SLIDE_HEIGHT = 400;
+
 initializeSliders();
 
 function getSliderIDs() {
@@ -16,7 +18,7 @@ function initializeSliders() {
     var i;
     for (i = 0; i < sliderIDs.length; i += 1) {
         var id = sliderIDs[i];
-        // initializeSlides(id); // Keep the diagram window the same height.
+        initializeSlides(id); // Keep the diagram window the same height.
         getSlider(id).oninput = function() {
             setSlider(getID(this, "slider"), this.value);
         }
@@ -33,8 +35,10 @@ function initializeSlides(id) {
         heights[i] = $(slides[i]).height();
     }
     var maxHeight = Math.max.apply(Math, heights);
-    for (i = 0; i < slides.length; i += 1) {
-        slides[i].style.height = maxHeight + "px";
+    if (maxHeight < MAX_SLIDE_HEIGHT) {
+        for (i = 0; i < slides.length; i += 1) {
+            slides[i].style.height = maxHeight + "px";
+        }
     }
 }
 

@@ -117,7 +117,7 @@ def make_square():
 square = make_square()
 ```
 
-STARTPYAGRAM make-square
+STARTSEQUENCE make-square
 
 First we define `make_square` in the global frame with an ordinary `def` statement.
 
@@ -145,7 +145,7 @@ The only line in `make_square` is `return lambda x: x ** 2`. This creates a `lam
 
 Last of all we go back to the global frame, where we can finish binding `square` to the value of `make_square()`.
 
-ENDPYAGRAM
+ENDSEQUENCE
 
 So in summary:
 
@@ -164,7 +164,7 @@ square_1 = make_square()
 square_2 = make_square()
 ```
 
-STARTPYAGRAM make-square-twice
+STARTSEQUENCE make-square-twice
 
 As before, we open up frame 1 for the call to `make_square`, where we evaluate the `lambda` expression to get a new pointer at a new squaring function. The function's parent is frame 1, since that's the frame where we create it. Then we return the pointer from the call to `make_square`, and bind it to the variable `square_1` in the global frame.
 
@@ -192,7 +192,7 @@ When we evaluate the `lambda` expression for the second time, it produces a new 
 
 Finally that pointer is bound to `square_2` in the global frame. Notice how `square_1` and `square_2` end up pointing to different functions. That's because `square_1` got bound to the pointer returned from the function call `make_square()`, and `square_2` got bound to the pointer returned from a _different_ function call `make_square()`. Each function call produced a new pointer and a new `lambda` function.
 
-ENDPYAGRAM
+ENDSEQUENCE
 
 Check that you agree with this example, before you continue.
 
@@ -260,7 +260,7 @@ x = 10
 y = f(x - 9, lambda~2~: x)(x)
 ```
 
-STARTPYAGRAM lambda-argument
+STARTSEQUENCE lambda-argument
 
 We'll start the pyagram by binding `f` and `x` in the global frame.
 
@@ -362,7 +362,7 @@ According to the code above, we can see λ~1~ is just supposed to return `x + y`
 
 Now that the function call it complete, we can go back to the global frame where we left off on the line `y = f(x - 9, lambda~2~: x)(x)`. Since we just learned that `f(x - 9, lambda~2~: x)(x)` is 11, it looks `y` is getting bound to 11. This completes the pyagram.
 
-ENDPYAGRAM
+ENDSEQUENCE
 
 Again, if this exercise was confusing you may want to review [the procedure for drawing pyagrams](functions.html#the-order-of-evaluation). In fact, you may even want to skim or re-read some of the stuff in the sections above, just to check that everything jives with you. `lambda` functions can be a tricky topic, but they're something you should get familiar with.
 

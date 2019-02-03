@@ -45,7 +45,7 @@ To include an image, use  the macro `IMG-PNG example` for `.png` images, `IMG-JP
 To include pyagrams, you can use the following syntax.
 
 ```
-STARTPYAGRAM example
+STARTSEQUENCE example
 
 This is the caption for the first frame.
 
@@ -57,7 +57,7 @@ This is the caption for the second frame.
 
 This is the caption for the third frame.
 
-ENDPYAGRAM
+ENDSEQUENCE
 ```
 
 Note that in the example above you would also have to include a file containing the corresponding frames of the pyagram (one frame per caption), stored as SVGs separated by linebreaks, in the respective `assets` folder. It would have to be named `example.svg`.

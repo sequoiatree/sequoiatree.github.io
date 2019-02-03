@@ -1,0 +1,742 @@
+
+
+
+<!DOCTYPE HTML>
+
+<html>
+
+  <head>
+    <title>SQL: Data Manipulation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/static/favicon.ico?v=1">
+    
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,500">
+
+
+    
+
+  
+
+  <link rel="stylesheet" href="/static/css/main.css">
+
+
+
+  
+
+  <link rel="stylesheet" href="/static/css/button.css">
+
+
+
+  
+
+  <link rel="stylesheet" href="/static/css/collapsible.css">
+
+
+
+
+    
+
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work+Sans:400,700">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Mono">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+
+
+
+
+  
+
+  <link rel="stylesheet" href="/static/css/textbook.css">
+
+
+
+  
+
+  <link rel="stylesheet" href="/static/css/navbar.css">
+
+
+
+  
+
+  <link rel="stylesheet" href="/static/css/dropdown.css">
+
+
+
+  
+
+  <link rel="stylesheet" href="/static/css/slider.css">
+
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+
+
+
+  
+
+  <script src="/static/js/textbook.js"></script>
+
+
+
+  
+
+  <script src="/static/js/display.js"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+  MathJax.Hub.Register.StartupHook("MathMenu Ready",function () {
+    MathJax.Menu.BGSTYLE["z-index"] = 1;
+  });
+</script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+  </head>
+
+  
+
+  <div id="navbar" class="navbar">
+    <div class="page">
+      <a href="/">
+        <i class="fas fa-tree"></i>
+      </a>
+
+  
+  <div class="dropdown">
+    <button class="dropbtn" onclick="toggleDisplay('chapter-dropdown', 'none', 'block')">
+      More Chapters
+    </button>
+    <div id="chapter-dropdown" class="dropdown-content" style="display: none;">
+
+    
+      <a href="/relational-databases/sql-dml.html">SQL: Data Manipulation</a>
+    
+  
+    </div>
+  </div>
+
+  
+
+      <a href="javascript:void(0);" class="icon"
+         onclick="toggleClass('navbar', 'navbar', 'responsive');">
+        &#9776;
+      </a>
+    </div>
+  </div>
+
+
+
+  <body>
+    <div class="page content">
+      
+
+<p>In the previous chapter we learned how to use SQL for creating tables and populating them with data. Now it's time for us to learn how to query that data, and manipulate it.</p>
+<h1 id="querying-a-table">Querying a table</h1>
+<p>The most fundamental SQL query looks like this:</p>
+<pre class="highlight"><code>SELECT &lt;columns&gt;
+FROM &lt;table&gt;;</code></pre>
+
+<p>The <code>FROM</code> clause tells SQL which table you're interested in, and the <code>SELECT</code> clause tells SQL which columns of that table you want to see. For example, consider a table <code>Person(name, age, num_dogs)</code> containing the data below:</p>
+<pre class="highlight"><code>name|age|num_dogs
+----+---+--------
+Ace |20 |4
+Ada |18 |3
+Ben |7  |2
+Cho |27 |3</code></pre>
+
+<p>If we executed this SQL query ...</p>
+<pre class="highlight"><code>SELECT name, num_dogs
+FROM Person;</code></pre>
+
+<p>... then we would get any of the following outputs, which are all equivalent:</p>
+<pre class="highlight"><code>name|num_dogs    name|num_dogs    name|num_dogs    name|num_dogs    name|num_dogs    name|num_dogs    name|num_dogs    name|num_dogs    name|num_dogs    name|num_dogs    name|num_dogs    name|num_dogs    name|num_dogs    name|num_dogs    name|num_dogs    name|num_dogs    name|num_dogs    name|num_dogs    name|num_dogs    name|num_dogs    name|num_dogs    name|num_dogs    name|num_dogs    name|num_dogs
+----+--------    ----+--------    ----+--------    ----+--------    ----+--------    ----+--------    ----+--------    ----+--------    ----+--------    ----+--------    ----+--------    ----+--------    ----+--------    ----+--------    ----+--------    ----+--------    ----+--------    ----+--------    ----+--------    ----+--------    ----+--------    ----+--------    ----+--------    ----+--------
+Ace |4           Ace |4           Ace |4           Ace |4           Ace |4           Ace |4           Ada |3           Ada |3           Ada |3           Ada |3           Ada |3           Ada |3           Ben |2           Ben |2           Ben |2           Ben |2           Ben |2           Ben |2           Cho |3           Cho |3           Cho |3           Cho |3           Cho |3           Cho |3
+Ada |3           Ada |3           Ben |2           Ben |2           Cho |3           Cho |3           Ace |4           Ace |4           Ben |2           Ben |2           Cho |3           Cho |3           Ace |4           Ace |4           Ada |3           Ada |3           Cho |3           Cho |3           Ace |4           Ace |4           Ada |3           Ada |3           Ben |2           Ben |2
+Ben |2           Cho |3           Ada |3           Cho |3           Ada |3           Ben |2           Ben |2           Cho |3           Ace |4           Cho |3           Ace |4           Ben |2           Ada |3           Cho |3           Ace |4           Cho |3           Ace |4           Ada |3           Ada |3           Ben |2           Ace |4           Ben |2           Ace |4           Ada |3
+Cho |3           Ben |2           Cho |3           Ada |3           Ben |2           Ada |3           Cho |3           Ben |2           Cho |3           Ace |4           Ben |2           Ace |4           Cho |3           Ada |3           Cho |3           Ace |4           Ada |3           Ace |4           Ben |2           Ada |3           Ben |2           Ace |4           Ada |3           Ace |4</code></pre>
+
+<p>These tables are all permutations of one another, and you may get a different permutation depending on which version of SQL you're using. Typically in this book I'll only show one possible permutation when I talk about the output of a SQL query, but you shouldn't make any assumptions about which permutation you'll get — that is, unless you use the <code>ORDER BY</code> clause, which I'll discuss later in this chapter.</p>
+<h1 id="filtering-out-uninteresting-rows">Filtering out uninteresting rows</h1>
+<p>Frequently we are interested in only a subset of the data available to us. That is, even though we might have data about many people or things, we often only want to see the data that we have about very specific people or things. This is where the <code>WHERE</code> clause comes in handy; it lets us specify which specific rows of our table we're interested in. Here's the syntax:</p>
+<pre class="highlight"><code>SELECT &lt;columns&gt;
+FROM &lt;table&gt;
+WHERE &lt;predicate&gt;;</code></pre>
+
+<p>Once again, let's consider our table <code>Person(name, age, num_dogs)</code>. Suppose we want to see how many dogs each person owns — same as before — but this time we only care about the dog-owners who are adults. Let's walk through this SQL query, one step at a time:</p>
+<pre class="highlight"><code>SELECT name, num_dogs
+FROM Person
+WHERE age &gt;= 18;</code></pre>
+
+<p>
+  
+  <div id="slider-box-markdown-0" class="slider-box">
+
+  
+    <div class="caption caption-toggle slide-markdown-0">
+      <pre class="highlight"><code>name|age|num_dogs
+----+---+--------
+Ace |20 |4
+Ada |18 |3
+Ben |7  |2
+Cho |27 |3</code></pre>
+    </div>
+  
+    <div class="caption caption-toggle slide-markdown-0">
+      <pre class="highlight"><code>name|age|num_dogs
+----+---+--------
+Ace |20 |4
+Ada |18 |3
+Cho |27 |3</code></pre>
+    </div>
+  
+    <div class="caption caption-toggle slide-markdown-0">
+      <pre class="highlight"><code>name|num_dogs
+----+--------
+Ace |4
+Ada |3
+Cho |3</code></pre>
+    </div>
+  
+  
+  <div class="center">
+    <div class="slider-bar">
+      <input id="slider-markdown-0" class="slider" type="range" min="0"
+             max="2" value="0">
+    </div>
+    <button class="button" style="padding: 0.5rem; margin: 0;"
+            onclick="incrementSlider('markdown-0', -1)">
+      &#10094;
+    </button>
+    <button class="button" style="padding: 0.5rem; margin: 0;"
+            onclick="incrementSlider('markdown-0', 1)">
+      &#10095;
+    </button>
+  </div>
+
+  
+    <div class="caption caption-toggle caption-markdown-0">
+      <p>As always, we begin with the <code>FROM</code> clause. (Each clause in a SQL query happens in the order it's written, except for <code>SELECT</code> which happens last. That's important, so remember it.) The <code>FROM</code> clause tells us we're interested in the <code>Person</code> table.</p>
+    </div>
+  
+    <div class="caption caption-toggle caption-markdown-0">
+      <p>Next we move on to the <code>WHERE</code> clause. It tells us that we only want to keep the rows satisfying the predicate <code>age &gt;= 18</code>, so we remove the row with Ben.</p>
+    </div>
+  
+    <div class="caption caption-toggle caption-markdown-0">
+      <p>And finally, we <code>SELECT</code> the columns <code>name</code> and <code>num_dogs</code> to obtain our final result. (Again, any permutation of this result is equally valid so you shouldn't make any assumptions about the order of the rows.)</p>
+    </div>
+  
+  
+  </div>
+
+</p>
+<h2 id="boolean-operators">Boolean operators</h2>
+<p>If you want to filter on more complicated predicates, you can use the boolean operators <code>NOT</code>, <code>AND</code>, and <code>OR</code>. For instance, if we only cared about dog-owners who are not only adults, but also own more than 3 dogs, then we would write the following query:</p>
+<pre class="highlight"><code>SELECT name, num_dogs
+FROM Person
+WHERE age &gt;= 18
+  AND num_dogs &gt; 3;</code></pre>
+
+<p>As in Python, this is the order of evaluation for boolean operators:</p>
+<ol>
+<li><code>NOT</code></li>
+<li><code>AND</code></li>
+<li><code>OR</code></li>
+</ol>
+<p>That said, it is good practice to avoid ambiguity by adding parentheses even when they are not strictly necessary.</p>
+<h2 id="filtering-null-values">Filtering <code>NULL</code> values</h2>
+<p>Bear in mind that some values in your database may be <code>NULL</code> whether you like it or not, so it's good to know how SQL handles them. Pretty much it boils down to the following:</p>
+<ul>
+<li>If you do anything with <code>NULL</code>, you'll just get <code>NULL</code>. For instance if <code>x</code> is <code>NULL</code>, then <code>x &gt; 3</code>, <code>1 = x</code>, and <code>x + 4</code> all evaluate to <code>NULL</code>. Even <code>x = NULL</code> would evaluate to <code>NULL</code>; if you want to check whether <code>x</code> is <code>NULL</code>, then write <code>x IS NULL</code> or <code>x IS NOT NULL</code> instead.</li>
+<li><code>WHERE NULL</code> is just like <code>WHERE FALSE</code>. The row in question does not get included.</li>
+<li><code>NULL</code> short-circuits with boolean operators. That means a boolean expression involving <code>NULL</code> will evaluate to:<ul>
+<li><code>TRUE</code>, if it'd evaluate to <code>TRUE</code> regardless of whether the unknown value is really <code>TRUE</code> or <code>FALSE</code>.</li>
+<li><code>FALSE</code>, if it'd evaluate to <code>FALSE</code> regardless of whether the unknown value is really <code>TRUE</code> or <code>FALSE</code>.</li>
+<li>Or <code>NULL</code>, if it depends on the unknown value.</li>
+</ul>
+</li>
+</ul>
+<p>Let's walk through this query as an example:</p>
+<pre class="highlight"><code>SELECT name, num_dogs
+FROM Person
+WHERE age &lt;= 20
+   OR num_dogs = 3;</code></pre>
+
+<p>
+  
+  <div id="slider-box-markdown-1" class="slider-box">
+
+  
+    <div class="caption caption-toggle slide-markdown-1">
+      <pre class="highlight"><code>name|age |num_dogs
+----+----+--------
+Ace |20  |4
+Ada |NULL|3
+Ben |NULL|NULL
+Cho |27  |NULL</code></pre>
+    </div>
+  
+    <div class="caption caption-toggle slide-markdown-1">
+      <pre class="highlight"><code>name|age |num_dogs
+----+----+--------
+Ace |20  |4
+Ada |NULL|3</code></pre>
+    </div>
+  
+    <div class="caption caption-toggle slide-markdown-1">
+      <pre class="highlight"><code>name|num_dogs
+----+--------
+Ace |4
+Ada |3</code></pre>
+    </div>
+  
+  
+  <div class="center">
+    <div class="slider-bar">
+      <input id="slider-markdown-1" class="slider" type="range" min="0"
+             max="2" value="0">
+    </div>
+    <button class="button" style="padding: 0.5rem; margin: 0;"
+            onclick="incrementSlider('markdown-1', -1)">
+      &#10094;
+    </button>
+    <button class="button" style="padding: 0.5rem; margin: 0;"
+            onclick="incrementSlider('markdown-1', 1)">
+      &#10095;
+    </button>
+  </div>
+
+  
+    <div class="caption caption-toggle caption-markdown-1">
+      <p>As always, we begin with the <code>FROM</code> clause. (Recall that each clause in a SQL query happens in the order it's written, except for <code>SELECT</code> which happens last.) The <code>FROM</code> clause tells us we're interested in the <code>Person</code> table. (You may notice I've nulled out a coule values, for the sake of demonstration.)</p>
+    </div>
+  
+    <div class="caption caption-toggle caption-markdown-1">
+      <p>Next we move on to the <code>WHERE</code> clause. It tells us that we only want to keep the rows satisfying the predicate <code>age &lt;= 20 OR num_dogs = 3</code>. Let's consider each row one at a time:</p>
+<ul>
+<li>For Ace, <code>age &lt;= 20</code> evaluates to <code>TRUE</code> so the claim is satisfied.</li>
+<li>For Ada, <code>age &lt;= 20</code> evaluates to <code>NULL</code> but <code>num_dogs = 3</code> evaluates to <code>TRUE</code> so the claim is satisfied.</li>
+<li>For Ben, <code>age &lt;= 20</code> evaluates to <code>NULL</code> and <code>num_dogs = 3</code> evaluates to <code>NULL</code> so the claim is not satisfied.</li>
+<li>For Cho, <code>age &lt;= 20</code> evaluates to <code>FALSE</code> so the claim is not satisfied.</li>
+</ul>
+<p>Thus we keep only Ace and Ada.</p>
+    </div>
+  
+    <div class="caption caption-toggle caption-markdown-1">
+      <p>And finally, we <code>SELECT</code> the columns <code>name</code> and <code>num_dogs</code> to obtain our final result.</p>
+    </div>
+  
+  
+  </div>
+
+</p>
+<h1 id="grouping-and-aggregation">Grouping and aggregation</h1>
+<p>When you're working with a very large database, it is useful to be able to summarize your data so that you can better understand the general trends at play. Let's see how.</p>
+<h2 id="summarizing-columns-of-data">Summarizing columns of data</h2>
+<p>With SQL you are able to summarize entire columns of data using built-in aggregate functions. The most common ones are <code>SUM</code>, <code>AVG</code>, <code>MAX</code>, <code>MIN</code>, and <code>COUNT</code> — but there are more, and you can even make your own using the <code>CREATE AGGREGATE</code> command. I don't want to get sidetracked, though, so here are the important takeaways:</p>
+<ul>
+<li>The input to an aggregate function is the name of a column, and the output is a single value that summarizes all the data within that column.</li>
+<li>Every aggregate ignores <code>NULL</code> values except for <code>COUNT(*)</code>. (So <code>COUNT(&lt;column&gt;)</code> returns the number of non-<code>NULL</code> values in the specified column, whereas <code>COUNT(*)</code> returns the number of rows in the table overall.)</li>
+</ul>
+<p>For example consider this variant of our table <code>People(name, age, num_dogs)</code> from earlier, where we are now unsure how many dogs Ben owns:</p>
+<pre class="highlight"><code>name|age|num_dogs
+----+---+--------
+Ace |20 |4
+Ada |18 |3
+Ben |7  |NULL
+Cho |27 |3</code></pre>
+
+<p>With this table in mind ...</p>
+<ul>
+<li><code>SUM(age)</code> is <code>72.0</code>, and <code>SUM(num_dogs)</code> is <code>10.0</code>.</li>
+<li><code>AVG(age)</code> is <code>18.0</code>, and <code>AVG(num_dogs)</code> is <code>3.3333333333333333</code>.</li>
+<li><code>MAX(age)</code> is <code>27</code>, and <code>MAX(num_dogs)</code> is <code>4</code>.</li>
+<li><code>MIN(age)</code> is <code>7</code>, and <code>MIN(num_dogs)</code> is <code>3</code>.</li>
+<li><code>COUNT(age)</code> is <code>4</code>, <code>COUNT(num_dogs)</code> is <code>3</code>, and <code>COUNT(*)</code> is <code>4</code>.</li>
+</ul>
+<p>So, if we desired the range of ages represented in our database, then we could use the query below and it would produce the result 20. (Technically it would produce a one-by-one table containing the number 20, but SQL treats it the same as the number 20 itself.)</p>
+<pre class="highlight"><code>SELECT MAX(age) - MIN(age)
+FROM Person;</code></pre>
+
+<p>Or, if we desired the average number of dogs owned by adults, then we could write this:</p>
+<pre class="highlight"><code>SELECT AVG(num_dogs)
+FROM Person
+WHERE age &gt;= 18;</code></pre>
+
+<p>
+  
+  <div id="slider-box-markdown-2" class="slider-box">
+
+  
+    <div class="caption caption-toggle slide-markdown-2">
+      <pre class="highlight"><code>name|age|num_dogs
+----+---+--------
+Ace |20 |4
+Ada |18 |3
+Ben |7  |NULL
+Cho |27 |3</code></pre>
+    </div>
+  
+    <div class="caption caption-toggle slide-markdown-2">
+      <pre class="highlight"><code>name|age|num_dogs
+----+---+--------
+Ace |20 |4
+Ada |18 |3
+Cho |27 |3</code></pre>
+    </div>
+  
+    <div class="caption caption-toggle slide-markdown-2">
+      <pre class="highlight"><code>AVG(num_dogs)
+------------------
+3.3333333333333333</code></pre>
+    </div>
+  
+  
+  <div class="center">
+    <div class="slider-bar">
+      <input id="slider-markdown-2" class="slider" type="range" min="0"
+             max="2" value="0">
+    </div>
+    <button class="button" style="padding: 0.5rem; margin: 0;"
+            onclick="incrementSlider('markdown-2', -1)">
+      &#10094;
+    </button>
+    <button class="button" style="padding: 0.5rem; margin: 0;"
+            onclick="incrementSlider('markdown-2', 1)">
+      &#10095;
+    </button>
+  </div>
+
+  
+    <div class="caption caption-toggle caption-markdown-2">
+      <p>As always, we begin with the <code>FROM</code> clause. (One last time, at risk of sounding like a broken record: each clause in a SQL query happens in the order it's written, except for <code>SELECT</code> which happens last.) The <code>FROM</code> clause tells us we're interested in the <code>Person</code> table.</p>
+    </div>
+  
+    <div class="caption caption-toggle caption-markdown-2">
+      <p>Next we move on to the <code>WHERE</code> clause. It tells us that we only want to keep the rows satisfying the predicate <code>age &gt;= 18</code>, so we remove the row with Ben.</p>
+    </div>
+  
+    <div class="caption caption-toggle caption-markdown-2">
+      <p>And finally, we <code>SELECT</code> the average of the <code>num_dogs</code> column to obtain our final result, <code>3.3333333333333333</code>.</p>
+    </div>
+  
+  
+  </div>
+
+</p>
+<h2 id="summarizing-groups-of-data">Summarizing groups of data</h2>
+<p>Now you know how to summarize an entire column of your database into a single number. More often than not, though, we want a little finer accuracy than that. This is possible with the <code>GROUP BY</code> clause, which allows us to split our data into groups and then summarize each group separately. Here's the syntax:</p>
+<pre class="highlight"><code>SELECT &lt;columns&gt;
+FROM &lt;table&gt;
+WHERE &lt;predicate&gt;   -- Filter out rows (before grouping).
+GROUP BY &lt;columns&gt;
+HAVING &lt;predicate&gt;; -- Filter out groups (after grouping).</code></pre>
+
+<p>Notice we also have a brand new <code>HAVING</code> clause, which is actually very similar to <code>WHERE</code>. The difference?</p>
+<ul>
+<li><code>WHERE</code> occurs <em>before</em> grouping. It filters out uninteresting <em>rows</em>.</li>
+<li><code>HAVING</code> occurs <em>after</em> grouping. It filters out uninteresting <em>groups</em>.</li>
+</ul>
+<p>To explore all these new mechanics let's see another step-by-step example. This time our query will find the average number of dogs owned, for each adult age represented in our database. We will exclude any age for which we only have one datum.</p>
+<pre class="highlight"><code>SELECT age, AVG(num_dogs)
+FROM Person
+WHERE age &gt;= 18
+GROUP BY age
+HAVING COUNT(*) &gt; 1;</code></pre>
+
+<p>
+  
+  <div id="slider-box-markdown-3" class="slider-box">
+
+  
+    <div class="caption caption-toggle slide-markdown-3">
+      <pre class="highlight"><code>name|age|num_dogs
+----+---+--------
+Ace |20 |4
+Ada |18 |3
+Ben |7  |2
+Cho |27 |3
+Ema |20 |2
+Ian |20 |3
+Jay |18 |5
+Mae |33 |8
+Rex |27 |1</code></pre>
+    </div>
+  
+    <div class="caption caption-toggle slide-markdown-3">
+      <pre class="highlight"><code>name|age|num_dogs
+----+---+--------
+Ace |20 |4
+Ada |18 |3
+Cho |27 |3
+Ema |20 |2
+Ian |20 |3
+Jay |18 |5
+Mae |33 |8
+Rex |27 |1</code></pre>
+    </div>
+  
+    <div class="caption caption-toggle slide-markdown-3">
+      <pre class="highlight"><code>name|age|num_dogs
+----+---+--------
+Ace |20 |4
+Ema |20 |2
+Ian |20 |3
+----+---+--------
+Ada |18 |3
+Jay |18 |5
+----+---+--------
+Cho |27 |3
+Rex |27 |1
+----+---+--------
+Mae |33 |8</code></pre>
+    </div>
+  
+    <div class="caption caption-toggle slide-markdown-3">
+      <pre class="highlight"><code>name|age|num_dogs
+----+---+--------
+Ace |20 |4
+Ema |20 |2
+Ian |20 |3
+----+---+--------
+Ada |18 |3
+Jay |18 |5
+----+---+--------
+Cho |27 |3
+Rex |27 |1</code></pre>
+    </div>
+  
+    <div class="caption caption-toggle slide-markdown-3">
+      <pre class="highlight"><code>age|AVG(num_dogs)
+---+-------------
+20 |3.0
+18 |4.0
+27 |2.0</code></pre>
+    </div>
+  
+  
+  <div class="center">
+    <div class="slider-bar">
+      <input id="slider-markdown-3" class="slider" type="range" min="0"
+             max="4" value="0">
+    </div>
+    <button class="button" style="padding: 0.5rem; margin: 0;"
+            onclick="incrementSlider('markdown-3', -1)">
+      &#10094;
+    </button>
+    <button class="button" style="padding: 0.5rem; margin: 0;"
+            onclick="incrementSlider('markdown-3', 1)">
+      &#10095;
+    </button>
+  </div>
+
+  
+    <div class="caption caption-toggle caption-markdown-3">
+      <p>First we evaluate the <code>FROM</code> clause; it tells us to look at the <code>Person</code> table, which I've somewhat expanded since we last saw it.</p>
+    </div>
+  
+    <div class="caption caption-toggle caption-markdown-3">
+      <p>Next we move on to the <code>WHERE</code> clause. It tells us that we only want to keep the rows satisfying the predicate <code>age &gt;= 18</code>, so we remove the row with Ben.</p>
+    </div>
+  
+    <div class="caption caption-toggle caption-markdown-3">
+      <p>Now for the interesting part. We arrive at the <code>GROUP BY</code> clause, which tells us to categorize the data by <code>age</code>. We end up with a group of all the adults 20 years old, a group of all the adults 18 years old, a group of all the adults 27 years old, and a group of all the adults 33 years old.</p>
+    </div>
+  
+    <div class="caption caption-toggle caption-markdown-3">
+      <p>The <code>HAVING</code> clause tells us we only want to keep the groups satisfying the predicate <code>COUNT(*) &gt; 1</code> — that is, the groups that contain more than one row. We discard the group that contains only Mae.</p>
+    </div>
+  
+    <div class="caption caption-toggle caption-markdown-3">
+      <p>Last but not least, every group gets collapsed into a single row. According to our <code>SELECT</code> clause, each such row must contain two things:</p>
+<ul>
+<li>The <code>age</code> corresponding to the group.</li>
+<li>The <code>AVG(num_dogs)</code> for the group.</li>
+</ul>
+<p>This completes the query.</p>
+    </div>
+  
+  
+  </div>
+
+</p>
+<p>So, to recap, here's how you should go about a query that follows the template above:</p>
+<ol>
+<li>Start with the table specified in the <code>FROM</code> clause.</li>
+<li>Filter out uninteresting rows, keeping only the ones that satisfy the <code>WHERE</code> clause.</li>
+<li>Put data into groups, according to the <code>GROUP BY</code> clause.</li>
+<li>Filter out uninteresting groups, keeping only the ones that satisfy the <code>HAVING</code> clause.</li>
+<li>Collapse each group into a single row, containing the fields specified in the <code>SELECT</code> clause.</li>
+</ol>
+<p>In passing, note that you can also group data on multiple columns at the same time. Here's an example:</p>
+<pre class="highlight"><code>SELECT name, age, COUNT(*)
+FROM Person
+GROUP BY name, age;</code></pre>
+
+<p>
+  
+  <div id="slider-box-markdown-4" class="slider-box">
+
+  
+    <div class="caption caption-toggle slide-markdown-4">
+      <pre class="highlight"><code>name|age|num_dogs
+----+---+--------
+Ace |20 |4
+Ace |20 |3
+Ace |7  |2
+Ada |18 |3
+Ada |18 |4
+Ada |27 |3</code></pre>
+    </div>
+  
+    <div class="caption caption-toggle slide-markdown-4">
+      <pre class="highlight"><code>name|age|num_dogs
+----+---+--------
+Ace |20 |4
+Ace |20 |3
+----+---+--------
+Ace |7  |2
+----+---+--------
+Ada |18 |3
+Ada |18 |4
+----+---+--------
+Ada |27 |3</code></pre>
+    </div>
+  
+    <div class="caption caption-toggle slide-markdown-4">
+      <pre class="highlight"><code>name|age|COUNT(*)
+----+---+--------
+Ace |20 |2
+Ace |7  |1
+Ada |18 |2
+Ada |27 |1</code></pre>
+    </div>
+  
+  
+  <div class="center">
+    <div class="slider-bar">
+      <input id="slider-markdown-4" class="slider" type="range" min="0"
+             max="2" value="0">
+    </div>
+    <button class="button" style="padding: 0.5rem; margin: 0;"
+            onclick="incrementSlider('markdown-4', -1)">
+      &#10094;
+    </button>
+    <button class="button" style="padding: 0.5rem; margin: 0;"
+            onclick="incrementSlider('markdown-4', 1)">
+      &#10095;
+    </button>
+  </div>
+
+  
+    <div class="caption caption-toggle caption-markdown-4">
+      <p>First we evaluate the <code>FROM</code> clause; it tells us to look at the <code>Person</code> table, which I've modified to include several people named Ace and several people named Ada.</p>
+    </div>
+  
+    <div class="caption caption-toggle caption-markdown-4">
+      <p>Since there's no <code>WHERE</code> clause, we go directly to <code>GROUP BY</code>. It tells us to categorize the data by both <code>name</code> and <code>age</code>. We end up with a group of all the people named Ace who are 20 years old, a group of all the people named Ace who are 7 years old, a group of all the people named Ada who are 18 years old, and a group of all the people named Ada who are 27 years old.</p>
+    </div>
+  
+    <div class="caption caption-toggle caption-markdown-4">
+      <p>Last but not least, every group gets collapsed into a single row. According to our <code>SELECT</code> clause, each such row must contain three things:</p>
+<ul>
+<li>The <code>name</code> corresponding to the group.</li>
+<li>The <code>age</code> corresponding to the group.</li>
+<li>The number of rows within the group.</li>
+</ul>
+    </div>
+  
+  
+  </div>
+
+</p>
+<h2 id="a-word-of-caution">A word of caution</h2>
+<p>So that's how grouping and aggregation work, but before we move on I must emphasize one last thing regarding illegal queries. We'll start by considering these two examples:</p>
+<ol>
+<li>
+<p>Though it's not immediately obvious, this query actually produces an error:
+    <pre class="highlight"><code>SELECT age, AVG(num_dogs)
+FROM Person;</code></pre>
+    What's the issue? <code>age</code> is an entire column of numbers, whereas <code>AVG(num_dogs)</code> is just a single number. This is problematic because a properly formed table must have the same amount of rows in each column.</p>
+</li>
+<li>
+<p>This one is bad too, for a very similar reason:
+    <pre class="highlight"><code>SELECT age, num_dogs
+FROM Person
+GROUP BY age;</code></pre>
+    After grouping by <code>age</code> we obtain a table like this:
+    <pre class="highlight"><code>name|age|num_dogs
+----+---+--------
+Ace |20 |4
+Ema |20 |2
+Ian |20 |3
+----+---+--------
+Ada |18 |3
+Jay |18 |5
+----+---+--------
+Cho |27 |3
+Rex |27 |1
+----+---+--------
+Mae |33 |8</code></pre>
+    Then the <code>SELECT</code> clause's job is to collapse each group into a single row. Each such row must contain two things:</p>
+<ul>
+<li>The <code>age</code> corresponding to the group, which is a single number.</li>
+<li>The <code>num_dogs</code> for the group, which is an entire column of numbers.</li>
+</ul>
+<p>So once again, we have this issue of trying to make a table with mismatching dimensions.</p>
+</li>
+</ol>
+<p>The takeaway from all this? If you're going to do <em>any</em> grouping / aggregation at all, then you must <em>only</em> <code>SELECT</code> grouped / aggregated columns. Make sure you understand this rule before you keep reading. It's such a common point of confusion that I'd even recommend writing it down, getting a tattoo of it, or likewise. At the very least, re-read this section later to make sure it still makes sense to you.</p>
+<h1 id="more-to-come">More to come ...</h1>
+<p>This chapter is a work in progress. I'll try to add more details soon.</p>
+
+
+
+
+      <br><br>
+    </div>
+    
+
+
+  
+
+  <script src="/static/js/slider.js"></script>
+
+
+
+
+
+    
+
+  
+
+  <script src="/static/js/collapsible.js"></script>
+
+
+
+
+  </body>
+
+</html>

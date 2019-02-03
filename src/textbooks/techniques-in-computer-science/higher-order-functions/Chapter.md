@@ -309,7 +309,7 @@ Now I could stop talking about parent frames right here, but I want to make sure
 
 Let's draw the corresponding pyagram. Again, it may help to review [the procedure for drawing pyagrams](functions.html#the-order-of-evaluation), from the chapter on functions.
 
-STARTPYAGRAM call-returned-func
+STARTSEQUENCE call-returned-func
 
 We'll start by defining `f` and `x` within the global frame.
 
@@ -361,7 +361,7 @@ Then we start frame 2, to perform the function call. Notice how it corresponds t
 
 According to the defintion of `g` in the code above, we need to return `x`. But there's no `x` in frame 2. We search for it in frame 2's parent, which is frame 1. There we find that `x` is 4, so we can return 4. Notice that if we looked for `x` in the global frame, where this function was called from, we would've found 8. That would've been wrong!
 
-ENDPYAGRAM
+ENDSEQUENCE
 
 The takeaway is that the parent of a function is where it's defined, not where it's called.
 
@@ -423,7 +423,7 @@ Now try drawing a pyagram for the code below. Assume `average(x, y)` directly re
 18.0
 ```
 
-STARTPYAGRAM avg-of-two-funcs
+STARTSEQUENCE avg-of-two-funcs
 
 We'll start with `square`, `cube`, `average`, and `get_avg_func` already defined in the global frame.
 
@@ -567,7 +567,7 @@ Its output is `(x + y) / 2`, which is 18.0.
 
 At long last we know `average(f(x), g(x))` is 18.0. We can fill in the `return` box for frame 2.
 
-ENDPYAGRAM
+ENDSEQUENCE
 
 Notice how `avg_func` can still use `f` and `g`, since they're in its parent frame. In general, inner functions are able to use the variables and functions that are defined in the frame for their outer function. (In this case, the outer function is `get_avg_func`.) Just know that while it's possible to use the variables defined in your parent function, it's not allowed to change them. Python would throw an error if you tried.
 

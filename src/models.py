@@ -1,5 +1,5 @@
 from importlib import import_module
-from os import listdir
+from os import listdir, mkdir
 from os.path import join
 
 from flask import Markup
@@ -53,11 +53,11 @@ class TextbookResource(FileSystemObject):
 
     @property
     def assets_dir(self):
-        ASSETS_DIR = 'assets'
-        if ASSETS_DIR in listdir(self.path):
-            return join(self.path, ASSETS_DIR)
-        else:
-            return None
+        assets_dir = 'assets'
+        src_relative_dir = join(self.path, assets_dir)
+        if assets_dir not in listdir(self.path):
+            mkdir(src_relative_dir)
+        return src_relative_dir
 
     @property
     def renderer(self):

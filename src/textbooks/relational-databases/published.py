@@ -1,2 +1,3 @@
 PUBLISHED = [
+    'sql-dml',
 ]
