@@ -708,7 +708,7 @@ Mae |33 |8</code></pre>
 <p>So once again, we have this issue of trying to make a table with mismatching dimensions.</p>
 </li>
 </ol>
-<p>The takeaway from all this? If you're going to do <em>any</em> grouping / aggregation at all, then you must <em>only</em> <code>SELECT</code> grouped / aggregated columns. Make sure you understand this rule before you keep reading. It's such a common point of confusion that I'd even recommend writing it down, getting a tattoo of it, or likewise. At the very least, re-read this section later to make sure it still makes sense to you.</p>
+<p>The takeaway from all this? If you're going to do <em>any</em> grouping / aggregation at all, then you must <em>only</em> <code>SELECT</code> grouped / aggregated columns. (Or, if you're grouping by the primary key of a table, then you can also <code>SELECT</code> any other columns in the same table, since they're uniquely determined by their corresponding primary key.) Make sure you understand this rule before you keep reading. It's such a common point of confusion that I'd even recommend writing it down, getting a tattoo of it, or likewise. At the very least, re-read this section later to make sure it still makes sense to you.</p>
 <h1 id="more-to-come">More to come ...</h1>
 <p>This chapter is a work in progress. I'll try to add more details soon.</p>
 
