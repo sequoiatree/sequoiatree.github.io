@@ -425,7 +425,7 @@ Now we can proceed to calculate the remaining Fibonacci numbers, according to th
 >>> fib_11 = fib_10 + fib_9
 >>> fib_12 = fib_11 + fib_10
 >>> fib_13 = fib_12 + fib_11
->>> fib_14 = fib_13 + fib_13
+>>> fib_14 = fib_13 + fib_12
 >>> fib_14
 377
 ```
