@@ -1,180 +1,273 @@
 
 
-
-<!DOCTYPE HTML>
-
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <title>Sequoia Tree</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+  Sequoia Tree
+</title>
     <link rel="icon" href="/static/favicon.ico?v=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arapey&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap">
     
+  <link rel="stylesheet" type="text/css" href="/static/styles/main.css">
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,500">
-
-
-    
-
-  
-
-  <link rel="stylesheet" href="/static/css/main.css">
-
-
-
-  
-
-  <link rel="stylesheet" href="/static/css/button.css">
-
-
-
-  
-
-  <link rel="stylesheet" href="/static/css/collapsible.css">
-
-
-
-
-    
-
-
-  
-
-  <link rel="stylesheet" href="/static/css/text.css">
-
-
-
-
-
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   </head>
-
+  <body class="mb-3 font-family-sans-serif font-size-paragraph">
+    
+  <div class="h1 text-uppercase text-center font-family-serif font-size-title">Sequoia</div>
+  <div class="d-flex flex-row flex-wrap justify-content-center">
+    <div class="h4 px-2 text-uppercase font-family-serif">Teacher</div>
+    <div class="h4 px-2 text-uppercase font-family-serif">Researcher</div>
+    <div class="h4 px-2 text-uppercase font-family-serif">Activist</div>
+  </div>
   
-  
-
-  <body>
-    <div class="page content">
-      
-
-<!-- Title -->
-<div id="Title" class="center">
-  <br><br>
-  <p class="title">Sequoia</p>
-  <br>
-  <subtitle>STUDENT RESEARCHER & INSTRUCTOR</subtitle>
-  <br>
-  <subtitle>UC BERKELEY</subtitle>
-  
-  
-    <div class="center">
-  
-  <form method="get" action="/static/bio/cv/Curriculum%20Vitae.pdf">
-    <button class="button">Curriculum Vitae</button>
-  </form>
-  
+  <hr class="mb-0">
+  <div class="sticky-top bg-white">
+    <div class="page-content mx-auto py-3">
+      <nav class="nav nav-pills nav-justified align-items-stretch" id="index-nav-nav" role="tablist">
+        
+          
+          <a class="nav-item nav-link d-flex justify-content-center align-items-center m-1 px-3 py-2 text-uppercase font-family-serif  active " id="index-nav-nav-option-about" data-toggle="pill" href="#index-nav-nav-content-about" role="tab" aria-controls="index-nav-nav-content-about" aria-selected=" true ">About / Contact</a>
+        
+          
+          <a class="nav-item nav-link d-flex justify-content-center align-items-center m-1 px-3 py-2 text-uppercase font-family-serif " id="index-nav-nav-option-textbooks" data-toggle="pill" href="#index-nav-nav-content-textbooks" role="tab" aria-controls="index-nav-nav-content-textbooks" aria-selected=" false ">Textbooks</a>
+        
+          
+          <a class="nav-item nav-link d-flex justify-content-center align-items-center m-1 px-3 py-2 text-uppercase font-family-serif " id="index-nav-nav-option-pyagram" data-toggle="pill" href="#index-nav-nav-content-pyagram" role="tab" aria-controls="index-nav-nav-content-pyagram" aria-selected=" false ">Pyagram</a>
+        
+          
+          <a class="nav-item nav-link d-flex justify-content-center align-items-center m-1 px-3 py-2 text-uppercase font-family-serif " id="index-nav-nav-option-publications" data-toggle="pill" href="#index-nav-nav-content-publications" role="tab" aria-controls="index-nav-nav-content-publications" aria-selected=" false ">Publications</a>
+        
+      </nav>
     </div>
-  
+    <hr class="mt-0">
+  </div>
 
-</div>
-
-<!-- About -->
-<div>
-  <p id="About" class="header">About</p>
-  <hr>
-  <p>Hi, I’m Sequoia, an enthusiastic 19-year-old with interests in dinosaurs, aliens, and robots. I’m also a Regents Scholar at UC Berkeley, where I learn and teach computer science. When I’m not studying, teaching, or developing courseware, I do machine learning research at the UC Berkeley AUTOLab. I put my spare time towards developing interdisciplinary data science modules with the Berkeley Institute of Data Science, and playing text adventures online.<p>
-<p>1000+ Hours Community Service</p>
-<p>1000+ Hours Teaching</p>
-<p>Approx. 1 Ogre Slain</p>
-</div>
-
-<!-- Textbooks -->
-<div>
-  <p id="Textbooks" class="header">Textbooks</p>
-  <hr>
+  <div class="page-content mx-auto">
+    
+  <div class="tab-content" id="index-nav-nav-content">
+    
+      
+      <div class="tab-pane  active " id="index-nav-nav-content-about" role="tabpanel" aria-labelledby="index-nav-nav-option-about">
+        
   
     
-  <button class="collapsible">Techniques in Computer Science</button>
-  <div class="collapsible-content">
 
-      
-        <br/><a href="/techniques-in-computer-science/welcome-to-computer-science.html">Welcome to Computer Science</a><br/>
-      
-        <br/><a href="/techniques-in-computer-science/setup.html">Setup</a><br/>
-      
-        <br/><a href="/techniques-in-computer-science/variables.html">Variables</a><br/>
-      
-        <br/><a href="/techniques-in-computer-science/functions.html">Functions</a><br/>
-      
-        <br/><a href="/techniques-in-computer-science/booleans.html">Booleans</a><br/>
-      
-        <br/><a href="/techniques-in-computer-science/iteration.html">Iteration</a><br/>
-      
-        <br/><a href="/techniques-in-computer-science/higher-order-functions.html">Higher-Order Functions</a><br/>
-      
-        <br/><a href="/techniques-in-computer-science/lambda-functions.html">Lambda Functions</a><br/>
-      
-    
-  <br/>
+<div class="text-justify">
+  I'm a teacher at heart and a researcher by trade. I write textbooks, develop educational technology, explore new techniques in reinforcement learning, advocate for diversity and inclusivity in the computer science community, and obsessively optimize every little thing in my life. In my spare time I run the Berkeley fire trails, explore the Bay Area, and draw candid portraits for people I meet.
+</div>
+
+  <div class="d-flex flex-row justify-content-center my-3">
+    <a class="button mx-1 px-3 py-2  text-uppercase font-family-serif" id="curriculum-vitae"  href="/static/curriculum-vitae.pdf" >Curriculum Vitae</a>
+  </div>
+
+<div class="text-justify">
+  Let's be friends! Don't hesitate to get in touch, whether you want to chat about education, pick my brain on computer science, request a portrait sketch of yourself, or just hang out.
+</div>
+
+  <div class="d-flex flex-row justify-content-center my-3">
+    <a class="button mx-1 px-3 py-2  text-reverse  text-uppercase font-family-serif" id="email" >ude.yelekreb@aiouqes</a>
   </div>
 
   
+
+      </div>
     
-  <button class="collapsible">Relational Databases</button>
-  <div class="collapsible-content">
+      
+      <div class="tab-pane " id="index-nav-nav-content-textbooks" role="tabpanel" aria-labelledby="index-nav-nav-option-textbooks">
+        
+  
+    
+
+
+  <div class="mb-3" id="textbooks-accordion">
+    
+      
+      <div class="d-flex flex-row accordion-option-wrapper mt-3 mb-0 collapsed" id="textbooks-accordion-option-fundamental-computer-science" data-toggle="collapse" data-target="#textbooks-accordion-content-fundamental-computer-science" aria-expanded="false" aria-controls="textbooks-accordion-content-fundamental-computer-science">
+        <a class="accordion-option flex-fill mx-1 px-3 py-2 text-uppercase font-family-serif">Fundamental Computer Science</a>
+      </div>
+      <div id="textbooks-accordion-content-fundamental-computer-science" class="collapse" aria-labelledby="textbooks-accordion-option-fundamental-computer-science" data-parent="#textbooks-accordion">
+        <div class="accordion-content ml-4 py-3 pl-3">
+          
+  
+    
+      
+  
+  <div class="section my-3 text-uppercase font-family-serif font-size-subsubsection" id="section-Part-I:-Lorem-Ipsum">
+    Part I: Lorem Ipsum
+    
+  </div>
 
       
-        <br/><a href="/relational-databases/sql-dml.html">SQL: Data Manipulation</a><br/>
+        <div class="my-2">
+          <a href="/welcome-to-computer-science.html">Welcome to Computer Science</a>
+        </div>
+      
+        <div class="my-2">
+          <a href="/setup.html">Setup</a>
+        </div>
       
     
-  <br/>
+      
+  
+  <div class="section my-3 text-uppercase font-family-serif font-size-subsubsection" id="section-Part-II:-Dolor-Sit-Amet">
+    Part II: Dolor Sit Amet
+    
+  </div>
+
+      
+        <div class="my-2">
+          <a href="/variables.html">Variables</a>
+        </div>
+      
+        <div class="my-2">
+          <a href="/functions.html">Functions</a>
+        </div>
+      
+        <div class="my-2">
+          <a href="/booleans.html">Booleans</a>
+        </div>
+      
+        <div class="my-2">
+          <a href="/iteration.html">Iteration</a>
+        </div>
+      
+        <div class="my-2">
+          <a href="/higher-order-functions.html">Higher-Order Functions</a>
+        </div>
+      
+        <div class="my-2">
+          <a href="/lambda-functions.html">Lambda Functions</a>
+        </div>
+      
+        <div class="my-2">
+          <a href="/recursion.pdf">Recursion</a>
+        </div>
+      
+        <div class="my-2">
+          <a href="/counting-problems.pdf">Counting Problems</a>
+        </div>
+      
+        <div class="my-2">
+          <a href="/objects.pdf">Objects</a>
+        </div>
+      
+        <div class="my-2">
+          <a href="/orders-of-growth.pdf">Orders of Growth</a>
+        </div>
+      
+        <div class="my-2">
+          <a href="/iterators-and-generators.pdf">Iterators and Generators</a>
+        </div>
+      
+        <div class="my-2">
+          <a href="/scheme.pdf">Scheme</a>
+        </div>
+      
+    
+  
+
+        </div>
+      </div>
+    
+      
+      <div class="d-flex flex-row accordion-option-wrapper mt-3 mb-0 collapsed" id="textbooks-accordion-option-relational-databases" data-toggle="collapse" data-target="#textbooks-accordion-content-relational-databases" aria-expanded="false" aria-controls="textbooks-accordion-content-relational-databases">
+        <a class="accordion-option flex-fill mx-1 px-3 py-2 text-uppercase font-family-serif">Relational Databases</a>
+      </div>
+      <div id="textbooks-accordion-content-relational-databases" class="collapse" aria-labelledby="textbooks-accordion-option-relational-databases" data-parent="#textbooks-accordion">
+        <div class="accordion-content ml-4 py-3 pl-3">
+          
+  
+    
+      
+  
+  <div class="section my-3 text-uppercase font-family-serif font-size-subsubsection" id="section-Part-I:-Lorem-Ipsum">
+    Part I: Lorem Ipsum
+    
+  </div>
+
+      
+        <div class="my-2">
+          <a href="/sql:-data-manipulation.html">SQL: Data Manipulation</a>
+        </div>
+      
+    
+  
+
+        </div>
+      </div>
+    
+  </div>
+
+<div class="text-justify">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</div>
+
+  <div class="mb-3" id="textbooks-accordion">
+    
+      
+      <div class="d-flex flex-row accordion-option-wrapper mt-3 mb-0 collapsed" id="textbooks-accordion-option-lorem-ipsum" data-toggle="collapse" data-target="#textbooks-accordion-content-lorem-ipsum" aria-expanded="false" aria-controls="textbooks-accordion-content-lorem-ipsum">
+        <a class="accordion-option flex-fill mx-1 px-3 py-2 text-uppercase font-family-serif">Lorem Ipsum</a>
+      </div>
+      <div id="textbooks-accordion-content-lorem-ipsum" class="collapse" aria-labelledby="textbooks-accordion-option-lorem-ipsum" data-parent="#textbooks-accordion">
+        <div class="accordion-content ml-4 py-3 pl-3">
+          
+  
+    
+      <div class="my-2">
+        <a href="/welcome-to-computer-science.html">Welcome to Computer Science</a>
+      </div>
+    
+  
+
+        </div>
+      </div>
+    
   </div>
 
   
-  <!-- START TEMPORARY SECTION -->
-  <p style="font-size: 12.5pt;">The following PDFs are complete, but soon I will rewrite them and add better, more comprehensive versions to the textbook above. After I do that, the following links will no longer work.</p>
-  <a href="/TEMPORARY/Recursion.pdf">Recursion</a><br/>
-  <br/>
-  <a href="/TEMPORARY/Counting Problems.pdf">Counting Problems</a><br/>
-  <br/>
-  <a href="/TEMPORARY/Objects.pdf">Objects</a><br/>
-  <br/>
-  <a href="/TEMPORARY/Orders of Growth.pdf">Orders of Growth</a><br/>
-  <br/>
-  <a href="/TEMPORARY/Iterators and Generators.pdf">Iterators and Generators</a><br/>
-  <br/>
-  <a href="/TEMPORARY/Scheme.pdf">Scheme</a><br/>
-  <br/>
-  <!-- END TEMPORARY SECTION -->
-</div>
 
-<!-- Contact -->
-<div>
-  <p id="Contact" class="header">Contact</p>
-  <hr>
-  <p>sequoia [at] berkeley.edu</p>
-</div>
-
-<!-- License -->
-<hr>
-<div class="footer">
-  <p>All content on this website is protected under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons BY 4.0 license</a>.
-  </p>
-</div>
-
-
-      <br><br>
-    </div>
+      </div>
     
-    
+      
+      <div class="tab-pane " id="index-nav-nav-content-pyagram" role="tabpanel" aria-labelledby="index-nav-nav-option-pyagram">
+        
+  
     
 
+<div class="text-justify">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</div>
   
 
-  <script src="/static/js/collapsible.js"></script>
+      </div>
+    
+      
+      <div class="tab-pane " id="index-nav-nav-content-publications" role="tabpanel" aria-labelledby="index-nav-nav-option-publications">
+        
+  
+    
 
+<div class="text-justify">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</div>
+  
 
+      </div>
+    
+  </div>
 
+  </div>
+
+    
+  <script type="text/javascript" src="/static/scripts/main.js"></script>
 
   </body>
-
 </html>

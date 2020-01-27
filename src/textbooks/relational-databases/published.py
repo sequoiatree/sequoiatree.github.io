@@ -1,3 +1,0 @@
-PUBLISHED = [
-    'sql-dml',
-]

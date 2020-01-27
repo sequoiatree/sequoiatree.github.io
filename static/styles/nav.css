@@ -1,0 +1,67 @@
+a, a:hover {
+  color: #3cc216;
+  text-decoration: none;
+}
+
+.font-family-serif {
+  font-family: "Arapey", serif;
+}
+
+.font-family-sans-serif {
+  font-family: "Work Sans", sans-serif;
+}
+
+.font-family-monospace {
+  font-family: "Source Code Pro", monospace;
+}
+
+.font-size-title {
+  font-size: 60pt;
+}
+
+.font-size-section {
+  font-size: 30pt;
+}
+
+.font-size-subsection {
+  font-size: 24pt;
+}
+
+.font-size-subsubsection {
+  font-size: 18pt;
+}
+
+.font-size-clickable {
+  font-size: 13.5pt;
+}
+
+.font-size-paragraph {
+  font-size: 12.5pt;
+}
+
+.text-reverse {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+
+.nav-pills .nav-link, .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: black;
+  text-decoration: none;
+  font-size: 13.5pt;
+  background: #d7e1e1;
+  border: solid 2px #3cc216;
+  border-radius: 23px;
+  transition: 1s;
+}
+.nav-pills .nav-link:hover, .nav-pills .nav-link.active, .nav-pills .nav-link.active:hover, .nav-pills .nav-link.active.active, .nav-pills .show > .nav-link:hover, .nav-pills .show > .nav-link.active {
+  color: black;
+  text-decoration: none;
+  background: white;
+}
+@media only screen and (max-width: 640px) {
+  .nav-pills .nav-link, .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    min-width: 33.3%;
+  }
+}
+
+/*# sourceMappingURL=nav.css.map */

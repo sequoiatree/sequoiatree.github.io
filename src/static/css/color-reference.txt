@@ -1,6 +1,0 @@
-Dark leaf green:  #1e8511
-Light leaf green: #3cc216
-Tree trunk brown: #966d1c
-Storm grey:       #e6e6e6
-Cloud white:      #ecf0f1
-Stark white:      #ffffff

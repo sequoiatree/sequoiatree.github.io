@@ -1,0 +1,10 @@
+.section:hover > .section-link {
+  visibility: visible;
+  color: red;
+}
+
+.section-link {
+  visibility: hidden;
+}
+
+/*# sourceMappingURL=section-link.css.map */

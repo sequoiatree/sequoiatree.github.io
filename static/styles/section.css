@@ -1,0 +1,11 @@
+.section:hover > .section-link {
+  color: #3cc216;
+  transition: 0.5s;
+}
+
+.section-link {
+  color: rgba(60, 194, 22, 0);
+  transition: 0.5s;
+}
+
+/*# sourceMappingURL=section.css.map */
