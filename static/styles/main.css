@@ -361,11 +361,6 @@ input[type=range]::-moz-range-thumb:hover, input[type=range]::-moz-range-thumb.a
 input[type=range]::-moz-focus-outer {
   border: 0;
 }
-input[type=range]::-ms-track {
-  border-width: 7px 0;
-  border-color: transparent;
-  color: transparent;
-}
 input[type=range]::-ms-thumb {
   color: black;
   text-decoration: none;
