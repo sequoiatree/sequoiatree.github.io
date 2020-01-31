@@ -46,6 +46,9 @@ a, a:hover {
 
 input[type=range] {
   -webkit-appearance: none;
+  height: 10px;
+  border-radius: 5px;
+  background: #d7e1e1;
 }
 input[type=range]::-webkit-slider-runnable-track {
   height: 10px;
@@ -101,7 +104,7 @@ input[type=range]::-ms-track {
   height: 10px;
   border-radius: 5px;
   background: #d7e1e1;
-  border-width: 7px 0;
+  border-width: 5px 0;
   border-color: transparent;
   color: transparent;
 }
