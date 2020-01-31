@@ -361,6 +361,29 @@ input[type=range]::-moz-range-thumb:hover, input[type=range]::-moz-range-thumb.a
 input[type=range]::-moz-focus-outer {
   border: 0;
 }
+input[type=range]::-ms-track {
+  border-width: 7px 0;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-thumb {
+  color: black;
+  text-decoration: none;
+  font-size: 13.5pt;
+  background: #d7e1e1;
+  border: solid 2px #3cc216;
+  border-radius: 23px;
+  transition: 1s;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+}
+input[type=range]::-ms-thumb:hover, input[type=range]::-ms-thumb.active {
+  color: black;
+  text-decoration: none;
+  background: white;
+}
 input[type=range]:focus {
   outline: none;
 }
@@ -370,6 +393,11 @@ input[type=range]:hover::-webkit-slider-thumb {
   background: white;
 }
 input[type=range]:hover::-moz-range-thumb {
+  color: black;
+  text-decoration: none;
+  background: white;
+}
+input[type=range]:hover::-ms-thumb {
   color: black;
   text-decoration: none;
   background: white;
